@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { LanguageProvider } from './context/LanguageContext';
+import { LanguageProvider, useLanguage } from './context/LanguageContext';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { HomePage } from './pages/HomePage';
@@ -9,9 +9,11 @@ import { SolutionsPage } from './pages/SolutionsPage';
 import { AboutPage } from './pages/AboutPage';
 import { InsightsPage } from './pages/InsightsPage';
 import { ContactPage } from './pages/ContactPage';
+import { Lock, ArrowUp } from 'lucide-react';
 
 export function AppContent() {
   const [activePage, setActivePage] = useState('home');
+  const { t } = useLanguage();
 
   const renderPage = () => {
     switch (activePage) {
@@ -35,11 +37,24 @@ export function AppContent() {
   };
 
   return (
-    <div className="min-h-screen bg-parliament-950 text-slate-100 flex flex-col justify-between selection:bg-gold-500 selection:text-parliament-950 font-sans">
+    <div className="min-h-screen bg-surface-50 text-slate-800 flex flex-col justify-between selection:bg-brand-pink selection:text-white font-sans relative">
       <Header activePage={activePage} setActivePage={setActivePage} />
       <main className="flex-grow">
         {renderPage()}
       </main>
+
+      {/* Floating Quick Action Pill (I-PAC inspired) */}
+      <div className="fixed bottom-6 right-6 z-40 flex items-center space-x-2">
+        <button
+          onClick={() => { setActivePage('contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+          className="flex items-center space-x-2 px-4 py-3 rounded-full bg-brand-pink hover:bg-brand-pink-hover text-white font-bold text-xs sm:text-sm shadow-xl hover:shadow-2xl transition-all hover:scale-105 active:scale-95 border-2 border-white"
+          title="Direct Consultation Request"
+        >
+          <Lock className="w-4 h-4" />
+          <span>{t.nav.schedule}</span>
+        </button>
+      </div>
+
       <Footer setActivePage={setActivePage} />
     </div>
   );

@@ -7,30 +7,29 @@ export default {
   theme: {
     extend: {
       colors: {
-        parliament: {
-          950: '#060B14',
-          900: '#0A1120',
-          850: '#0E172B',
-          800: '#13213C',
-          700: '#1D3055',
+        brand: {
+          green: '#084D16',         // Deep forest green from 'CROSS'
+          'green-light': '#0F7324',
+          'green-dark': '#05340E',
+          'green-soft': '#EAF6EC',  // Soft pastel green for chips
+          pink: '#EA005C',          // Vibrant magenta/pink from 'BENCH'
+          'pink-hover': '#D00052',
+          'pink-soft': '#FDF2F7',   // Soft pastel pink for chips
         },
-        slate: {
-          850: '#151F30',
-          750: '#26354D',
-        },
-        gold: {
-          300: '#EBD5B3',
-          400: '#DEC095',
-          500: '#C5A880',
-          600: '#A88D66',
-          700: '#8A7250',
+        surface: {
+          50: '#F8FAFC',
+          100: '#F1F5F9',
+          200: '#E2E8F0',
         }
       },
       fontFamily: {
-        serif: ['"Playfair Display"', 'Georgia', 'serif'],
-        display: ['"Cinzel"', 'serif'],
-        sans: ['"Inter"', '"Noto Sans Devanagari"', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans"', '"Noto Sans Devanagari"', 'sans-serif'],
+        display: ['"Outfit"', '"Plus Jakarta Sans"', 'sans-serif'],
         hindi: ['"Noto Sans Devanagari"', 'sans-serif'],
+      },
+      boxShadow: {
+        'card': '0 2px 12px -2px rgba(0, 0, 0, 0.06), 0 4px 8px -2px rgba(0, 0, 0, 0.04)',
+        'card-hover': '0 12px 24px -4px rgba(8, 77, 22, 0.08), 0 8px 16px -4px rgba(234, 0, 92, 0.06)',
       }
     },
   },

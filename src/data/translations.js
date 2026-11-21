@@ -1,14 +1,14 @@
 export const translations = {
   en: {
     // Header & Meta
-    brand: "CROSS BENCH",
-    brandSubtitle: "ADVISORY GROUP",
-    brandTagline: "360° Non-Partisan Political & Public Policy Advisory",
+    brandName: "CROSSBENCH",
+    brandTagline: "Independent Insight. Strategic Impact.",
     nav: {
       home: "Home",
-      political: "Political Consulting",
+      political: "Political Strategy",
       policy: "Public Policy",
-      solutions: "Solutions by Client",
+      impact: "Our Impact",
+      solutions: "Solutions",
       about: "About Us",
       insights: "Insights",
       contact: "Confidential Contact",
@@ -17,55 +17,60 @@ export const translations = {
 
     // Hero Section
     hero: {
-      eyebrow: "Non-Partisan & Independent Advisory",
-      titleLine1: "Where Electoral Precision Meets",
-      titleLine2: "Public Policy Excellence",
-      subtitle: "Empowering political parties, leaders, government ministries, and civil society with rigorous data science, strategic narrative engineering, and independent policy intelligence—anchored in uncompromising discretion.",
-      primaryCta: "Explore Political Strategy",
+      badge: "NON-PARTISAN ADVISORY FIRM",
+      titleLine1: "Independent Insight.",
+      titleLine2: "Strategic Impact.",
+      subtitle: "Bridging data-driven political campaign management with empirical public policy governance. Serving political parties, lawmakers, ministries, and civil society with absolute discretion.",
+      primaryCta: "Explore Political Suite",
       secondaryCta: "Public Policy Advisory",
-      badge: "Strictly Confidential & Independent"
+      guarantee: "100% Non-Partisan & Confidential Advisory"
     },
 
-    // Credibility Counters
+    // Stats / Counters (Jarvis & I-PAC Inspired)
     metrics: [
       {
+        value: "250+",
+        label: "Campaigns & Engagements",
+        sub: "Assembly, Parliamentary & Zila Parishad campaigns executed.",
+        badgeColor: "green"
+      },
+      {
+        value: "160B+",
+        label: "Data Attributes Managed",
+        sub: "Booth-level demographic, caste & economic indicators modeled.",
+        badgeColor: "pink"
+      },
+      {
+        value: "50+",
+        label: "Governance Audits",
+        sub: "Third-party welfare scheme delivery & DBT impact evaluations.",
+        badgeColor: "green"
+      },
+      {
         value: "100%",
-        label: "Non-Partisan Integrity",
-        desc: "Zero ideological bias; decisions governed strictly by empirical data and field realities."
-      },
-      {
-        value: "360°",
-        label: "Electoral & Policy Synergy",
-        desc: "End-to-end operational capacity from booth micro-targeting to legislative governance audits."
-      },
-      {
-        value: "Pan-India",
-        label: "Constituency Intelligence",
-        desc: "Deep demographic and historical voting analysis across federal, state, and local tiers."
-      },
-      {
-        value: "Discreet",
-        label: "Air-Gapped Confidentiality",
-        desc: "Encrypted intelligence protocols ensuring client strategies remain strictly protected."
+        label: "Partisan Independence",
+        sub: "Governed strictly by empirical data and bilateral non-disclosure NDAs.",
+        badgeColor: "pink"
       }
     ],
 
-    // Dual Engines Section
+    // Dual Engine
     dualEngine: {
-      title: "The Dual Engine of Modern Democracy",
-      subtitle: "Sustainable leadership requires both electoral mastery to secure mandates and policy expertise to deliver public value.",
+      tag: "THE DUAL ENGINE",
+      title: "Where Electoral Precision Meets Public Policy Excellence",
+      subtitle: "Sustainable political leadership requires both electoral mastery to win mandates and policy competence to deliver public welfare.",
       engine1: {
         tag: "ENGINE 01",
-        title: "Political & Electoral Consulting",
-        subtitle: "Winning Mandates with Data-Driven Campaign Machinery",
+        title: "Political & Electoral Strategy",
+        subtitle: "Data-Driven Campaign Machinery for Parties & Candidates",
         desc: "Transforming complex grassroots voter sentiment into decisive electoral victories through high-precision micro-targeting, 24x7 war room execution, candidate image architecture, and disciplined booth-level mobilization.",
         features: [
-          "Booth-Level GIS & Caste Demographic Mapping",
+          "Booth-Level GIS & Micro-Demographic Mapping",
           "24x7 Digital & Rapid Counter-Narrative War Rooms",
           "Candidate Winnability Audits & Persona Engineering",
           "Ground Cadre Training & Polling-Day Turnout (GOTV)"
         ],
-        cta: "Explore Political Suite"
+        cta: "Explore Political Services"
       },
       engine2: {
         tag: "ENGINE 02",
@@ -78,14 +83,95 @@ export const translations = {
           "Citizen Sentiment & Public Grievance Feedback Loops",
           "Evidence-Backed Advocacy for NGOs & Think Tanks"
         ],
-        cta: "Explore Policy Suite"
+        cta: "Explore Policy Services"
       }
     },
 
-    // 4 Client Verticals
+    // I-PAC Inspired Impact Section
+    impactSection: {
+      badge: "PROVEN TRACK RECORD",
+      title: "CROSS BENCH Impact: Reshaping Governance & Elections",
+      subtitle: "Empirical outcomes across key state elections, legislative offices, and public welfare evaluations.",
+      tabs: [
+        {
+          id: "delhi",
+          name: "State Assembly Strategy",
+          location: "Assembly Elections",
+          year: "2025",
+          title: "Citizen Guarantees & Micro-Constituency Turnout Modeling",
+          desc: "Orchestrated targeted ground surveys across 70 constituencies, identifying swing clusters under 2.1% margins and establishing 24x7 digital response desks countering localized anti-incumbency.",
+          stats: [
+            { label: "Booths Monitored", val: "13,800+" },
+            { label: "Voter Conversion", val: "4.8% Swing" },
+            { label: "Response Window", val: "<40 Mins" },
+            { label: "Turnout Lift", val: "+6.2%" }
+          ],
+          img: "./images/delhi_campaign.jpg"
+        },
+        {
+          id: "welfare",
+          name: "Central & State Welfare Audits",
+          location: "Multi-State Audit",
+          year: "2024-25",
+          title: "Direct Benefit Transfer (DBT) Last-Mile Leakage Detection",
+          desc: "Independent door-to-door evaluation covering 18,000 rural beneficiaries across 16 districts. Identified systemic Aadhaar biometric drop-offs and provided administrative procedural redesign.",
+          stats: [
+            { label: "Beneficiaries Surveyed", val: "18,000+" },
+            { label: "Leakages Plugged", val: "₹185 Cr" },
+            { label: "Delivery Accuracy", val: "97.4%" },
+            { label: "Policy Reforms", val: "14 Measures" }
+          ],
+          img: "./images/analytics.jpg"
+        },
+        {
+          id: "candidate",
+          name: "Lawmaker Office & Image Makeover",
+          location: "Constituency Management",
+          year: "2024",
+          title: "MP & MLA Constituency Grievance Command Center",
+          desc: "Architected modern constituency management systems for 12 sitting legislators, deploying automated WhatsApp citizen grievance tracking and 5-year developmental tenure progress reports.",
+          stats: [
+            { label: "Grievances Resolved", val: "84,000+" },
+            { label: "Approval Rating", val: "+26%" },
+            { label: "Villages Covered", val: "640+" },
+            { label: "Turnout Readiness", val: "100% Booths" }
+          ],
+          img: "./images/leader_rally.jpg"
+        },
+        {
+          id: "ngo",
+          name: "Civil Society & Legislative Advocacy",
+          location: "Parliamentary Research",
+          year: "2024-25",
+          title: "Evidence-Based Policy Whitepapers on Rural Healthcare",
+          desc: "Converted complex primary healthcare telemetry into 4 high-authority legislative memorandums presented before Parliamentary Standing Committees, driving targeted budgetary allocation.",
+          stats: [
+            { label: "Lawmakers Briefed", val: "45 MPs/MLAs" },
+            { label: "Roundtables Hosted", val: "8 Sessions" },
+            { label: "Budgetary Allocation", val: "+18% Lift" },
+            { label: "Media Citations", val: "120+ Outlets" }
+          ],
+          img: "./images/governance.jpg"
+        }
+      ]
+    },
+
+    // Story Section (I-PAC Team / Story Inspired)
+    story: {
+      badge: "OUR ETHOS",
+      title: "The CROSS BENCH Story",
+      desc1: "In democratic assemblies, the Crossbench represents the vanguard of intellectual independence. Crossbenchers are beholden neither to the ruling treasury nor the opposition whip—they examine public questions with ruthless objectivity and strategic clarity.",
+      desc2: "CROSS BENCH was founded by alumni of premier policy institutions, top-tier management consultancies, and seasoned electoral operatives. We recognized that the Indian political consulting ecosystem had become polarized and superficial.",
+      desc3: "We built an institutional home for leaders, governments, and civil society who demand empirical rigor over PR hype, and confidential strategic excellence over noise.",
+      cta: "Learn More About Our Charter",
+      img: "./images/team_story.jpg"
+    },
+
+    // Solutions
     solutions: {
-      title: "Tailored Solutions Across Four Verticals",
-      subtitle: "Distinct methodologies engineered for each stakeholder in the democratic ecosystem.",
+      badge: "TARGET VERTICALS",
+      title: "Specialized Advisory Across Four Verticals",
+      subtitle: "Bespoke operational frameworks engineered for each stakeholder in the democratic governance ecosystem.",
       categories: [
         {
           id: "parties",
@@ -140,7 +226,7 @@ export const translations = {
 
     // Neutrality Charter
     charter: {
-      badge: "THE CROSSBENCH ETHOS",
+      badge: "NON-PARTISAN PRINCIPLES",
       title: "Our Institutional Neutrality Charter",
       quote: "In parliamentary democracy, the Crossbench embodies independence from partisan orthodoxy. Our commitment is exclusively to empirical reality, democratic vibrancy, and measurable public impact.",
       points: [
@@ -163,44 +249,46 @@ export const translations = {
       ]
     },
 
-    // Insights Section
+    // Insights
     insights: {
+      badge: "RESEARCH & EVIDENCE",
       title: "Perspectives & Strategic Insights",
-      subtitle: "Thought leadership, non-partisan electoral analyses, and policy impact whitepapers produced by our senior research faculty.",
+      subtitle: "Non-partisan electoral analyses and policy impact whitepapers produced by our senior practice faculty.",
       articles: [
         {
           tag: "ELECTORAL STRATEGY",
           date: "Q1 2026",
           title: "The Architecture of Swing Voters in Multi-Cornered State Contests",
           excerpt: "An empirical investigation into how micro-demographic voter shifts of under 1.8% dictate seat conversions across modern assembly elections.",
-          readTime: "7 min read"
+          readTime: "8 min read"
         },
         {
           tag: "PUBLIC POLICY",
           date: "Q1 2026",
           title: "Evaluating Last-Mile DBT Efficiency in Rural Welfare Subsidies",
           excerpt: "Field audit telemetry across 14 districts evaluating Direct Benefit Transfer infrastructure, biometric failure rates, and citizen grievance redressal.",
-          readTime: "9 min read"
+          readTime: "10 min read"
         },
         {
           tag: "WAR ROOM DYNAMICS",
           date: "Q4 2025",
           title: "Countering Algorithmic Disinformation in Real-Time Election War Rooms",
           excerpt: "Protocol frameworks for identifying synthetic media, dark social narratives, and executing rapid counter-messaging within 45-minute response windows.",
-          readTime: "6 min read"
+          readTime: "7 min read"
         }
       ]
     },
 
-    // Contact & Consultation
+    // Contact
     contact: {
+      badge: "SECURE INTAKE",
       title: "Confidential Consultation",
       subtitle: "Direct, encrypted, and strictly confidential intake for leadership consultations.",
-      intakeNote: "All communications are protected under strict non-disclosure protocols. Consultations are conducted exclusively by senior practice directors.",
+      intakeNote: "All communications are protected under strict bilateral non-disclosure protocols. Consultations are conducted exclusively by senior practice directors.",
       form: {
         fullName: "Full Name",
         designation: "Designation / Role",
-        organization: "Organization / Party / Department",
+        organization: "Organization / Party / Ministry",
         vertical: "Domain of Engagement",
         verticalOptions: [
           "Political Campaign Strategy (Party Level)",
@@ -220,84 +308,89 @@ export const translations = {
       channels: {
         headquarters: "New Delhi Coordinating Hub (Diplomatic & Administrative Enclave)",
         email: "advisory@crossbench.in",
-        securityNotice: "Encrypted PGP keys and secure meeting arrangements provided upon initial intake verification."
+        securityNotice: "Encrypted PGP keys and secure in-person meeting arrangements provided upon initial intake verification."
       }
     },
 
     // Footer
     footer: {
-      desc: "CROSS BENCH is an independent, non-partisan advisory firm operating at the intersection of electoral strategy and public policy governance. Serving political parties, lawmakers, ministries, and civil society with empirical rigor.",
+      desc: "CROSS BENCH is an independent, non-partisan advisory firm operating across the dual engines of electoral strategy and public policy governance. Serving political parties, lawmakers, ministries, and civil society with empirical rigor.",
       quickLinksTitle: "Navigation",
       servicesTitle: "Practices",
       complianceTitle: "Institutional Standards",
       complianceItems: [
         "Non-Partisan Code of Conduct",
         "Air-Gapped Data Security Protocol",
-        "Client Confidentiality Covenant",
+        "Client Confidentiality Covenant (NDA)",
         "Senior Advisory Network (Discreet Inquiries)"
       ],
-      copyright: "© 2026 CROSS BENCH Advisory Group. All rights reserved. Strictly Confidential."
+      copyright: "© 2026 CROSS BENCH. All rights reserved. Strictly Confidential."
     }
   },
 
   hi: {
     // Header & Meta
-    brand: "क्रॉस बेंच",
-    brandSubtitle: "एडवाइजरी ग्रुप",
-    brandTagline: "360° निष्पक्ष राजनीतिक एवं लोक नीति परामर्श",
+    brandName: "क्रॉस बेंच",
+    brandTagline: "स्वतंत्र दृष्टि। रणनीतिक प्रभाव।",
     nav: {
       home: "मुख्य पृष्ठ",
       political: "राजनीतिक परामर्श",
       policy: "लोक नीति",
+      impact: "हमारा प्रभाव",
       solutions: "समाधान",
       about: "हमारे बारे में",
-      insights: "विश्लेषण",
+      insights: "शोध व विश्लेषण",
       contact: "गोपनीय संपर्क",
       schedule: "परामर्श बुक करें"
     },
 
     // Hero Section
     hero: {
-      eyebrow: "गैर-पक्षपातपूर्ण एवं स्वतंत्र परामर्श",
-      titleLine1: "जहाँ चुनावी रणनीति और",
-      titleLine2: "लोक नीति का संगम होता है",
-      subtitle: "हम राजनीतिक दलों, जन-प्रतिनिधियों, सरकारी मंत्रालयों और गैर-सरकारी संस्थाओं को प्रामाणिक डेटा विज्ञान, रणनीतिक नैरेटिव और स्वतंत्र नीतिगत विश्लेषण से सशक्त बनाते हैं—पूर्ण गोपनीयता और गैर-पक्षपातपूर्ण निष्ठा के साथ।",
+      badge: "गैर-पक्षपातपूर्ण एवं स्वतंत्र परामर्श संस्थान",
+      titleLine1: "स्वतंत्र दृष्टि।",
+      titleLine2: "रणनीतिक प्रभाव।",
+      subtitle: "डेटा-आधारित चुनाव अभियान प्रबंधन और जन-कल्याणकारी लोक नीति सुशासन का विश्वसनीय संगम। राजनीतिक दलों, जन-प्रतिनिधियों, मंत्रालयों और नागरिक समाज की सेवा में पूर्ण गोपनीयता के साथ समर्पित।",
       primaryCta: "चुनावी रणनीति समझें",
       secondaryCta: "लोक नीति परामर्श",
-      badge: "पूर्णतः गोपनीय एवं निष्पक्ष"
+      guarantee: "100% निष्पक्ष एवं पूर्णतः गोपनीय परामर्श"
     },
 
-    // Credibility Counters
+    // Stats / Counters
     metrics: [
       {
+        value: "250+",
+        label: "चुनावी अभियान व प्रोजेक्ट्स",
+        sub: "विधानसभा, संसदीय व स्थानीय निकाय चुनावों में सफल रणनीति।",
+        badgeColor: "green"
+      },
+      {
+        value: "160B+",
+        label: "डेटा पॉइंट्स का विश्लेषण",
+        sub: "बूथ-स्तरीय जनसांख्यिकी, जातिगत व आर्थिक संकेतकों का मॉडल।",
+        badgeColor: "pink"
+      },
+      {
+        value: "50+",
+        label: "नीतिगत सुशासन ऑडिट्स",
+        sub: "कल्याणकारी योजनाओं का अंतिम छोर तक थर्ड-पार्टी प्रभाव मूल्यांकन।",
+        badgeColor: "green"
+      },
+      {
         value: "100%",
-        label: "निष्पक्षता एवं सत्यनिष्ठा",
-        desc: "बिना किसी दलगत पूर्वाग्रह के; प्रत्येक निर्णय केवल प्रामाणिक आंकड़ों और जमीनी सच्चाई पर आधारित।"
-      },
-      {
-        value: "360°",
-        label: "चुनाव और सुशासन का समन्वय",
-        desc: "बूथ-लेवल माइक्रो-टारगेटिंग से लेकर नीतिगत सुशासन ऑडिट तक संपूर्ण समाधान।"
-      },
-      {
-        value: "अखिल भारतीय",
-        label: "जमीनी डेटा विश्लेषण",
-        desc: "संसद से लेकर राज्य विधानसभाओं और स्थानीय निकायों तक गहन जनसांख्यिकी और मतदान विश्लेषण।"
-      },
-      {
-        value: "गोपनीय",
-        label: "अभेद्य डेटा सुरक्षा",
-        desc: "एन्क्रिप्टेड प्रोटोकॉल द्वारा प्रत्येक क्लाइंट की रणनीति और डेटा की 100% सुरक्षा।"
+        label: "दलगत निष्पक्षता",
+        sub: "केवल प्रामाणिक तथ्यों और सख्त कानूनी गोपनीयता (NDA) से संचालित।",
+        badgeColor: "pink"
       }
     ],
 
-    // Dual Engines Section
+    // Dual Engine
     dualEngine: {
-      title: "आधुनिक लोकतंत्र के दो मजबूत स्तंभ",
+      tag: "दोहरा सामर्थ्य",
+      title: "जहाँ चुनावी रणनीति और लोक नीति का विश्वसनीय संगम होता है",
       subtitle: "स्थायी नेतृत्व के लिए जनादेश जीतने की चुनावी कुशलता और जनकल्याण सुनिश्चित करने की नीतिगत समझ—दोनों आवश्यक हैं।",
       engine1: {
         tag: "पहला स्तंभ",
-        title: "राजनीतिक एवं चुनावी परामर्श",
+        title: "राजनीतिक एवं चुनावी रणनीति",
         subtitle: "डेटा-आधारित रणनीति से निर्णायक जनादेश हासिल करना",
         desc: "जनसांख्यिकी माइक्रो-टारगेटिंग, 24x7 वॉर रूम संचालन, उम्मीदवार छवि प्रबंधन और अनुशासित बूथ मशीनरी के माध्यम से जमीनी जन-भावना को निर्णायक चुनावी जीत में बदलना।",
         features: [
@@ -306,7 +399,7 @@ export const translations = {
           "उम्मीदवार छवि ऑडिट एवं लीडरशिप नैरेटिव",
           "जमीनी काडर प्रशिक्षण एवं पोलिंग-डे टर्नआउट (GOTV)"
         ],
-        cta: "चुनावी समाधान देखें"
+        cta: "चुनावी सेवाएं देखें"
       },
       engine2: {
         tag: "दूसरा स्तंभ",
@@ -319,14 +412,95 @@ export const translations = {
           "जन-भावना एवं लोक शिकायत निवारण विश्लेषण",
           "एनजीओ और थिंक टैंक्स के लिए तथ्य-आधारित एडवोकेसी"
         ],
-        cta: "नीतिगत समाधान देखें"
+        cta: "नीतिगत सेवाएं देखें"
       }
     },
 
-    // 4 Client Verticals
+    // I-PAC Inspired Impact Section
+    impactSection: {
+      badge: "प्रामाणिक ट्रैक रिकॉर्ड",
+      title: "क्रॉस बेंच प्रभाव: चुनाव और सुशासन में नए मानक",
+      subtitle: "प्रमुख राज्य चुनावों, विधायी कार्यालयों और जनकल्याणकारी योजनाओं के मूल्यांकन के जमीनी परिणाम।",
+      tabs: [
+        {
+          id: "delhi",
+          name: "राज्य विधानसभा चुनाव",
+          location: "विधानसभा अभियान",
+          year: "2025",
+          title: "नागरिक गारंटी एवं सूक्ष्म-विधानसभा टर्नआउट मॉडलिंग",
+          desc: "70 विधानसभाओं में व्यापक फील्ड सर्वे के जरिए 2.1% से कम अंतर वाले स्विंग बूथों की पहचान की गई और स्थानीय एंटी-इंकंबेंसी से निपटने के लिए 24x7 डिजिटल वॉर रूम स्थापित किए गए।",
+          stats: [
+            { label: "बूथ मॉनिटरिंग", val: "13,800+" },
+            { label: "वोटर स्विंग", val: "4.8% बदलाव" },
+            { label: "काउंटर रिस्पॉन्स", val: "<40 मिनट" },
+            { label: "टर्नआउट वृद्धि", val: "+6.2%" }
+          ],
+          img: "./images/delhi_campaign.jpg"
+        },
+        {
+          id: "welfare",
+          name: "केंद्रीय व राज्य कल्याणकारी योजनाएं",
+          location: "अखिल भारतीय ऑडिट",
+          year: "2024-25",
+          title: "डायरेक्ट बेनिफिट ट्रांसफर (DBT) लीकेज की जमीनी पहचान",
+          desc: "16 जिलों में 18,000 ग्रामीण लाभार्थियों के घर-घर जाकर किया गया स्वतंत्र थर्ड-पार्टी मूल्यांकन। बायोमेट्रिक विफलता को उजागर कर प्रशासनिक सुधार लागू करवाए गए।",
+          stats: [
+            { label: "लाभार्थी सर्वे", val: "18,000+" },
+            { label: "बचाई गई राशि", val: "₹185 करोड़" },
+            { label: "सटीकता दर", val: "97.4%" },
+            { label: "नीतिगत सुधार", val: "14 उपाय" }
+          ],
+          img: "./images/analytics.jpg"
+        },
+        {
+          id: "candidate",
+          name: "जन-प्रतिनिधि कार्यालय व छवि प्रबंधन",
+          location: "निर्वाचन क्षेत्र प्रबंधन",
+          year: "2024",
+          title: "सांसद एवं विधायक लोक-शिकायत निवारण कमांड सेंटर",
+          desc: "12 वर्तमान विधायकों व सांसदों के लिए आधुनिक कार्यालय प्रणाली की स्थापना, स्वचालित व्हाट्सएप शिकायत ट्रैकिंग और 5-वर्षीय विकास कार्यों का प्रगति रिपोर्ट कार्ड।",
+          stats: [
+            { label: "सुलझाई गई शिकायतें", val: "84,000+" },
+            { label: "संतुष्टि दर", val: "+26%" },
+            { label: "कवर किए गए गाँव", val: "640+" },
+            { label: "बूथ तत्परता", val: "100% बूथ्स" }
+          ],
+          img: "./images/leader_rally.jpg"
+        },
+        {
+          id: "ngo",
+          name: "नागरिक समाज एवं विधायी एडवोकेसी",
+          location: "संसदीय रिसर्च",
+          year: "2024-25",
+          title: "ग्रामीण स्वास्थ्य सेवा पर तथ्य-आधारित नीतिगत श्वेतपत्र",
+          desc: "जमीनी स्वास्थ्य डेटा को 4 उच्च-स्तरीय विधायी ज्ञापनों में बदलकर संसदीय स्थायी समितियों के समक्ष प्रस्तुत किया गया, जिससे बजट आवंटन में ठोस बढ़ोतरी हुई।",
+          stats: [
+            { label: "सांसदों को ब्रीफिंग", val: "45 सांसद/विधायक" },
+            { label: "गोलमेज बैठकें", val: "8 सत्र" },
+            { label: "बजट आवंटन वृद्धि", val: "+18%" },
+            { label: "मीडिया संदर्भ", val: "120+ प्रकाशन" }
+          ],
+          img: "./images/governance.jpg"
+        }
+      ]
+    },
+
+    // Story Section
+    story: {
+      badge: "हमारा संकल्प",
+      title: "क्रॉस बेंच की प्रेरक यात्रा",
+      desc1: "संसदीय लोकतंत्र में क्रॉस-बेंच बौद्धिक स्वतंत्रता का सर्वोच्च प्रतीक है। यहाँ बैठने वाले सदस्य न सत्तापक्ष के चाबुक से बंधे होते हैं और न विपक्ष के पूर्वाग्रह से—वे प्रत्येक जन-मुद्दे को केवल निष्पक्ष विवेक और रणनीतिक स्पष्टता से आंकते हैं।",
+      desc2: "CROSS BENCH की स्थापना शीर्ष नीति संस्थानों, प्रबंधन सलाहकारों और अनुभवी चुनावी रणनीतिकारों के संयुक्त प्रयासों से हुई। हमने देखा कि भारतीय कंसल्टिंग स्पेस या तो एकांगी पीआर प्रचार बन चुका था या दलगत गुटबाजी का शिकार।",
+      desc3: "हमने उन नेताओं, सरकारों और संस्थाओं के लिए एक विश्वसनीय मंच खड़ा किया जो शोर के बजाय ठोस डेटा और खोखले प्रचार के बजाय गोपनीय रणनीतिक उत्कृष्टता चाहते हैं।",
+      cta: "हमारा निष्पक्षता चार्टर पढ़ें",
+      img: "./images/team_story.jpg"
+    },
+
+    // Solutions
     solutions: {
-      title: "चार प्रमुख वर्गों के लिए विशेष समाधान",
-      subtitle: "लोकतांत्रिक व्यवस्था के प्रत्येक हितधारक के लिए वैज्ञानिक और अनुकूलित परामर्श पद्धति।",
+      badge: "अनुकूलित समाधान",
+      title: "चार प्रमुख वर्गों के लिए विशेष परामर्श समाधान",
+      subtitle: "लोकतांत्रिक शासन प्रणाली के प्रत्येक हितधारक के लिए वैज्ञानिक और अनुकूलित परामर्श पद्धति।",
       categories: [
         {
           id: "parties",
@@ -404,8 +578,9 @@ export const translations = {
       ]
     },
 
-    // Insights Section
+    // Insights
     insights: {
+      badge: "शोध एवं प्रमाण",
       title: "दृष्टिकोण एवं रणनीतिक विश्लेषण",
       subtitle: "हमारे वरिष्ठ शोध दल द्वारा तैयार निष्पक्ष चुनावी विश्लेषण, डेटा रिपोर्ट्स और नीतिगत श्वेतपत्र।",
       articles: [
@@ -414,27 +589,28 @@ export const translations = {
           date: "Q1 2026",
           title: "बहुकोणीय विधानसभा चुनावों में स्विंग वोटर्स का गणित",
           excerpt: "विधानसभा चुनावों में 1.8% से कम के सूक्ष्म-जनसांख्यिकीय बदलाव किस प्रकार सीटों के नतीजों को बदल देते हैं, इसका विस्तृत विश्लेषण।",
-          readTime: "7 मिनट पठन"
+          readTime: "8 मिनट पठन"
         },
         {
           tag: "लोक नीति",
           date: "Q1 2026",
           title: "ग्रामीण कल्याणकारी योजनाओं में अंतिम छोर तक DBT की प्रभावशीलता",
           excerpt: "प्रत्यक्ष लाभ अंतरण (DBT) में तकनीकी बाधाओं, बायोमेट्रिक विफलता और नागरिक शिकायत निवारण का 14 जिलों में किया गया फील्ड ऑडिट।",
-          readTime: "9 मिनट पठन"
+          readTime: "10 मिनट पठन"
         },
         {
           tag: "वॉर रूम प्रबंधन",
           date: "Q4 2025",
           title: "चुनावी वॉर रूम में डिजिटल दुष्प्रचार से निपटने की त्वरित रणनीति",
           excerpt: "सोशल मीडिया पर भ्रामक नैरेटिव की पहचान और 45 मिनट के भीतर सटीक और आधिकारिक काउंटर-मैसेजिंग तैयार करने का प्रोटोकॉल।",
-          readTime: "6 मिनट पठन"
+          readTime: "7 मिनट पठन"
         }
       ]
     },
 
-    // Contact & Consultation
+    // Contact
     contact: {
+      badge: "सुरक्षित इनटेक",
       title: "गोपनीय परामर्श संपर्क",
       subtitle: "वरिष्ठ नेतृत्व के साथ प्रत्यक्ष, एन्क्रिप्टेड और पूर्णतः गोपनीय परामर्श हेतु संपर्क करें।",
       intakeNote: "सभी वार्तालाप सख्त गैर-प्रकटीकरण (NDA) प्रोटोकॉल के तहत संरक्षित हैं। परामर्श केवल वरिष्ठ प्रैक्टिस डायरेक्टर्स द्वारा संचालित किए जाते हैं।",
@@ -477,7 +653,7 @@ export const translations = {
         "क्लाइंट गोपनीयता अनुबंध (NDA)",
         "वरिष्ठ सलाहकार नेटवर्क (गोपनीय संवाद)"
       ],
-      copyright: "© 2026 क्रॉस बेंच एडवाइजरी ग्रुप। सर्वाधिकार सुरक्षित। पूर्णतः गोपनीय।"
+      copyright: "© 2026 क्रॉस बेंच। सर्वाधिकार सुरक्षित। पूर्णतः गोपनीय।"
     }
   }
 };

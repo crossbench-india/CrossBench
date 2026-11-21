@@ -9,21 +9,19 @@ import {
   CheckCircle2, 
   ArrowRight, 
   ShieldCheck, 
-  BarChart, 
-  Layers, 
-  Compass, 
-  Activity 
+  Activity, 
+  Layers 
 } from 'lucide-react';
 
 export const PoliticalConsultingPage = ({ setActivePage }) => {
   const { lang, t } = useLanguage();
-
   const isHindi = lang === 'hi';
 
   const modules = [
     {
       icon: MapPin,
-      title: isHindi ? "बूथ-स्तरीय जनसांख्यिकी एवं जीआईएस मैपिंग" : "Constituency Profiling & Demographic Mapping",
+      img: "./images/analytics.jpg",
+      title: isHindi ? "बूथ-स्तरीय जनसांख्यिकी एवं जीआईएस मैपिंग" : "Constituency Profiling & Micro-Demographic Mapping",
       tagline: isHindi ? "सांख्यिकीय सटीकता से स्विंग वोटर्स की पहचान" : "Statistical Micro-Targeting Down to Individual Polling Booths",
       desc: isHindi 
         ? "ऐतिहासिक चुनाव आयोग आंकड़ों, जातिगत समीकरणों, आर्थिक पैमानों और बूथ-वाइज ट्रेंड्स का बहुस्तरीय विश्लेषण। प्रत्येक बूथ को रेड, येलो और ग्रीन रिस्क कैटिगरी में वर्गीकृत किया जाता है।"
@@ -42,6 +40,7 @@ export const PoliticalConsultingPage = ({ setActivePage }) => {
     },
     {
       icon: Radio,
+      img: "./images/warroom.jpg",
       title: isHindi ? "24x7 डिजिटल एवं ग्राउंड वॉर रूम ऑपरेशंस" : "24x7 Digital & Ground War Room Operations",
       tagline: isHindi ? "रियल-टाइम परसेप्शन मैनेजमेंट और त्वरित काउंटर-नैरेटिव" : "Real-Time Perception Management & Rapid Crisis Mitigation",
       desc: isHindi 
@@ -61,6 +60,7 @@ export const PoliticalConsultingPage = ({ setActivePage }) => {
     },
     {
       icon: UserCheck,
+      img: "./images/leader_rally.jpg",
       title: isHindi ? "उम्मीदवार छवि संवर्धन एवं लीडरशिप नैरेटिव" : "Candidate Winnability & Leadership Persona",
       tagline: isHindi ? "व्यक्तिगत ट्रैक-रिकॉर्ड को जनाधार में बदलना" : "Engineering High-Credibility Political Profiles for Lawmakers",
       desc: isHindi 
@@ -80,6 +80,7 @@ export const PoliticalConsultingPage = ({ setActivePage }) => {
     },
     {
       icon: Users,
+      img: "./images/state_campaign.jpg",
       title: isHindi ? "जमीनी काडर मशीनरी एवं पोलिंग-डे टर्नआउट (GOTV)" : "Ground Cadre Machinery & Polling-Day Turnout",
       tagline: isHindi ? "समर्थन को वास्तविक वोटों में तब्दील करने की व्यवस्था" : "Systematic Voter Slip Mobilization & Turnout Execution",
       desc: isHindi 
@@ -100,73 +101,81 @@ export const PoliticalConsultingPage = ({ setActivePage }) => {
   ];
 
   return (
-    <div className="pt-28 pb-24 space-y-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      {/* Page Header */}
-      <div className="text-center max-w-4xl mx-auto space-y-5">
-        <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-900 border border-gold-500/30 text-gold-400 text-xs font-semibold uppercase tracking-wider">
+    <div className="pt-28 sm:pt-36 pb-24 space-y-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      {/* Header */}
+      <div className="text-center max-w-4xl mx-auto space-y-4">
+        <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-brand-green-soft border border-brand-green/30 text-brand-green text-xs font-bold uppercase tracking-wider">
           <Vote className="w-3.5 h-3.5" />
-          <span>{isHindi ? "इंजन 01 : राजनीतिक परामर्श" : "ENGINE 01 : POLITICAL STRATEGY"}</span>
+          <span>{isHindi ? "इंजन 01 : राजनीतिक रणनीति" : "ENGINE 01 : POLITICAL STRATEGY"}</span>
         </div>
-        <h1 className="font-serif text-3xl sm:text-5xl font-bold text-white tracking-tight">
+        <h1 className="font-display text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
           {isHindi 
             ? "डेटा-आधारित चुनावी रणनीति एवं वॉर रूम प्रबंधन" 
             : "Data-Driven Electoral Strategy & Campaign Machinery"}
         </h1>
-        <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-3xl mx-auto">
+        <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-3xl mx-auto">
           {isHindi
             ? "CROSS BENCH किसी भी दल या जन-प्रतिनिधि के अभियान को पारंपरिक अनुमानों के बजाय सटीक सांख्यिकी, जमीनी इंटेलिजेंस और 24x7 वॉर रूम नियंत्रण से सशक्त बनाता है।"
             : "Replacing guesswork with statistical precision. We engineer end-to-end election campaigns that align voter sentiment with strategic narrative, grassroots machinery, and decisive booth-level turnout."}
         </p>
       </div>
 
-      {/* 4 Detailed Modules Grid */}
-      <div className="space-y-12">
+      {/* Modules with Photos */}
+      <div className="space-y-10">
         {modules.map((mod, idx) => {
           const Icon = mod.icon;
           return (
             <div 
               key={idx}
-              className="glass-panel p-8 sm:p-12 rounded-3xl border border-slate-800 hover:border-gold-500/40 transition-all duration-300 relative overflow-hidden"
+              className="bg-white p-6 sm:p-10 rounded-3xl border border-slate-200 shadow-sm hover:shadow-card-hover transition-all"
             >
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                {/* Left Description Col */}
-                <div className="lg:col-span-7 space-y-4">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                {/* Photo Col (4 cols) */}
+                <div className="lg:col-span-4 rounded-2xl overflow-hidden border border-slate-200 shadow-sm h-64 lg:h-72">
+                  <img 
+                    src={mod.img} 
+                    alt={mod.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                {/* Content Col (8 cols) */}
+                <div className="lg:col-span-8 space-y-5">
                   <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 flex-shrink-0">
-                      <Icon className="w-6 h-6" />
+                    <div className="w-10 h-10 rounded-xl bg-brand-green-soft text-brand-green flex items-center justify-center flex-shrink-0">
+                      <Icon className="w-5 h-5" />
                     </div>
                     <div>
-                      <span className="text-[11px] font-bold text-gold-400 tracking-widest uppercase">
+                      <span className="text-[11px] font-bold text-brand-green tracking-widest uppercase">
                         {isHindi ? `मॉड्यूल 0${idx + 1}` : `MODULE 0${idx + 1}`}
                       </span>
-                      <h2 className="font-serif text-xl sm:text-2xl font-bold text-white">
+                      <h2 className="font-display text-xl sm:text-2xl font-bold text-slate-900">
                         {mod.title}
                       </h2>
                     </div>
                   </div>
 
-                  <p className="text-xs sm:text-sm text-gold-400 font-medium">
+                  <p className="text-xs sm:text-sm text-brand-pink font-semibold">
                     {mod.tagline}
                   </p>
 
-                  <p className="text-sm text-slate-300 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                     {mod.desc}
                   </p>
-                </div>
 
-                {/* Right Deliverables Col */}
-                <div className="lg:col-span-5 bg-parliament-950/80 p-6 rounded-2xl border border-slate-800/80 space-y-3">
-                  <h3 className="text-xs font-bold text-slate-200 uppercase tracking-widest flex items-center space-x-2">
-                    <ShieldCheck className="w-4 h-4 text-gold-400" />
-                    <span>{isHindi ? "प्रमुख आउटपुट्स एवं डिलीवरेबल्स" : "Core Deliverables & Intelligence"}</span>
-                  </h3>
-                  <div className="space-y-2.5 pt-2">
-                    {mod.deliverables.map((item, i) => (
-                      <div key={i} className="flex items-start space-x-2 text-xs sm:text-sm text-slate-300">
-                        <CheckCircle2 className="w-4 h-4 text-gold-400 flex-shrink-0 mt-0.5" />
-                        <span>{item}</span>
-                      </div>
-                    ))}
+                  <div className="p-4 rounded-xl bg-surface-50 border border-slate-200 space-y-2">
+                    <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center space-x-1.5">
+                      <ShieldCheck className="w-4 h-4 text-brand-green" />
+                      <span>{isHindi ? "प्रमुख आउटपुट्स एवं डिलीवरेबल्स" : "Core Deliverables & Intelligence"}</span>
+                    </h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+                      {mod.deliverables.map((item, i) => (
+                        <div key={i} className="flex items-start space-x-2 text-xs text-slate-700">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-brand-green flex-shrink-0 mt-0.5" />
+                          <span>{item}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -175,58 +184,21 @@ export const PoliticalConsultingPage = ({ setActivePage }) => {
         })}
       </div>
 
-      {/* Execution Methodology */}
-      <div className="glass-panel p-8 sm:p-12 rounded-3xl border border-slate-800 text-center space-y-8">
-        <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white">
-          {isHindi ? "हमारी 4-चरणीय चुनावी कार्यपद्धति" : "Our 4-Stage Campaign Lifecycle"}
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
-          {[
-            {
-              step: "01",
-              title: isHindi ? "ग्राउंड डायग्नोस्टिक्स" : "Ground Diagnostics",
-              desc: isHindi ? "गहन फील्ड सर्वे, जातिगत डेटा और एंटी-इंकंबेंसी मैपिंग।" : "Deep sampling, booth-level history, and anti-incumbency audits."
-            },
-            {
-              step: "02",
-              title: isHindi ? "रणनीतिक नैरेटिव" : "Narrative Synthesis",
-              desc: isHindi ? "अभियान की मुख्य थीम, घोषणापत्र और स्लोगन का निर्माण।" : "Core message framing, slogan formulation, and manifesto testing."
-            },
-            {
-              step: "03",
-              title: isHindi ? "वॉर रूम डिप्लॉयमेंट" : "War Room Execution",
-              desc: isHindi ? "24x7 डिजिटल मीडिया मॉनिटरिंग और त्वरित काउंटर-अटैक।" : "Rapid counter-propaganda, media tracking, and digital surge."
-            },
-            {
-              step: "04",
-              title: isHindi ? "टर्नआउट मोबिलाइजेशन" : "Turnout Mobilization",
-              desc: isHindi ? "वोटिंग के दिन बूथ मैनेजमेंट और अंतिम मतदाता तक पहुंच।" : "Voting-day booth coordination and maximum voter conversion."
-            }
-          ].map((stage, idx) => (
-            <div key={idx} className="p-5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-2">
-              <span className="font-display font-bold text-2xl text-gold-400/80">{stage.step}</span>
-              <h3 className="font-serif font-bold text-base text-white">{stage.title}</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">{stage.desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
       {/* Bottom CTA */}
-      <div className="bg-gradient-to-r from-parliament-900 to-parliament-950 p-8 sm:p-10 rounded-3xl border border-gold-500/30 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div className="bg-gradient-to-r from-brand-green to-slate-900 text-white p-8 sm:p-10 rounded-3xl shadow-lg flex flex-col sm:flex-row items-center justify-between gap-6">
         <div>
-          <h3 className="font-serif text-xl sm:text-2xl font-bold text-white mb-1">
+          <h3 className="font-display text-xl sm:text-2xl font-bold text-white mb-1">
             {isHindi ? "आगामी चुनाव के लिए गोपनीय रणनीति सत्र बुक करें" : "Initiate a Confidential Campaign Consultation"}
           </h3>
-          <p className="text-xs sm:text-sm text-slate-400">
+          <p className="text-xs sm:text-sm text-slate-200">
             {isHindi 
               ? "सभी चर्चाएं सख्त गैर-प्रकटीकरण (NDA) के तहत केवल वरिष्ठ राजनीतिक रणनीतिकारों द्वारा संचालित की जाती हैं।"
-              : "All inquiries are strictly confidential under non-disclosure covenants."}
+              : "All inquiries are strictly confidential under bilateral non-disclosure covenants."}
           </p>
         </div>
         <button
           onClick={() => { setActivePage('contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-          className="px-6 py-3.5 rounded-lg bg-gold-500 hover:bg-gold-400 text-parliament-950 font-bold text-sm flex items-center space-x-2 transition-all shadow-lg flex-shrink-0"
+          className="px-6 py-3.5 rounded-xl bg-brand-pink hover:bg-brand-pink-hover text-white font-bold text-xs sm:text-sm flex items-center space-x-2 transition-all shadow-md flex-shrink-0"
         >
           <span>{isHindi ? "परामर्श प्रारंभ करें" : "Schedule Political Briefing"}</span>
           <ArrowRight className="w-4 h-4" />

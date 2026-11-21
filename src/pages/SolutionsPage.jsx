@@ -76,7 +76,7 @@ export const SolutionsPage = ({ setActivePage }) => {
             "विधानसभा/संसदीय क्षेत्र की विस्तृत जनसांख्यिकी व एंटी-इंकंबेंसी रिपोर्ट",
             "नेता के 5 वर्षों के कार्यों का प्रभावशाली 'प्रगति रिपोर्ट कार्ड'",
             "भाषण लेखन, मीडिया इंटरव्यू कोचिंग और टीवी डिबेट तैयारी",
-            "विधायक/सांसद स्थायी जन-संपर्क कार्यालय संचालन नियमावली (SOP)"
+            "विधायक/सांसद कार्यालय स्थायी जन-संपर्क कार्यप्रणाली (SOP)"
           ]
         : [
             "Constituency perception audit and hyper-local vulnerability mapping",
@@ -163,17 +163,17 @@ export const SolutionsPage = ({ setActivePage }) => {
   const current = tabContent[activeTab];
 
   return (
-    <div className="pt-28 pb-24 space-y-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div className="pt-28 sm:pt-36 pb-24 space-y-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Header */}
       <div className="text-center max-w-4xl mx-auto space-y-4">
-        <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-900 border border-gold-500/30 text-gold-400 text-xs font-semibold uppercase tracking-wider">
-          <Sparkles className="w-3.5 h-3.5" />
+        <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-bold uppercase tracking-wider">
+          <Sparkles className="w-3.5 h-3.5 text-brand-pink" />
           <span>{isHindi ? "अनुकूलित समाधान" : "TAILORED SOLUTIONS"}</span>
         </div>
-        <h1 className="font-serif text-3xl sm:text-5xl font-bold text-white tracking-tight">
+        <h1 className="font-display text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
           {isHindi ? "हितधारक अनुसार विशेषज्ञ परामर्श समाधान" : "Bespoke Solutions by Stakeholder"}
         </h1>
-        <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto">
+        <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
           {isHindi 
             ? "राजनीतिक दल, जन-प्रतिनिधि, सरकारी मंत्रालय या गैर-सरकारी संस्था—CROSS BENCH प्रत्येक वर्ग की विशिष्ट प्राथमिकताओं के अनुकूल रणनीति तैयार करता है।"
             : "Whether governing, contesting, or advocating—we engineer specialized advisory frameworks aligned with each stakeholder's operational reality."}
@@ -181,7 +181,7 @@ export const SolutionsPage = ({ setActivePage }) => {
       </div>
 
       {/* Tabs Navigation */}
-      <div className="flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-2xl bg-slate-900/90 border border-slate-800 max-w-3xl mx-auto shadow-xl">
+      <div className="flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-2xl bg-white border border-slate-200 max-w-3xl mx-auto shadow-sm">
         {tabs.map((tab) => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.id;
@@ -189,10 +189,10 @@ export const SolutionsPage = ({ setActivePage }) => {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center space-x-2 px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
+              className={`flex items-center space-x-2 px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all ${
                 isActive
-                  ? 'bg-gradient-to-r from-gold-600 via-gold-500 to-gold-600 text-parliament-950 shadow-md font-bold'
-                  : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+                  ? 'bg-brand-pink text-white shadow-sm'
+                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
               }`}
             >
               <Icon className="w-4 h-4" />
@@ -203,15 +203,15 @@ export const SolutionsPage = ({ setActivePage }) => {
       </div>
 
       {/* Tab Detailed Content */}
-      <div className="glass-panel p-8 sm:p-12 rounded-3xl border border-slate-800 relative space-y-10">
+      <div className="bg-white p-8 sm:p-12 rounded-3xl border border-slate-200 shadow-sm space-y-10">
         <div>
-          <span className="text-xs font-bold text-gold-400 tracking-widest uppercase">
+          <span className="text-xs font-bold text-brand-green tracking-widest uppercase">
             {isHindi ? "विशिष्ट रणनीतिक रूपरेखा" : "SPECIALIZED ENGAGEMENT BLUEPRINT"}
           </span>
-          <h2 className="font-serif text-2xl sm:text-4xl font-bold text-white mt-1">
+          <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">
             {current.title}
           </h2>
-          <p className="text-sm sm:text-base text-gold-300/90 font-medium mt-1">
+          <p className="text-xs sm:text-sm text-brand-pink font-semibold mt-1">
             {current.subtitle}
           </p>
         </div>
@@ -219,15 +219,15 @@ export const SolutionsPage = ({ setActivePage }) => {
         {/* Challenges vs Solutions Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Critical Challenges */}
-          <div className="p-6 sm:p-8 rounded-2xl bg-slate-950/70 border border-slate-800 space-y-4">
-            <h3 className="text-sm font-bold text-slate-200 uppercase tracking-wider flex items-center space-x-2">
-              <HelpCircle className="w-4 h-4 text-gold-400" />
+          <div className="p-6 sm:p-8 rounded-2xl bg-surface-50 border border-slate-200 space-y-4">
+            <h3 className="text-xs sm:text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center space-x-2">
+              <HelpCircle className="w-4 h-4 text-brand-pink" />
               <span>{isHindi ? "प्रमुख चुनौतियाँ जिनका सामना होता है" : "Key Industry Challenges"}</span>
             </h3>
             <div className="space-y-3 pt-2">
               {current.challenges.map((ch, i) => (
-                <div key={i} className="flex items-start space-x-2.5 text-xs sm:text-sm text-slate-300">
-                  <div className="w-1.5 h-1.5 rounded-full bg-gold-400 mt-2 flex-shrink-0" />
+                <div key={i} className="flex items-start space-x-2.5 text-xs sm:text-sm text-slate-700">
+                  <div className="w-1.5 h-1.5 rounded-full bg-brand-pink mt-2 flex-shrink-0" />
                   <span>{ch}</span>
                 </div>
               ))}
@@ -235,16 +235,16 @@ export const SolutionsPage = ({ setActivePage }) => {
           </div>
 
           {/* Cross Bench Solution */}
-          <div className="p-6 sm:p-8 rounded-2xl bg-parliament-900/80 border border-gold-500/30 space-y-4">
-            <h3 className="text-sm font-bold text-gold-300 uppercase tracking-wider flex items-center space-x-2">
-              <ShieldCheck className="w-4 h-4 text-gold-400" />
+          <div className="p-6 sm:p-8 rounded-2xl bg-brand-green-soft border border-brand-green/30 space-y-4">
+            <h3 className="text-xs sm:text-sm font-bold text-brand-green uppercase tracking-wider flex items-center space-x-2">
+              <ShieldCheck className="w-4 h-4 text-brand-green" />
               <span>{isHindi ? "क्रॉस बेंच का समाधान" : "The CROSS BENCH Methodology"}</span>
             </h3>
-            <p className="text-xs sm:text-sm text-slate-200 leading-relaxed pt-1">
+            <p className="text-xs sm:text-sm text-slate-800 leading-relaxed pt-1">
               {current.solution}
             </p>
             <div className="pt-2">
-              <span className="inline-flex items-center space-x-1.5 text-xs text-gold-400 font-semibold">
+              <span className="inline-flex items-center space-x-1.5 text-xs text-brand-green font-bold">
                 <Lock className="w-3.5 h-3.5" />
                 <span>{isHindi ? "पूर्ण गोपनीयता अनुबंध द्वारा सुरक्षित" : "Protected under strict non-disclosure terms"}</span>
               </span>
@@ -253,14 +253,14 @@ export const SolutionsPage = ({ setActivePage }) => {
         </div>
 
         {/* Deliverables Checklist */}
-        <div className="p-6 sm:p-8 rounded-2xl bg-slate-900/50 border border-slate-800 space-y-4">
-          <h3 className="text-sm font-bold text-white uppercase tracking-wider">
+        <div className="p-6 sm:p-8 rounded-2xl bg-surface-50 border border-slate-200 space-y-4">
+          <h3 className="text-xs sm:text-sm font-bold text-slate-900 uppercase tracking-wider">
             {isHindi ? "संस्थागत डिलीवरेबल्स एवं आउटपुट्स" : "Concrete Deliverables & Operational Outputs"}
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
             {current.keyDeliverables.map((item, i) => (
-              <div key={i} className="flex items-start space-x-2.5 text-xs sm:text-sm text-slate-300 p-3 rounded-xl bg-slate-950/50 border border-slate-800/80">
-                <CheckCircle2 className="w-4 h-4 text-gold-400 flex-shrink-0 mt-0.5" />
+              <div key={i} className="flex items-start space-x-2.5 text-xs sm:text-sm text-slate-700 p-3 rounded-xl bg-white border border-slate-200 shadow-sm">
+                <CheckCircle2 className="w-4 h-4 text-brand-green flex-shrink-0 mt-0.5" />
                 <span>{item}</span>
               </div>
             ))}
@@ -268,15 +268,15 @@ export const SolutionsPage = ({ setActivePage }) => {
         </div>
 
         {/* Action Button */}
-        <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-800">
-          <p className="text-xs text-slate-400">
+        <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-100">
+          <p className="text-xs text-slate-500 font-medium">
             {isHindi 
               ? "इस वर्ग के अंतर्गत परामर्श आरंभ करने के लिए सीधे हमारे प्रैक्टिस हेड से संपर्क करें।"
               : "Direct consultations arranged with the relevant practice director."}
           </p>
           <button
             onClick={() => { setActivePage('contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="w-full sm:w-auto px-6 py-3 rounded-lg bg-gold-500 hover:bg-gold-400 text-parliament-950 font-bold text-xs sm:text-sm flex items-center justify-center space-x-2 transition-all shadow-md"
+            className="w-full sm:w-auto px-6 py-3 rounded-xl bg-brand-pink hover:bg-brand-pink-hover text-white font-bold text-xs sm:text-sm flex items-center justify-center space-x-2 transition-all shadow-sm"
           >
             <span>{isHindi ? "गोपनीय परामर्श बुक करें" : "Initiate Consultation"}</span>
             <ArrowRight className="w-4 h-4" />

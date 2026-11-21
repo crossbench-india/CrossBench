@@ -4,12 +4,9 @@ import {
   BookOpen, 
   Clock, 
   ArrowRight, 
-  FileText, 
   Download, 
   X, 
-  Share2, 
-  CheckCircle2, 
-  Filter 
+  CheckCircle2 
 } from 'lucide-react';
 
 export const InsightsPage = ({ setActivePage }) => {
@@ -126,17 +123,17 @@ export const InsightsPage = ({ setActivePage }) => {
     : publications.filter(p => p.category === selectedFilter);
 
   return (
-    <div className="pt-28 pb-24 space-y-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div className="pt-28 sm:pt-36 pb-24 space-y-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Header */}
       <div className="text-center max-w-4xl mx-auto space-y-4">
-        <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-900 border border-gold-500/30 text-gold-400 text-xs font-semibold uppercase tracking-wider">
-          <BookOpen className="w-3.5 h-3.5" />
+        <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-bold uppercase tracking-wider">
+          <BookOpen className="w-3.5 h-3.5 text-brand-green" />
           <span>{isHindi ? "संस्थागत शोध एवं विश्लेषण" : "RESEARCH & THOUGHT LEADERSHIP"}</span>
         </div>
-        <h1 className="font-serif text-3xl sm:text-5xl font-bold text-white tracking-tight">
+        <h1 className="font-display text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
           {isHindi ? "दृष्टिकोण, श्वेतपत्र एवं चुनावी विश्लेषण" : "Perspectives, Whitepapers & Policy Briefs"}
         </h1>
-        <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-3xl mx-auto">
+        <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-3xl mx-auto">
           {isHindi 
             ? "हमारे वरिष्ठ शोधकर्ताओं और रणनीतिकारों द्वारा तैयार किए गए प्रामाणिक श्वेतपत्र, जो भारतीय राजनीति और लोक नीति के सबसे जटिल सवालों के वैज्ञानिक उत्तर प्रस्तुत करते हैं।"
             : "Rigorous, non-partisan empirical whitepapers authored by our senior practice faculty, addressing the most pressing strategic dilemmas in modern Indian elections and public administration."}
@@ -154,10 +151,10 @@ export const InsightsPage = ({ setActivePage }) => {
           <button
             key={tab.id}
             onClick={() => setSelectedFilter(tab.id)}
-            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
+            className={`px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${
               selectedFilter === tab.id
-                ? 'bg-gold-500 text-parliament-950 font-bold shadow-md'
-                : 'bg-slate-900 text-slate-400 hover:text-white border border-slate-800'
+                ? 'bg-brand-pink text-white shadow-sm'
+                : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200'
             }`}
           >
             {tab.label}
@@ -170,36 +167,36 @@ export const InsightsPage = ({ setActivePage }) => {
         {filtered.map((pub) => (
           <div
             key={pub.id}
-            className="glass-panel p-8 rounded-3xl border border-slate-800 hover:border-gold-500/40 transition-all flex flex-col justify-between space-y-6 group"
+            className="bg-white p-7 sm:p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-card-hover transition-all flex flex-col justify-between space-y-6 group"
           >
             <div className="space-y-4">
-              <div className="flex items-center justify-between text-xs text-slate-400">
-                <span className="px-3 py-1 rounded-md bg-gold-500/10 text-gold-400 font-bold uppercase tracking-wider text-[11px]">
+              <div className="flex items-center justify-between text-xs text-slate-500">
+                <span className="px-3 py-1 rounded-md bg-brand-green-soft text-brand-green font-bold uppercase tracking-wider text-[11px]">
                   {pub.tag}
                 </span>
-                <span className="flex items-center space-x-1.5">
+                <span className="flex items-center space-x-1.5 font-medium">
                   <Clock className="w-3.5 h-3.5" />
                   <span>{pub.readTime}</span>
                 </span>
               </div>
 
-              <h2 className="font-serif font-bold text-xl sm:text-2xl text-white group-hover:text-gold-300 transition-colors leading-snug">
+              <h2 className="font-display font-bold text-xl text-slate-900 group-hover:text-brand-pink transition-colors leading-snug">
                 {pub.title}
               </h2>
 
-              <p className="text-xs text-gold-400 font-medium">
+              <p className="text-xs text-brand-green font-bold">
                 {pub.author} • {pub.date}
               </p>
 
-              <p className="text-sm text-slate-300 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                 {pub.abstract}
               </p>
             </div>
 
-            <div className="pt-6 border-t border-slate-800/80 flex items-center justify-between">
+            <div className="pt-5 border-t border-slate-100 flex items-center justify-between">
               <button
                 onClick={() => setActiveModal(pub)}
-                className="text-xs sm:text-sm text-gold-400 hover:text-gold-300 font-bold flex items-center space-x-1.5 group-hover:translate-x-1 transition-transform"
+                className="text-xs sm:text-sm text-brand-pink font-bold flex items-center space-x-1.5 group-hover:underline"
               >
                 <span>{isHindi ? "पूर्ण शोध पत्र एवं निष्कर्ष देखें" : "Read Executive Brief & Findings"}</span>
                 <ArrowRight className="w-4 h-4" />
@@ -207,10 +204,10 @@ export const InsightsPage = ({ setActivePage }) => {
 
               <button
                 onClick={() => alert(isHindi ? "पीडीएफ ब्रीफ डाउनलोड किया जा रहा है..." : "Downloading Executive Brief PDF...")}
-                className="p-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700/60"
+                className="p-2.5 rounded-lg bg-surface-50 hover:bg-slate-100 text-slate-700 border border-slate-200"
                 title="Download Executive PDF Brief"
               >
-                <Download className="w-4 h-4 text-gold-400" />
+                <Download className="w-4 h-4 text-brand-green" />
               </button>
             </div>
           </div>
@@ -219,61 +216,61 @@ export const InsightsPage = ({ setActivePage }) => {
 
       {/* Reader Modal */}
       {activeModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-parliament-950/80 backdrop-blur-md">
-          <div className="relative w-full max-w-3xl bg-parliament-900 border border-gold-500/40 rounded-3xl p-6 sm:p-10 max-h-[90vh] overflow-y-auto shadow-2xl space-y-6">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-950/70 backdrop-blur-sm">
+          <div className="relative w-full max-w-3xl bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 max-h-[90vh] overflow-y-auto shadow-2xl space-y-6">
             <button
               onClick={() => setActiveModal(null)}
-              className="absolute top-6 right-6 p-2 rounded-full bg-slate-800 text-slate-400 hover:text-white"
+              className="absolute top-6 right-6 p-2 rounded-full bg-slate-100 text-slate-600 hover:text-slate-900"
             >
               <X className="w-5 h-5" />
             </button>
 
             <div>
-              <span className="text-xs font-bold text-gold-400 tracking-widest uppercase">
+              <span className="text-xs font-bold text-brand-pink tracking-widest uppercase">
                 {activeModal.tag} • {activeModal.date}
               </span>
-              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white mt-1">
+              <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">
                 {activeModal.title}
               </h2>
-              <p className="text-xs text-slate-400 mt-1 font-medium">
+              <p className="text-xs text-brand-green mt-1 font-bold">
                 {activeModal.author}
               </p>
             </div>
 
-            <div className="p-4 rounded-xl bg-slate-950/70 border border-slate-800">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+            <div className="p-4 rounded-xl bg-surface-50 border border-slate-200">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800 mb-1.5">
                 {isHindi ? "संक्षिप्त सारांश (Executive Abstract)" : "Executive Abstract"}
               </h4>
-              <p className="text-sm text-slate-300 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
                 {activeModal.abstract}
               </p>
             </div>
 
             <div className="space-y-3">
-              <h4 className="text-sm font-bold uppercase tracking-wider text-gold-300">
+              <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-900">
                 {isHindi ? "शोध के प्रमुख निष्कर्ष (Key Findings & Telemetry)" : "Key Empirical Findings & Takeaways"}
               </h4>
-              <div className="space-y-2.5">
+              <div className="space-y-2">
                 {activeModal.keyFindings.map((finding, idx) => (
-                  <div key={idx} className="flex items-start space-x-2.5 text-xs sm:text-sm text-slate-300 p-3 rounded-lg bg-slate-950/40 border border-slate-800/80">
-                    <CheckCircle2 className="w-4 h-4 text-gold-400 flex-shrink-0 mt-0.5" />
+                  <div key={idx} className="flex items-start space-x-2.5 text-xs sm:text-sm text-slate-700 p-3 rounded-lg bg-surface-50 border border-slate-200">
+                    <CheckCircle2 className="w-4 h-4 text-brand-green flex-shrink-0 mt-0.5" />
                     <span>{finding}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="pt-4 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
               <button
                 onClick={() => alert(isHindi ? "शोध पत्र की पूर्ण पीडीएफ प्रति डाउनलोड हो रही है..." : "Downloading Full Empirical Dossier...")}
-                className="w-full sm:w-auto px-6 py-2.5 rounded-lg bg-gold-500 hover:bg-gold-400 text-parliament-950 font-bold text-xs sm:text-sm flex items-center justify-center space-x-2"
+                className="w-full sm:w-auto px-6 py-3 rounded-xl bg-brand-green hover:bg-brand-green-light text-white font-bold text-xs sm:text-sm flex items-center justify-center space-x-2"
               >
                 <Download className="w-4 h-4" />
                 <span>{isHindi ? "पूर्ण श्वेतपत्र (PDF) डाउनलोड करें" : "Download Full Dossier (PDF)"}</span>
               </button>
               <button
                 onClick={() => setActiveModal(null)}
-                className="w-full sm:w-auto px-6 py-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs sm:text-sm"
+                className="w-full sm:w-auto px-6 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs sm:text-sm font-bold"
               >
                 {isHindi ? "बंद करें" : "Close Reader"}
               </button>

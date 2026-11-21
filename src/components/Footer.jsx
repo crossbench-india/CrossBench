@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { Shield, Lock, Scale, Building, ArrowUpRight } from 'lucide-react';
+import { ShieldCheck, Lock, Building, Scale, ArrowUpRight } from 'lucide-react';
 
 export const Footer = ({ setActivePage }) => {
   const { t } = useLanguage();
@@ -11,46 +11,39 @@ export const Footer = ({ setActivePage }) => {
   };
 
   return (
-    <footer className="bg-parliament-950 border-t border-slate-800/80 pt-16 pb-12 text-slate-400">
+    <footer className="bg-white border-t border-slate-200 pt-16 pb-12 text-slate-600">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800/60">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-100">
           
-          {/* Brand & Neutrality Col (span 2 on lg) */}
+          {/* Logo & Description */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center space-x-3">
-              <div className="w-9 h-9 rounded-lg bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 font-bold font-display">
-                CB
-              </div>
-              <div>
-                <span className="font-display font-bold text-xl tracking-wider text-white">
-                  {t.brand}
-                </span>
-                <span className="block text-[10px] tracking-widest text-gold-400 font-semibold uppercase">
-                  {t.brandSubtitle}
-                </span>
-              </div>
-            </div>
+            <img 
+              src="./logo.jpg" 
+              alt="CROSS BENCH" 
+              className="h-11 w-auto object-contain cursor-pointer"
+              onClick={() => handleLinkClick('home')}
+            />
 
-            <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-sm">
               {t.footer.desc}
             </p>
 
-            <div className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-md bg-slate-900 border border-slate-800 text-xs text-slate-300">
-              <Scale className="w-3.5 h-3.5 text-gold-400" />
+            <div className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-lg bg-brand-green-soft border border-brand-green/20 text-xs font-semibold text-brand-green">
+              <Scale className="w-3.5 h-3.5" />
               <span>100% Non-Partisan & Confidential Advisory</span>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-widest text-slate-200 mb-4">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-4">
               {t.footer.quickLinksTitle}
             </h4>
-            <ul className="space-y-2.5 text-sm">
+            <ul className="space-y-2.5 text-xs sm:text-sm font-medium">
               <li>
                 <button 
                   onClick={() => handleLinkClick('home')} 
-                  className="hover:text-gold-300 transition-colors"
+                  className="hover:text-brand-pink transition-colors"
                 >
                   {t.nav.home}
                 </button>
@@ -58,7 +51,7 @@ export const Footer = ({ setActivePage }) => {
               <li>
                 <button 
                   onClick={() => handleLinkClick('about')} 
-                  className="hover:text-gold-300 transition-colors"
+                  className="hover:text-brand-pink transition-colors"
                 >
                   {t.nav.about}
                 </button>
@@ -66,7 +59,7 @@ export const Footer = ({ setActivePage }) => {
               <li>
                 <button 
                   onClick={() => handleLinkClick('solutions')} 
-                  className="hover:text-gold-300 transition-colors"
+                  className="hover:text-brand-pink transition-colors"
                 >
                   {t.nav.solutions}
                 </button>
@@ -74,7 +67,7 @@ export const Footer = ({ setActivePage }) => {
               <li>
                 <button 
                   onClick={() => handleLinkClick('insights')} 
-                  className="hover:text-gold-300 transition-colors"
+                  className="hover:text-brand-pink transition-colors"
                 >
                   {t.nav.insights}
                 </button>
@@ -82,7 +75,7 @@ export const Footer = ({ setActivePage }) => {
               <li>
                 <button 
                   onClick={() => handleLinkClick('contact')} 
-                  className="hover:text-gold-300 transition-colors"
+                  className="hover:text-brand-pink transition-colors"
                 >
                   {t.nav.contact}
                 </button>
@@ -92,59 +85,59 @@ export const Footer = ({ setActivePage }) => {
 
           {/* Practices */}
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-widest text-slate-200 mb-4">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-4">
               {t.footer.servicesTitle}
             </h4>
-            <ul className="space-y-2.5 text-sm">
+            <ul className="space-y-2.5 text-xs sm:text-sm font-medium">
               <li>
                 <button 
                   onClick={() => handleLinkClick('political')} 
-                  className="hover:text-gold-300 transition-colors text-left"
+                  className="hover:text-brand-green transition-colors text-left font-semibold text-brand-green"
                 >
-                  {t.nav.political}
+                  • {t.nav.political}
                 </button>
               </li>
               <li>
                 <button 
                   onClick={() => handleLinkClick('policy')} 
-                  className="hover:text-gold-300 transition-colors text-left"
+                  className="hover:text-brand-pink transition-colors text-left font-semibold text-brand-pink"
                 >
-                  {t.nav.policy}
+                  • {t.nav.policy}
                 </button>
               </li>
-              <li className="text-xs text-slate-400 pt-1">
-                • 24x7 War Room Operations
+              <li className="text-xs text-slate-500 pt-1">
+                24x7 Digital & Field War Rooms
               </li>
-              <li className="text-xs text-slate-400">
-                • Scheme Impact Evaluations
+              <li className="text-xs text-slate-500">
+                Welfare Scheme DBT Audits
               </li>
-              <li className="text-xs text-slate-400">
-                • Candidate Persona Engineering
+              <li className="text-xs text-slate-500">
+                Booth Turnout Optimization (GOTV)
               </li>
             </ul>
           </div>
 
           {/* Institutional Standards */}
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-widest text-slate-200 mb-4">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-4">
               {t.footer.complianceTitle}
             </h4>
-            <ul className="space-y-2 text-xs text-slate-400">
+            <ul className="space-y-2 text-xs text-slate-600">
               {t.footer.complianceItems.map((item, idx) => (
                 <li key={idx} className="flex items-start space-x-1.5">
-                  <Shield className="w-3.5 h-3.5 text-gold-500/70 mt-0.5 flex-shrink-0" />
+                  <ShieldCheck className="w-3.5 h-3.5 text-brand-green mt-0.5 flex-shrink-0" />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
 
-            <div className="mt-5 pt-4 border-t border-slate-800">
+            <div className="mt-5 pt-4 border-t border-slate-100">
               <a 
-                href="#careers" 
+                href="#intake" 
                 onClick={(e) => { e.preventDefault(); handleLinkClick('contact'); }}
-                className="text-xs text-gold-400 hover:text-gold-300 flex items-center space-x-1 font-medium"
+                className="text-xs text-brand-pink hover:underline flex items-center space-x-1 font-bold"
               >
-                <span>Senior Advisory Emplanelment</span>
+                <span>Senior Practice Inquiry</span>
                 <ArrowUpRight className="w-3 h-3" />
               </a>
             </div>
@@ -153,11 +146,11 @@ export const Footer = ({ setActivePage }) => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
           <p>{t.footer.copyright}</p>
           <div className="flex items-center space-x-6">
             <span className="flex items-center space-x-1">
-              <Lock className="w-3.5 h-3.5 text-gold-500/70" />
+              <Lock className="w-3.5 h-3.5 text-brand-green" />
               <span>Air-Gapped Confidentiality</span>
             </span>
             <span className="flex items-center space-x-1">
