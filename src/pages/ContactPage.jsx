@@ -69,15 +69,22 @@ export const ContactPage = () => {
         </div>
         <h1 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.2]`}>
           {isHindi ? (
-            <>
-              <span className="block">वरिष्ठ नेतृत्व हेतु</span>
-              <span className="text-brand-green block mt-1">पूर्णतः गोपनीय परामर्श इनटेक</span>
-            </>
+            <div className="space-y-1">
+              <span className="block text-slate-900">वरिष्ठ नेतृत्व एवं संस्थाओं हेतु</span>
+              <span className="inline-block text-brand-green bg-brand-green-soft px-4 py-1 rounded-2xl font-bold mt-1 text-2xl sm:text-4xl shadow-xs">
+                पूर्णतः गोपनीय रणनीतिक परामर्श
+              </span>
+            </div>
           ) : (
-            <>
-              <span className="block">Confidential Strategic Consultation for</span>
-              <span className="text-brand-green block mt-1">Leadership & Institutions</span>
-            </>
+            <div className="space-y-2">
+              <span className="block text-slate-900">
+                Confidential Strategic Consultation
+              </span>
+              <div className="flex items-center justify-center flex-wrap gap-2 text-xl sm:text-3xl font-extrabold">
+                <span className="text-slate-500 font-semibold text-xs sm:text-sm uppercase tracking-wider bg-slate-100 px-3 py-1 rounded-lg">Engagement for</span>
+                <span className="text-brand-green bg-brand-green-soft px-3.5 py-1 rounded-xl">Leadership & Institutions</span>
+              </div>
+            </div>
           )}
         </h1>
         <p className={`${isHindi ? 'font-hi-body' : ''} text-base sm:text-lg text-slate-600 leading-relaxed`}>
@@ -137,9 +144,10 @@ export const ContactPage = () => {
                 <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider mb-1">
                   {isHindi ? "सुरक्षित आधिकारिक ईमेल" : "Direct Intake Channel"}
                 </h4>
-                <p className="text-xs text-brand-pink font-bold font-mono">
-                  {t.contact.channels.email}
-                </p>
+                <div className="space-y-1 font-mono text-xs">
+                  <p className="text-brand-pink font-bold">{t.contact.channels.email}</p>
+                  <p className="text-slate-500 text-[11px] font-medium">{t.contact.channels.supportEmail}</p>
+                </div>
               </div>
             </div>
 

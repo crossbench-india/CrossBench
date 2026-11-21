@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { ShieldCheck, Lock, Building, Scale, ArrowUpRight } from 'lucide-react';
+import { ShieldCheck, Lock, Building, Scale, ArrowUpRight, Mail } from 'lucide-react';
 
 export const Footer = ({ setActivePage }) => {
   const { lang, t } = useLanguage();
@@ -179,8 +179,22 @@ export const Footer = ({ setActivePage }) => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 gap-4">
           <p>{t.footer.copyright}</p>
+          
+          {/* Institutional Contact Desks */}
+          <div className="flex flex-wrap items-center gap-4 font-mono text-[11px] text-slate-600">
+            <a href="mailto:contact@crossbench.in" className="flex items-center space-x-1.5 hover:text-brand-pink transition-colors">
+              <Mail className="w-3.5 h-3.5 text-brand-pink" />
+              <span>contact@crossbench.in</span>
+            </a>
+            <span className="text-slate-300">|</span>
+            <a href="mailto:support@crossbench.in" className="flex items-center space-x-1.5 hover:text-brand-green transition-colors">
+              <Mail className="w-3.5 h-3.5 text-brand-green" />
+              <span>support@crossbench.in</span>
+            </a>
+          </div>
+
           <div className="flex items-center space-x-6">
             <span className="flex items-center space-x-1">
               <Lock className="w-3.5 h-3.5 text-brand-green" />

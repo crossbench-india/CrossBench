@@ -373,7 +373,8 @@ export const translations = {
       },
       channels: {
         headquarters: "New Delhi Coordinating Hub (Diplomatic & Administrative Enclave)",
-        email: "advisory@crossbench.in",
+        email: "contact@crossbench.in",
+        supportEmail: "support@crossbench.in",
         securityNotice: "Encrypted PGP keys and secure in-person meeting arrangements provided upon initial intake verification."
       }
     },
@@ -768,7 +769,8 @@ export const translations = {
       },
       channels: {
         headquarters: "नई दिल्ली समन्वय केंद्र (प्रशासनिक एवं नीतिगत एन्क्लेव)",
-        email: "advisory@crossbench.in",
+        email: "contact@crossbench.in",
+        supportEmail: "support@crossbench.in",
         securityNotice: "आरंभिक सत्यापन के पश्चात सुरक्षित PGP एन्क्रिप्टेड ईमेल और व्यक्तिगत बैठक की व्यवस्था उपलब्ध कराई जाती है।"
       }
     },

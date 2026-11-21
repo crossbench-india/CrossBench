@@ -95,7 +95,7 @@ export const LoginModal = ({ isOpen, onClose, onLoginSuccess }) => {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-surface-50 border border-slate-300 focus:border-brand-pink focus:outline-none text-xs sm:text-sm text-slate-900 font-medium"
-                placeholder="support.crossbench@gmail.com"
+                placeholder="Please type your email address"
               />
             </div>
           </div>

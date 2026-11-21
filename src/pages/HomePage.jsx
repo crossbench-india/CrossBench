@@ -43,23 +43,32 @@ export const HomePage = ({ setActivePage }) => {
 
   return (
     <div className="space-y-20 sm:space-y-28 pb-24">
-      {/* 1. HERO SECTION - Clean, Light & Dynamic */}
+      {/* 1. HERO SECTION - Clean, Light & Dynamic with Ambient Background Motion */}
       <section className="relative pt-28 sm:pt-36 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-surface-50 to-white bg-light-pattern overflow-hidden border-b border-slate-200/70">
-        <div className="max-w-7xl mx-auto">
+        {/* Subtle Ambient Background Motion Orbs */}
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-brand-green/10 rounded-full blur-3xl pointer-events-none animate-float-slow" />
+        <div className="absolute top-1/2 -left-28 w-80 h-80 bg-brand-pink/10 rounded-full blur-3xl pointer-events-none animate-float-reverse" />
+        <div className="absolute bottom-10 right-1/4 w-64 h-64 bg-brand-lime/15 rounded-full blur-2xl pointer-events-none animate-pulse-subtle" />
+
+        <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             
             {/* Left Hero Content (7 cols) */}
             <div className="lg:col-span-7 space-y-6 text-left">
-              {/* Badge */}
+              {/* Badge with subtle pulsing live indicator */}
               <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-brand-green-soft border border-brand-green/30 text-brand-green text-xs font-bold tracking-wider uppercase shadow-sm">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-green opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-green"></span>
+                </span>
                 <Scale className="w-3.5 h-3.5 text-brand-green" />
                 <span>{t.hero.badge}</span>
               </div>
 
-              {/* Main Headline with Brand Colors & Devanagari Title Font */}
-              <h1 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-4xl sm:text-6xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.15]`}>
+              {/* Main Headline with Brand Colors, Enhanced Sizing & Devanagari Title Font */}
+              <h1 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-slate-900 leading-[1.12]`}>
                 <span className="text-brand-green block">{heroTitle1}</span>
-                <span className="text-brand-pink block mt-1">{heroTitle2}</span>
+                <span className="text-brand-pink block mt-2">{heroTitle2}</span>
               </h1>
 
               {/* Subtitle */}
@@ -645,10 +654,14 @@ export const HomePage = ({ setActivePage }) => {
         </div>
       </section>
 
-      {/* 9. CONFIDENTIAL CONSULTATION BANNER */}
+      {/* 9. CONFIDENTIAL CONSULTATION BANNER with Ambient Accents */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-gradient-to-r from-brand-green to-slate-900 text-white p-8 sm:p-14 rounded-3xl shadow-xl relative overflow-hidden">
-          <div className="max-w-3xl space-y-5">
+          {/* Subtle Ambient Background Accents */}
+          <div className="absolute -top-12 -right-12 w-80 h-80 bg-brand-pink/20 rounded-full blur-3xl pointer-events-none animate-float-slow" />
+          <div className="absolute -bottom-12 -left-12 w-64 h-64 bg-brand-lime/20 rounded-full blur-2xl pointer-events-none animate-float-reverse" />
+
+          <div className="max-w-3xl space-y-5 relative z-10">
             <span className="px-3 py-1 rounded-md bg-brand-pink text-white text-xs font-bold uppercase tracking-wider">
               {t.contact.badge}
             </span>

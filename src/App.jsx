@@ -4,6 +4,7 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 import { ContentProvider } from './context/ContentContext';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
+import { BackToTop } from './components/BackToTop';
 import { HomePage } from './pages/HomePage';
 import { PoliticalConsultingPage } from './pages/PoliticalConsultingPage';
 import { StrategicPRPage } from './pages/StrategicPRPage';
@@ -93,6 +94,9 @@ export function AppContent() {
           <span>{t.nav.schedule}</span>
         </button>
       </div>
+
+      {/* Floating Back-To-Top Button on Bottom-Left */}
+      <BackToTop />
 
       <Footer setActivePage={setActivePage} />
     </div>

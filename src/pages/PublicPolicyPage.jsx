@@ -8,7 +8,8 @@ import {
   ShieldCheck, 
   Search, 
   MessageSquareWarning, 
-  GraduationCap 
+  GraduationCap,
+  Mail 
 } from 'lucide-react';
 
 export const PublicPolicyPage = ({ setActivePage }) => {
@@ -201,6 +202,16 @@ export const PublicPolicyPage = ({ setActivePage }) => {
               ? "सरकारी निकायों, नीति समन्वयकों और संस्थागत प्रमुखों के लिए सीधी गोपनीय बैठक।"
               : "Discreet consultations arranged for administrative leadership and foundation heads."}
           </p>
+          <div className="pt-3 flex flex-wrap items-center gap-3 text-xs font-mono">
+            <span className="flex items-center space-x-1.5 bg-white/10 px-3 py-1.5 rounded-lg border border-white/20 text-slate-100">
+              <Mail className="w-3.5 h-3.5 text-brand-pink" />
+              <span>contact@crossbench.in</span>
+            </span>
+            <span className="flex items-center space-x-1.5 bg-white/10 px-3 py-1.5 rounded-lg border border-white/20 text-slate-100">
+              <Mail className="w-3.5 h-3.5 text-brand-green-light" />
+              <span>support@crossbench.in</span>
+            </span>
+          </div>
         </div>
         <button
           onClick={() => { setActivePage('contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
