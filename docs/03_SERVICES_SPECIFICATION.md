@@ -36,6 +36,38 @@
 
 ---
 
+## 3. Practice Pillar 3: Strategic PR Agency & Media Operations
+
+### 3.1 Leadership PR & High-Authority Media Presence
+- **Methodology:** Systematic personal branding and national prominence for political leaders, party spokespersons, and ministers. Placement in top-tier op-eds, podcasts, and primetime television debate coaching.
+- **Deliverables:**
+  - Executive spokesperson preparation and TV debate sparring sessions.
+  - Placement in national and regional mainstream media outlets.
+  - Personal narrative and achievements progress dossiers.
+
+### 3.2 45-Minute Rapid Crisis PR & Counter-Disinformation
+- **Methodology:** Rapid-response war room mechanism designed to neutralize political smears, media trials, leaked recordings, and viral social media rumors within a 45-minute tactical window.
+- **Deliverables:**
+  - 45-minute authoritative multimedia rebuttal packages.
+  - Real-time fact-checking dossiers distributed to national newsdesks and ground cadres.
+  - Crisis defense holding statements and legal-press coordination.
+
+### 3.3 Institutional Press Relations & Editorial Choreography
+- **Methodology:** Deep editorial relationships with national, regional, and vernacular news editors, bureau chiefs, and political anchors. Organizing synchronized press conferences.
+- **Deliverables:**
+  - Pan-India multi-lingual press release syndication.
+  - Background press briefings and Chatham House editorial lunches.
+  - Structured media monitoring dossiers and sentiment trend charts.
+
+### 3.4 Digital PR, Influencer Command & Narrative Amplification
+- **Methodology:** Multi-platform narrative dominance on X (Twitter), YouTube, Instagram, and WhatsApp broadcasting networks. Neutralizing opposition hashtags and setting public agenda.
+- **Deliverables:**
+  - High-impact digital campaigns and narrative video explainers.
+  - Vernacular digital creator and influencer syndication.
+  - Trend-monitoring telemetry and algorithm tracking dashboards.
+
+---
+
 ## 2. Engine 2: Public Policy & Governance Advisory Services
 
 ### 2.1 Welfare Scheme Impact Assessment (Third-Party Audits)
