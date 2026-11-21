@@ -2,7 +2,7 @@ export const translations = {
   en: {
     // Header & Meta
     brandName: "CROSSBENCH",
-    brandTagline: "Independent Insight. Strategic Impact.",
+    brandTagline: "Independent Insight • Strategic Impact",
     nav: {
       home: "Home",
       political: "Political Strategy",
@@ -18,8 +18,8 @@ export const translations = {
     // Hero Section
     hero: {
       badge: "NON-PARTISAN ADVISORY & STRATEGIC PR AGENCY",
-      titleLine1: "Independent Insight.",
-      titleLine2: "Strategic Impact.",
+      titleLine1: "Independent Insight",
+      titleLine2: "Strategic Impact",
       subtitle: "Bridging data-driven political campaign management, high-impact strategic PR communications, and empirical public policy governance. Serving political parties, leaders, ministries, and civil society with absolute discretion.",
       primaryCta: "Explore Political Suite",
       secondaryCta: "Strategic PR & Media",
@@ -58,8 +58,8 @@ export const translations = {
     // Dual/Triple Engine
     dualEngine: {
       tag: "CORE PRACTICES",
-      title: "Where Electoral Precision, Strategic PR & Policy Excellence Converge",
-      subtitle: "Enduring political and public leadership demands electoral mastery to win mandates, media dominance to protect public perception, and policy competence to deliver governance.",
+      title: "The Strategic Convergence of Strategy, PR & Public Policy",
+      subtitle: "Enduring political leadership demands electoral mastery to win mandates, media dominance to protect public perception, and empirical governance for citizen welfare.",
       engine1: {
         tag: "ENGINE 01",
         title: "Political & Electoral Strategy",
@@ -158,8 +158,8 @@ export const translations = {
           headline: "Evidence-Based Whitepapers for Reforms",
           desc: "Converted complex primary healthcare telemetry into 4 high-authority legislative memorandums presented before Parliamentary Standing Committees, driving targeted budgetary allocation.",
           stats: [
-            { label: "Lawmakers Briefed", val: "45 MPs/MLAs" },
-            { label: "Budget Lift", val: "+18%" }
+            { label: "Lawmakers Briefed", val: "45+" },
+            { label: "Budget Allocation Lift", val: "+18%" }
           ],
           img: "./images/governance.jpg"
         }
@@ -398,7 +398,7 @@ export const translations = {
   hi: {
     // Header & Meta
     brandName: "क्रॉस बेंच",
-    brandTagline: "स्वतंत्र दृष्टि। रणनीतिक प्रभाव।",
+    brandTagline: "स्वतंत्र दृष्टि • रणनीतिक प्रभाव",
     nav: {
       home: "मुख्य पृष्ठ",
       political: "राजनीतिक रणनीति",
@@ -414,8 +414,8 @@ export const translations = {
     // Hero Section
     hero: {
       badge: "गैर-पक्षपातपूर्ण परामर्श एवं रणनीतिक पीआर संस्थान",
-      titleLine1: "स्वतंत्र दृष्टि।",
-      titleLine2: "रणनीतिक प्रभाव।",
+      titleLine1: "स्वतंत्र दृष्टि",
+      titleLine2: "रणनीतिक प्रभाव",
       subtitle: "डेटा-आधारित चुनाव अभियान प्रबंधन, प्रभावशाली रणनीतिक पीआर संचार और जन-कल्याणकारी लोक नीति सुशासन का विश्वसनीय संगम। राजनीतिक दलों, जन-प्रतिनिधियों, मंत्रालयों और नागरिक समाज की सेवा में पूर्ण गोपनीयता के साथ समर्पित।",
       primaryCta: "चुनावी रणनीति समझें",
       secondaryCta: "रणनीतिक पीआर एवं मीडिया",
@@ -454,8 +454,8 @@ export const translations = {
     // Dual/Triple Engine
     dualEngine: {
       tag: "हमारी मुख्य सेवाएं",
-      title: "जहाँ चुनावी रणनीति, रणनीतिक पीआर और लोक नीति का संगम होता है",
-      subtitle: "स्थायी राजनीतिक नेतृत्व के लिए जनादेश जीतने की चुनावी कुशलता, जन-धारणा को सुरक्षित रखने की मीडिया रणनीति और जनकल्याण सुनिश्चित करने की नीतिगत समझ—तीनों आवश्यक हैं।",
+      title: "चुनावी रणनीति, रणनीतिक पीआर एवं लोक नीति का समग्र संगम",
+      subtitle: "स्थायी राजनीतिक नेतृत्व हेतु चुनावी कुशलता, जन-धारणा सुरक्षा हेतु रणनीतिक पीआर, एवं जनकल्याण सुनिश्चित करने के लिए नीतिगत सुशासन—तीनों का संतुलित समन्वय।",
       engine1: {
         tag: "पहला स्तंभ",
         title: "राजनीतिक एवं चुनावी रणनीति",
@@ -554,8 +554,8 @@ export const translations = {
           headline: "सुधारों हेतु तथ्य-आधारित नीतिगत श्वेतपत्र",
           desc: "जमीनी स्वास्थ्य डेटा को 4 उच्च-स्तरीय विधायी ज्ञापनों में बदलकर संसदीय स्थायी समितियों के समक्ष प्रस्तुत किया गया, जिससे बजट आवंटन में ठोस बढ़ोतरी हुई।",
           stats: [
-            { label: "सांसदों को ब्रीफिंग", val: "45 सांसद/विधायक" },
-            { label: "बजट वृद्धि", val: "+18%" }
+            { label: "संबद्ध सांसद व विधायक", val: "45+" },
+            { label: "बजट आवंटन वृद्धि", val: "+18%" }
           ],
           img: "./images/governance.jpg"
         }

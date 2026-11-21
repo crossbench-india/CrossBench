@@ -31,6 +31,8 @@ export const AdminDashboardPage = ({ setActivePage }) => {
   const { 
     contentOverrides, 
     updateField, 
+    socialLinks,
+    updateSocialLinks,
     inquiries, 
     updateInquiryStatus, 
     resetToDefaults 
@@ -41,11 +43,14 @@ export const AdminDashboardPage = ({ setActivePage }) => {
   const [activeTab, setActiveTab] = useState('overview');
   const [saveToast, setSaveToast] = useState('');
 
-  // Editable Form States initialized with overrides or defaults
-  const [heroTitle1En, setHeroTitle1En] = useState(contentOverrides['hero.title1.en'] || "Independent Insight.");
-  const [heroTitle2En, setHeroTitle2En] = useState(contentOverrides['hero.title2.en'] || "Strategic Impact.");
-  const [heroTitle1Hi, setHeroTitle1Hi] = useState(contentOverrides['hero.title1.hi'] || "स्वतंत्र दृष्टि।");
-  const [heroTitle2Hi, setHeroTitle2Hi] = useState(contentOverrides['hero.title2.hi'] || "रणनीतिक प्रभाव।");
+  // Editable Form States initialized with overrides or defaults (No trailing periods/dandas)
+  const [heroTitle1En, setHeroTitle1En] = useState(contentOverrides['hero.title1.en'] || "Independent Insight");
+  const [heroTitle2En, setHeroTitle2En] = useState(contentOverrides['hero.title2.en'] || "Strategic Impact");
+  const [heroTitle1Hi, setHeroTitle1Hi] = useState(contentOverrides['hero.title1.hi'] || "स्वतंत्र दृष्टि");
+  const [heroTitle2Hi, setHeroTitle2Hi] = useState(contentOverrides['hero.title2.hi'] || "रणनीतिक प्रभाव");
+
+  // Editable Social Media URLs
+  const [socialState, setSocialState] = useState(socialLinks);
 
   const [heroSubtitleEn, setHeroSubtitleEn] = useState(
     contentOverrides['hero.sub.en'] || 
@@ -88,14 +93,26 @@ export const AdminDashboardPage = ({ setActivePage }) => {
     showToast(isHindi ? "ट्रैक रिकॉर्ड कार्ड्स एवं तस्वीरें अपडेट हो गईं!" : "Track record cards & photos updated successfully!");
   };
 
+  const handleSaveSocial = () => {
+    updateSocialLinks(socialState);
+    showToast(isHindi ? "सोशल मीडिया लिंक्स सफलतापूर्वक अपडेट हो गईं!" : "Social media links updated successfully!");
+  };
+
   const handleReset = () => {
     if (window.confirm(isHindi ? "क्या आप सभी परिवर्तनों को डिफ़ॉल्ट पर रीसेट करना चाहते हैं?" : "Reset all modifications back to system factory defaults?")) {
       resetToDefaults();
-      setHeroTitle1En("Independent Insight.");
-      setHeroTitle2En("Strategic Impact.");
-      setHeroTitle1Hi("स्वतंत्र दृष्टि।");
-      setHeroTitle2Hi("रणनीतिक प्रभाव।");
+      setHeroTitle1En("Independent Insight");
+      setHeroTitle2En("Strategic Impact");
+      setHeroTitle1Hi("स्वतंत्र दृष्टि");
+      setHeroTitle2Hi("रणनीतिक प्रभाव");
       setInitiatives(defaultInitiatives);
+      setSocialState({
+        facebook: "https://facebook.com/crossbench.india",
+        instagram: "https://instagram.com/crossbench.in",
+        x: "https://x.com/crossbench_in",
+        youtube: "https://youtube.com/@crossbench",
+        linkedin: "https://linkedin.com/company/crossbench"
+      });
       showToast(isHindi ? "डिफ़ॉल्ट सेटिंग्स पुनर्स्थापित हो गईं!" : "Factory defaults restored!");
     }
   };
@@ -169,6 +186,7 @@ export const AdminDashboardPage = ({ setActivePage }) => {
           { id: 'overview', label: isHindi ? "डैशबोर्ड सारांश" : "Overview & Telemetry", icon: Trophy },
           { id: 'hero', label: isHindi ? "हीरो व टैगलाइन एडिटर" : "Hero & Tagline Editor", icon: FileText },
           { id: 'trackrecord', label: isHindi ? "ट्रैक रिकॉर्ड व फोटो प्रबंधन" : "Track Record & Photos", icon: ImageIcon },
+          { id: 'social', label: isHindi ? "सोशल मीडिया लिंक्स" : "Social Media Links", icon: Globe },
           { id: 'inbox', label: isHindi ? `परामर्श इनबॉक्स (${inquiries.length})` : `Inquiries Inbox (${inquiries.length})`, icon: Inbox },
           { id: 'settings', label: isHindi ? "सिस्टम सेटिंग्स" : "System Settings", icon: Settings }
         ].map((tab) => {
@@ -500,6 +518,109 @@ export const AdminDashboardPage = ({ setActivePage }) => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      )}
+
+      {/* TAB: SOCIAL MEDIA MANAGER */}
+      {activeTab === 'social' && (
+        <div className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100">
+            <div>
+              <h2 className={`${isHindi ? 'font-hi-heading' : 'font-display'} text-xl font-bold text-slate-900`}>
+                {isHindi ? "सोशल मीडिया प्रोफाइल व लिंक प्रबंधन" : "Social Media Links & Follow Us Manager"}
+              </h2>
+              <p className="text-xs text-slate-500">
+                {isHindi 
+                  ? "फुटर में प्रदर्शित होने वाले Facebook, Instagram, X (Twitter), YouTube और LinkedIn के रीडायरेक्ट यूआरएल सेट करें।" 
+                  : "Configure external social media redirect URLs for the footer."}
+              </p>
+            </div>
+
+            <button
+              onClick={handleSaveSocial}
+              className="px-5 py-2.5 rounded-xl bg-brand-green hover:bg-brand-green-light text-white font-bold text-xs flex items-center space-x-1.5 shadow-sm active:scale-95"
+            >
+              <Save className="w-4 h-4" />
+              <span>{isHindi ? "लिंक्स सहेजें" : "Save Social Links"}</span>
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-4xl">
+            {/* Facebook */}
+            <div className="p-4 rounded-2xl bg-surface-50 border border-slate-200 space-y-2">
+              <label className="text-xs font-bold text-slate-800 flex items-center space-x-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-blue-600 inline-block" />
+                <span>Facebook Profile / Page URL</span>
+              </label>
+              <input
+                type="url"
+                value={socialState?.facebook || ''}
+                onChange={(e) => setSocialState(prev => ({ ...prev, facebook: e.target.value }))}
+                placeholder="https://facebook.com/your-page"
+                className="w-full px-3.5 py-2 rounded-xl bg-white border border-slate-300 text-xs font-mono text-slate-900 focus:border-brand-pink focus:outline-none"
+              />
+            </div>
+
+            {/* Instagram */}
+            <div className="p-4 rounded-2xl bg-surface-50 border border-slate-200 space-y-2">
+              <label className="text-xs font-bold text-slate-800 flex items-center space-x-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-pink-600 inline-block" />
+                <span>Instagram Profile URL</span>
+              </label>
+              <input
+                type="url"
+                value={socialState?.instagram || ''}
+                onChange={(e) => setSocialState(prev => ({ ...prev, instagram: e.target.value }))}
+                placeholder="https://instagram.com/your-handle"
+                className="w-full px-3.5 py-2 rounded-xl bg-white border border-slate-300 text-xs font-mono text-slate-900 focus:border-brand-pink focus:outline-none"
+              />
+            </div>
+
+            {/* X (formerly Twitter) */}
+            <div className="p-4 rounded-2xl bg-surface-50 border border-slate-200 space-y-2">
+              <label className="text-xs font-bold text-slate-800 flex items-center space-x-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-slate-900 inline-block" />
+                <span>X (formerly Twitter) Profile URL</span>
+              </label>
+              <input
+                type="url"
+                value={socialState?.x || ''}
+                onChange={(e) => setSocialState(prev => ({ ...prev, x: e.target.value }))}
+                placeholder="https://x.com/your-handle"
+                className="w-full px-3.5 py-2 rounded-xl bg-white border border-slate-300 text-xs font-mono text-slate-900 focus:border-brand-pink focus:outline-none"
+              />
+            </div>
+
+            {/* YouTube */}
+            <div className="p-4 rounded-2xl bg-surface-50 border border-slate-200 space-y-2">
+              <label className="text-xs font-bold text-slate-800 flex items-center space-x-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-red-600 inline-block" />
+                <span>YouTube Channel URL</span>
+              </label>
+              <input
+                type="url"
+                value={socialState?.youtube || ''}
+                onChange={(e) => setSocialState(prev => ({ ...prev, youtube: e.target.value }))}
+                placeholder="https://youtube.com/@your-channel"
+                className="w-full px-3.5 py-2 rounded-xl bg-white border border-slate-300 text-xs font-mono text-slate-900 focus:border-brand-pink focus:outline-none"
+              />
+            </div>
+
+            {/* LinkedIn */}
+            <div className="p-4 rounded-2xl bg-surface-50 border border-slate-200 space-y-2 md:col-span-2">
+              <label className="text-xs font-bold text-slate-800 flex items-center space-x-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-blue-700 inline-block" />
+                <span>LinkedIn Company / Profile URL</span>
+              </label>
+              <input
+                type="url"
+                value={socialState?.linkedin || ''}
+                onChange={(e) => setSocialState(prev => ({ ...prev, linkedin: e.target.value }))}
+                placeholder="https://linkedin.com/company/your-organization"
+                className="w-full px-3.5 py-2 rounded-xl bg-white border border-slate-300 text-xs font-mono text-slate-900 focus:border-brand-pink focus:outline-none"
+              />
+            </div>
           </div>
         </div>
       )}

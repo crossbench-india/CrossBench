@@ -154,14 +154,14 @@ export const HomePage = ({ setActivePage }) => {
                   </div>
                 </div>
 
-                {/* Floating Decorative Chip */}
-                <div className="absolute -bottom-5 -left-4 bg-white p-3.5 rounded-2xl shadow-lg border border-slate-200 hidden sm:flex items-center space-x-3">
-                  <div className="w-10 h-10 rounded-xl bg-brand-green text-white flex items-center justify-center font-bold">
-                    <TrendingUp className="w-5 h-5" />
+                {/* Floating Decorative Chip positioned at Top-Left (Clear from Bottom 160B+ Metric Box) */}
+                <div className="absolute -top-4 -left-3 sm:-left-5 bg-white/95 backdrop-blur-md p-3 rounded-2xl shadow-lg border border-slate-200/90 hidden sm:flex items-center space-x-3 z-20">
+                  <div className="w-9 h-9 rounded-xl bg-brand-green text-white flex items-center justify-center font-bold shadow-xs">
+                    <TrendingUp className="w-4 h-4" />
                   </div>
                   <div>
                     <span className="text-xs font-bold text-slate-900 block">Electoral & PR Intelligence</span>
-                    <span className="text-[11px] text-slate-500">Booth Turnout & News Dominance</span>
+                    <span className="text-[11px] text-slate-500 font-medium">Booth Turnout & News Dominance</span>
                   </div>
                 </div>
               </div>
@@ -296,10 +296,20 @@ export const HomePage = ({ setActivePage }) => {
           <span className="px-3.5 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-bold uppercase tracking-wider">
             {t.dualEngine.tag}
           </span>
-          <h2 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-2xl sm:text-4xl font-extrabold text-slate-900`}>
-            {t.dualEngine.title}
+          <h2 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-2xl sm:text-4xl font-extrabold text-slate-900 leading-tight max-w-2xl mx-auto`}>
+            {isHindi ? (
+              <>
+                <span className="block">चुनावी रणनीति, रणनीतिक पीआर एवं</span>
+                <span className="block text-brand-green mt-1">लोक नीति का समग्र संगम</span>
+              </>
+            ) : (
+              <>
+                <span className="block">The Strategic Convergence of</span>
+                <span className="block text-brand-green mt-1">Strategy, PR & Public Policy</span>
+              </>
+            )}
           </h2>
-          <p className={`${isHindi ? 'font-hi-body' : ''} text-sm sm:text-base text-slate-600`}>
+          <p className={`${isHindi ? 'font-hi-body' : ''} text-sm sm:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed`}>
             {t.dualEngine.subtitle}
           </p>
         </div>
@@ -654,34 +664,43 @@ export const HomePage = ({ setActivePage }) => {
         </div>
       </section>
 
-      {/* 9. CONFIDENTIAL CONSULTATION BANNER with Ambient Accents */}
+      {/* 9. CONFIDENTIAL CONSULTATION BANNER - Brand-Aligned Light Theme with Forward CTA Button */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-gradient-to-r from-brand-green to-slate-900 text-white p-8 sm:p-14 rounded-3xl shadow-xl relative overflow-hidden">
-          {/* Subtle Ambient Background Accents */}
-          <div className="absolute -top-12 -right-12 w-80 h-80 bg-brand-pink/20 rounded-full blur-3xl pointer-events-none animate-float-slow" />
-          <div className="absolute -bottom-12 -left-12 w-64 h-64 bg-brand-lime/20 rounded-full blur-2xl pointer-events-none animate-float-reverse" />
+        <div className="bg-white rounded-3xl p-8 sm:p-12 lg:p-14 shadow-xl border-2 border-slate-200/90 hover:border-brand-pink/50 relative overflow-hidden transition-all">
+          {/* Subtle Ambient Background Motion Accents */}
+          <div className="absolute -top-16 -right-16 w-80 h-80 bg-brand-pink/10 rounded-full blur-3xl pointer-events-none animate-float-slow" />
+          <div className="absolute -bottom-16 -left-16 w-80 h-80 bg-brand-green/10 rounded-full blur-3xl pointer-events-none animate-float-reverse" />
 
-          <div className="max-w-3xl space-y-5 relative z-10">
-            <span className="px-3 py-1 rounded-md bg-brand-pink text-white text-xs font-bold uppercase tracking-wider">
-              {t.contact.badge}
-            </span>
-            <h2 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-2xl sm:text-4xl font-extrabold text-white leading-tight`}>
-              {isHindi ? "पूर्णतः गोपनीय रणनीतिक परामर्श प्रारंभ करें" : "Initiate a Strictly Confidential Strategic Consultation"}
-            </h2>
-            <p className={`${isHindi ? 'font-hi-body' : ''} text-xs sm:text-sm text-slate-200 leading-relaxed`}>
-              {isHindi 
-                ? "चाहे आप आगामी विधानसभा चुनाव की तैयारी कर रहे हों, उच्च-स्तरीय मीडिया व पीआर कैंपेन का संचालन करना चाहते हों, या कल्याणकारी योजनाओं के स्वतंत्र थर्ड-पार्टी मूल्यांकन की आवश्यकता हो—हमारे वरिष्ठ प्रैक्टिस डायरेक्टर्स गैर-प्रकटीकरण अनुबंध (NDA) के तहत उपलब्ध हैं।"
-                : "Whether you are preparing for an impending legislative election cycle, orchestrating a high-stakes media campaign, or requiring an independent third-party audit of state welfare schemes—our senior practice directors are accessible under non-disclosure confidentiality."}
-            </p>
-            <div className="pt-2">
+          <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+            <div className="lg:max-w-2xl space-y-4">
+              <span className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-md bg-brand-green-soft text-brand-green border border-brand-green/30 text-xs font-bold uppercase tracking-wider">
+                <Lock className="w-3.5 h-3.5" />
+                <span>{t.contact.badge}</span>
+              </span>
+              <h2 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-2xl sm:text-4xl font-extrabold text-slate-900 leading-tight`}>
+                {isHindi ? "पूर्णतः गोपनीय रणनीतिक परामर्श प्रारंभ करें" : "Initiate a Strictly Confidential Strategic Consultation"}
+              </h2>
+              <p className={`${isHindi ? 'font-hi-body' : ''} text-xs sm:text-sm text-slate-600 leading-relaxed max-w-xl`}>
+                {isHindi 
+                  ? "आगामी विधानसभा चुनाव, रणनीतिक पीआर कैंपेन अथवा जन-कल्याणकारी योजनाओं के स्वतंत्र थर्ड-पार्टी ऑडिट हेतु हमारे वरिष्ठ प्रैक्टिस डायरेक्टर्स गैर-प्रकटीकरण अनुबंध (NDA) के तहत उपलब्ध हैं।"
+                  : "For impending elections, high-stakes PR campaigns, or third-party welfare scheme audits—our senior practice directors are accessible under non-disclosure confidentiality."}
+              </p>
+            </div>
+
+            {/* Forward-Facing CTA Action Box */}
+            <div className="flex-shrink-0 flex flex-col items-start lg:items-end space-y-2.5 w-full lg:w-auto">
               <button
                 onClick={() => handleNavigate('contact')}
-                className="px-7 py-3.5 rounded-xl bg-brand-pink hover:bg-brand-pink-hover text-white font-bold text-xs sm:text-sm tracking-wide transition-all shadow-md flex items-center space-x-2 active:scale-95"
+                className="w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-pink hover:bg-brand-pink-hover text-white font-bold text-sm sm:text-base tracking-wide transition-all shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 flex items-center justify-center space-x-2.5 border-2 border-white/20"
               >
                 <Lock className="w-4 h-4" />
                 <span>{t.nav.schedule}</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
+              <div className="text-[11px] text-slate-500 font-medium flex items-center space-x-1.5 self-center lg:self-end">
+                <ShieldCheck className="w-3.5 h-3.5 text-brand-green" />
+                <span>100% Non-Partisan • Direct NDA Protection</span>
+              </div>
             </div>
           </div>
         </div>

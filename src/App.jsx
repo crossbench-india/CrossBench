@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { LanguageProvider, useLanguage } from './context/LanguageContext';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { ContentProvider } from './context/ContentContext';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { BackToTop } from './components/BackToTop';
+import { PageTransitionOverlay } from './components/PageTransitionOverlay';
 import { HomePage } from './pages/HomePage';
 import { PoliticalConsultingPage } from './pages/PoliticalConsultingPage';
 import { StrategicPRPage } from './pages/StrategicPRPage';
@@ -18,38 +19,69 @@ import { Lock, ShieldCheck, Edit3 } from 'lucide-react';
 
 export function AppContent() {
   const [activePage, setActivePage] = useState('home');
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [transitionMsg, setTransitionMsg] = useState('');
   const { lang, t } = useLanguage();
   const { isAuthenticated, user, logout } = useAuth();
   const isHindi = lang === 'hi';
 
+  // Initial mount transition
+  useEffect(() => {
+    setIsTransitioning(true);
+    const timer = setTimeout(() => {
+      setIsTransitioning(false);
+    }, 400);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Smooth page change with blurred emblem overlay
+  const handlePageChange = (pageId, msg) => {
+    if (pageId === activePage) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    setIsTransitioning(true);
+    setTransitionMsg(msg || (isHindi ? "पृष्ठ लोड हो रहा है..." : "Loading page..."));
+    setTimeout(() => {
+      setActivePage(pageId);
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      setTimeout(() => {
+        setIsTransitioning(false);
+      }, 200);
+    }, 250);
+  };
+
   const renderPage = () => {
     switch (activePage) {
       case 'home':
-        return <HomePage setActivePage={setActivePage} />;
+        return <HomePage setActivePage={handlePageChange} />;
       case 'political':
-        return <PoliticalConsultingPage setActivePage={setActivePage} />;
+        return <PoliticalConsultingPage setActivePage={handlePageChange} />;
       case 'pr':
-        return <StrategicPRPage setActivePage={setActivePage} />;
+        return <StrategicPRPage setActivePage={handlePageChange} />;
       case 'policy':
-        return <PublicPolicyPage setActivePage={setActivePage} />;
+        return <PublicPolicyPage setActivePage={handlePageChange} />;
       case 'solutions':
-        return <SolutionsPage setActivePage={setActivePage} />;
+        return <SolutionsPage setActivePage={handlePageChange} />;
       case 'about':
-        return <AboutPage setActivePage={setActivePage} />;
+        return <AboutPage setActivePage={handlePageChange} />;
       case 'insights':
-        return <InsightsPage setActivePage={setActivePage} />;
+        return <InsightsPage setActivePage={handlePageChange} />;
       case 'contact':
         return <ContactPage />;
       case 'admin':
-        return <AdminDashboardPage setActivePage={setActivePage} />;
+        return <AdminDashboardPage setActivePage={handlePageChange} />;
       default:
-        return <HomePage setActivePage={setActivePage} />;
+        return <HomePage setActivePage={handlePageChange} />;
     }
   };
 
   return (
     <div className={`min-h-screen bg-surface-50 text-slate-800 flex flex-col justify-between selection:bg-brand-pink selection:text-white ${isHindi ? 'font-hi-body' : 'font-sans'} relative`}>
-      <Header activePage={activePage} setActivePage={setActivePage} />
+      {/* Blurred Emblem Transition Overlay on Refresh & Nav */}
+      <PageTransitionOverlay isVisible={isTransitioning} message={transitionMsg} />
+
+      <Header activePage={activePage} setActivePage={handlePageChange} />
       
       {/* Master Admin Live Session Bar if logged in & browsing public pages */}
       {isAuthenticated && activePage !== 'admin' && (
@@ -62,7 +94,7 @@ export function AppContent() {
             </span>
             <div className="flex items-center space-x-2">
               <button
-                onClick={() => { setActivePage('admin'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                onClick={() => handlePageChange('admin')}
                 className="px-2.5 py-0.5 rounded-md bg-white text-slate-900 hover:bg-slate-100 font-bold text-[11px] flex items-center space-x-1 shadow-2xs"
               >
                 <Edit3 className="w-3 h-3 text-brand-pink" />
@@ -86,7 +118,7 @@ export function AppContent() {
       {/* Floating Quick Action Pill */}
       <div className="fixed bottom-6 right-6 z-40 flex items-center space-x-2">
         <button
-          onClick={() => { setActivePage('contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+          onClick={() => handlePageChange('contact')}
           className="flex items-center space-x-2 px-4 py-3 rounded-full bg-brand-pink hover:bg-brand-pink-hover text-white font-bold text-xs sm:text-sm shadow-xl hover:shadow-2xl transition-all hover:scale-105 active:scale-95 border-2 border-white"
           title="Direct Consultation Request"
         >
@@ -98,7 +130,7 @@ export function AppContent() {
       {/* Floating Back-To-Top Button on Bottom-Left */}
       <BackToTop />
 
-      <Footer setActivePage={setActivePage} />
+      <Footer setActivePage={handlePageChange} />
     </div>
   );
 }

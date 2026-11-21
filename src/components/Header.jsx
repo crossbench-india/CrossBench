@@ -123,12 +123,12 @@ export const Header = ({ activePage, setActivePage }) => {
               </div>
 
               {/* Drawer Navigation Links */}
-              <div className="py-6 space-y-1.5">
+              <div className="py-4 space-y-1">
                 {navItems.map((item) => (
                   <button
                     key={item.id}
                     onClick={() => handleNavClick(item.id)}
-                    className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
+                    className={`w-full flex items-center justify-between px-4 py-2.5 rounded-xl text-sm font-semibold transition-all ${
                       activePage === item.id
                         ? item.isAdmin
                           ? 'bg-brand-pink text-white font-bold shadow-xs'
@@ -145,6 +145,22 @@ export const Header = ({ activePage, setActivePage }) => {
                     <ChevronRight className="w-4 h-4 text-slate-400" />
                   </button>
                 ))}
+              </div>
+
+              {/* Institutional Standards inside Menu Drawer */}
+              <div className="py-3.5 px-3.5 rounded-2xl bg-surface-50 border border-slate-200/80 mb-2">
+                <h5 className="text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-2.5 flex items-center space-x-1.5">
+                  <ShieldCheck className="w-3.5 h-3.5 text-brand-green" />
+                  <span>{isHindi ? "संस्थागत मानक" : "Institutional Standards"}</span>
+                </h5>
+                <ul className="space-y-1.5 text-xs text-slate-600 font-medium">
+                  {t.footer.complianceItems.map((std, idx) => (
+                    <li key={idx} className="flex items-center space-x-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-brand-green flex-shrink-0" />
+                      <span>{std}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
 

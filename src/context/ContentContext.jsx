@@ -41,6 +41,14 @@ const defaultInquiries = [
   }
 ];
 
+export const defaultSocialLinks = {
+  facebook: "https://facebook.com/crossbench.india",
+  instagram: "https://instagram.com/crossbench.in",
+  x: "https://x.com/crossbench_in",
+  youtube: "https://youtube.com/@crossbench",
+  linkedin: "https://linkedin.com/company/crossbench"
+};
+
 export const ContentProvider = ({ children }) => {
   const [contentOverrides, setContentOverrides] = useState(() => {
     try {
@@ -108,10 +116,19 @@ export const ContentProvider = ({ children }) => {
     localStorage.removeItem(INQUIRIES_KEY);
   };
 
+  // Social media links
+  const socialLinks = contentOverrides['social.links'] || defaultSocialLinks;
+
+  const updateSocialLinks = (newLinks) => {
+    updateField('social.links', newLinks);
+  };
+
   return (
     <ContentContext.Provider value={{
       contentOverrides,
       updateField,
+      socialLinks,
+      updateSocialLinks,
       inquiries,
       addInquiry,
       updateInquiryStatus,
