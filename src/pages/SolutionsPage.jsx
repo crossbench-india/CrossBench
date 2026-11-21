@@ -170,8 +170,18 @@ export const SolutionsPage = ({ setActivePage }) => {
           <Sparkles className="w-3.5 h-3.5 text-brand-pink" />
           <span>{isHindi ? "अनुकूलित समाधान" : "TAILORED SOLUTIONS"}</span>
         </div>
-        <h1 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight`}>
-          {isHindi ? "हितधारक अनुसार विशेषज्ञ परामर्श समाधान" : "Bespoke Solutions by Stakeholder"}
+        <h1 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.2]`}>
+          {isHindi ? (
+            <>
+              <span className="block">हितधारक अनुसार</span>
+              <span className="text-brand-pink block mt-1">विशेषज्ञ परामर्श समाधान</span>
+            </>
+          ) : (
+            <>
+              <span className="block">Tailored Advisory Blueprints by</span>
+              <span className="text-brand-pink block mt-1">Democratic Stakeholder</span>
+            </>
+          )}
         </h1>
         <p className={`${isHindi ? 'font-hi-body' : ''} text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto`}>
           {isHindi 

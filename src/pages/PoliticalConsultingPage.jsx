@@ -108,10 +108,18 @@ export const PoliticalConsultingPage = ({ setActivePage }) => {
           <Vote className="w-3.5 h-3.5" />
           <span>{isHindi ? "इंजन 01 : राजनीतिक रणनीति" : "ENGINE 01 : POLITICAL STRATEGY"}</span>
         </div>
-        <h1 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight`}>
-          {isHindi 
-            ? "डेटा-आधारित चुनावी रणनीति एवं वॉर रूम प्रबंधन" 
-            : "Data-Driven Electoral Strategy & Campaign Machinery"}
+        <h1 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.2]`}>
+          {isHindi ? (
+            <>
+              <span className="block">डेटा-आधारित चुनावी रणनीति एवं</span>
+              <span className="text-brand-green block mt-1">वॉर रूम प्रबंधन</span>
+            </>
+          ) : (
+            <>
+              <span className="block">Data-Driven Electoral Strategy &</span>
+              <span className="text-brand-green block mt-1">Campaign Machinery</span>
+            </>
+          )}
         </h1>
         <p className={`${isHindi ? 'font-hi-body' : ''} text-base sm:text-lg text-slate-600 leading-relaxed max-w-3xl mx-auto`}>
           {isHindi

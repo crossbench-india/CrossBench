@@ -130,8 +130,18 @@ export const InsightsPage = ({ setActivePage }) => {
           <BookOpen className="w-3.5 h-3.5 text-brand-green" />
           <span>{isHindi ? "संस्थागत शोध एवं विश्लेषण" : "RESEARCH & THOUGHT LEADERSHIP"}</span>
         </div>
-        <h1 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight`}>
-          {isHindi ? "दृष्टिकोण, श्वेतपत्र एवं चुनावी विश्लेषण" : "Perspectives, Whitepapers & Policy Briefs"}
+        <h1 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.2]`}>
+          {isHindi ? (
+            <>
+              <span className="block">दृष्टिकोण, श्वेतपत्र एवं</span>
+              <span className="text-brand-pink block mt-1">नीतिगत चुनावी विश्लेषण</span>
+            </>
+          ) : (
+            <>
+              <span className="block">Perspectives, Whitepapers &</span>
+              <span className="text-brand-pink block mt-1">Empirical Policy Briefs</span>
+            </>
+          )}
         </h1>
         <p className={`${isHindi ? 'font-hi-body' : ''} text-base sm:text-lg text-slate-600 leading-relaxed max-w-3xl mx-auto`}>
           {isHindi 

@@ -61,10 +61,18 @@ export const AboutPage = ({ setActivePage }) => {
           <Scale className="w-3.5 h-3.5" />
           <span>{isHindi ? "संस्थागत दर्शन" : "INSTITUTIONAL PHILOSOPHY"}</span>
         </div>
-        <h1 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight`}>
-          {isHindi 
-            ? "संसदीय गरिमा और निष्पक्षता का प्रतीक — 'क्रॉस बेंच'" 
-            : "The Crossbench Doctrine: Independence as Strategic Capital"}
+        <h1 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.2]`}>
+          {isHindi ? (
+            <>
+              <span className="block">संसदीय गरिमा और निष्पक्षता का प्रतीक —</span>
+              <span className="text-brand-green block mt-1">'क्रॉस बेंच' संस्थागत दर्शन</span>
+            </>
+          ) : (
+            <>
+              <span className="block">The Crossbench Doctrine:</span>
+              <span className="text-brand-green block mt-1">Independence as Strategic Capital</span>
+            </>
+          )}
         </h1>
         <p className={`${isHindi ? 'font-hi-body' : ''} text-base sm:text-lg text-slate-600 leading-relaxed max-w-3xl mx-auto`}>
           {isHindi

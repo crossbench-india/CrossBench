@@ -27,8 +27,18 @@ export const StrategicPRPage = ({ setActivePage }) => {
           <Megaphone className="w-3.5 h-3.5" />
           <span>{t.prSuite.badge}</span>
         </div>
-        <h1 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight`}>
-          {t.prSuite.title}
+        <h1 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.2]`}>
+          {isHindi ? (
+            <>
+              <span className="block">रणनीतिक पीआर, मीडिया एवं</span>
+              <span className="text-brand-pink block mt-1">360° नैरेटिव कमांड</span>
+            </>
+          ) : (
+            <>
+              <span className="block">Strategic PR, Media Command &</span>
+              <span className="text-brand-pink block mt-1">Crisis Narrative Control</span>
+            </>
+          )}
         </h1>
         <p className="text-xs sm:text-sm text-brand-green font-bold tracking-wide">
           {t.prSuite.subtitle}

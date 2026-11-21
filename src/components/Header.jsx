@@ -1,17 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { useAuth } from '../context/AuthContext';
+import { LoginModal } from './LoginModal';
 import { 
   Menu, 
   X, 
   Globe, 
   ChevronRight, 
-  Lock
+  Lock,
+  LogIn,
+  LogOut,
+  ShieldCheck,
+  UserCheck
 } from 'lucide-react';
 
 export const Header = ({ activePage, setActivePage }) => {
   const { lang, toggleLanguage, t } = useLanguage();
+  const { isAuthenticated, user, logout } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const isHindi = lang === 'hi';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,6 +42,14 @@ export const Header = ({ activePage, setActivePage }) => {
     { id: 'contact', label: t.nav.contact }
   ];
 
+  if (isAuthenticated) {
+    navItems.push({
+      id: 'admin',
+      label: isHindi ? 'एडमिन डैशबोर्ड' : 'Admin Dashboard',
+      isAdmin: true
+    });
+  }
+
   const handleNavClick = (id) => {
     setActivePage(id);
     setMobileMenuOpen(false);
@@ -43,8 +61,8 @@ export const Header = ({ activePage, setActivePage }) => {
       <header 
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
           scrolled 
-            ? 'bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-sm py-2' 
-            : 'bg-white border-b border-slate-100 py-3'
+            ? 'bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-sm py-2.5' 
+            : 'bg-white border-b border-slate-100 py-3.5'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -52,7 +70,7 @@ export const Header = ({ activePage, setActivePage }) => {
             {/* Logo Image */}
             <div 
               onClick={() => handleNavClick('home')}
-              className="flex items-center cursor-pointer group"
+              className="flex items-center cursor-pointer group flex-shrink-0"
             >
               <img 
                 src="./logo.jpg" 
@@ -62,25 +80,30 @@ export const Header = ({ activePage, setActivePage }) => {
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden xl:flex items-center space-x-0.5">
+            <nav className="hidden xl:flex items-center space-x-1">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className={`px-3 py-1.5 rounded-lg text-[13px] font-semibold transition-all duration-150 ${
+                  className={`px-3 py-1.5 rounded-lg text-[13px] font-semibold transition-all duration-150 flex items-center space-x-1 ${
                     activePage === item.id
-                      ? 'text-brand-green bg-brand-green-soft font-bold'
-                      : 'text-slate-700 hover:text-brand-pink hover:bg-slate-50'
+                      ? item.isAdmin 
+                        ? 'text-white bg-brand-pink font-bold shadow-xs' 
+                        : 'text-brand-green bg-brand-green-soft font-bold'
+                      : item.isAdmin
+                        ? 'text-brand-pink bg-brand-pink-soft font-bold hover:bg-brand-pink hover:text-white'
+                        : 'text-slate-700 hover:text-brand-pink hover:bg-slate-50'
                   }`}
                 >
-                  {item.label}
+                  {item.isAdmin && <ShieldCheck className="w-3.5 h-3.5" />}
+                  <span>{item.label}</span>
                 </button>
               ))}
             </nav>
 
-            {/* Right Controls: Language Switcher & Consultation CTA */}
+            {/* Right Controls: Exactly ONE Language Switcher & Master Admin Login */}
             <div className="hidden sm:flex items-center space-x-3">
-              {/* Language Switcher */}
+              {/* Single Clean Language Switcher */}
               <button
                 onClick={toggleLanguage}
                 className="flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200 hover:border-brand-green/50 text-xs font-bold text-slate-700 transition-all shadow-sm"
@@ -92,14 +115,34 @@ export const Header = ({ activePage, setActivePage }) => {
                 <span className={lang === 'hi' ? 'text-brand-pink font-extrabold' : 'text-slate-400'}>हिंदी</span>
               </button>
 
-              {/* Consultation Button */}
-              <button
-                onClick={() => handleNavClick('contact')}
-                className="px-4 py-2 rounded-lg bg-brand-pink hover:bg-brand-pink-hover text-white font-bold text-xs sm:text-sm tracking-wide transition-all shadow-sm hover:shadow-md flex items-center space-x-1.5 active:scale-95"
-              >
-                <Lock className="w-3.5 h-3.5" />
-                <span>{t.nav.schedule}</span>
-              </button>
+              {/* Master Admin Login / Session Control (Replaces Schedule Consultation) */}
+              {!isAuthenticated ? (
+                <button
+                  onClick={() => setLoginModalOpen(true)}
+                  className="px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 font-bold text-xs tracking-wide transition-all border border-slate-200 flex items-center space-x-1.5 active:scale-95 shadow-2xs"
+                  title="Master Admin Login / एडमिन लॉगिन"
+                >
+                  <LogIn className="w-3.5 h-3.5 text-brand-green" />
+                  <span>{isHindi ? "लॉगिन" : "Login"}</span>
+                </button>
+              ) : (
+                <div className="flex items-center space-x-1.5">
+                  <button
+                    onClick={() => handleNavClick('admin')}
+                    className="px-3 py-1.5 rounded-xl bg-brand-pink text-white font-bold text-xs flex items-center space-x-1 shadow-sm hover:bg-brand-pink-hover transition-all"
+                  >
+                    <ShieldCheck className="w-3.5 h-3.5" />
+                    <span>{isHindi ? "डैशबोर्ड" : "Admin"}</span>
+                  </button>
+                  <button
+                    onClick={logout}
+                    className="p-1.5 rounded-lg text-slate-400 hover:text-red-600 hover:bg-red-50 transition-colors"
+                    title={isHindi ? "लॉगआउट करें" : "Sign Out"}
+                  >
+                    <LogOut className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              )}
             </div>
 
             {/* Mobile Controls */}
@@ -123,7 +166,7 @@ export const Header = ({ activePage, setActivePage }) => {
         </div>
       </header>
 
-      {/* Mobile Drawer with ample spacing so nothing collides */}
+      {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-50 xl:hidden">
           <div 
@@ -149,33 +192,59 @@ export const Header = ({ activePage, setActivePage }) => {
               </div>
 
               {/* Drawer Navigation Links */}
-              <div className="py-6 space-y-2">
+              <div className="py-6 space-y-1.5">
                 {navItems.map((item) => (
                   <button
                     key={item.id}
                     onClick={() => handleNavClick(item.id)}
-                    className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
+                    className={`w-full flex items-center justify-between px-4 py-2.5 rounded-xl text-sm font-semibold transition-all ${
                       activePage === item.id
-                        ? 'bg-brand-green-soft text-brand-green font-bold'
-                        : 'text-slate-700 hover:bg-slate-50'
+                        ? item.isAdmin
+                          ? 'bg-brand-pink text-white font-bold'
+                          : 'bg-brand-green-soft text-brand-green font-bold'
+                        : item.isAdmin
+                          ? 'bg-brand-pink-soft text-brand-pink font-bold'
+                          : 'text-slate-700 hover:bg-slate-50'
                     }`}
                   >
-                    <span>{item.label}</span>
+                    <span className="flex items-center space-x-2">
+                      {item.isAdmin && <ShieldCheck className="w-4 h-4" />}
+                      <span>{item.label}</span>
+                    </span>
                     <ChevronRight className="w-4 h-4 text-slate-400" />
                   </button>
                 ))}
               </div>
             </div>
 
-            {/* Bottom Actions */}
+            {/* Bottom Actions: Admin Login / Dashboard */}
             <div className="pt-6 border-t border-slate-100 space-y-3">
-              <button
-                onClick={() => handleNavClick('contact')}
-                className="w-full py-3.5 rounded-xl bg-brand-pink text-white font-bold text-sm flex items-center justify-center space-x-2 shadow-sm"
-              >
-                <Lock className="w-4 h-4" />
-                <span>{t.nav.schedule}</span>
-              </button>
+              {!isAuthenticated ? (
+                <button
+                  onClick={() => { setMobileMenuOpen(false); setLoginModalOpen(true); }}
+                  className="w-full py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-sm"
+                >
+                  <LogIn className="w-4 h-4 text-brand-green" />
+                  <span>{isHindi ? "मास्टर एडमिन लॉगिन" : "Master Admin Sign In"}</span>
+                </button>
+              ) : (
+                <div className="space-y-2">
+                  <div className="p-3 rounded-xl bg-brand-pink-soft text-xs text-brand-pink font-bold flex items-center justify-between">
+                    <span className="flex items-center space-x-1.5">
+                      <ShieldCheck className="w-4 h-4" />
+                      <span>{user?.email}</span>
+                    </span>
+                    <span className="text-[10px] uppercase tracking-wider bg-brand-pink text-white px-2 py-0.5 rounded">Admin</span>
+                  </div>
+                  <button
+                    onClick={() => { logout(); setMobileMenuOpen(false); }}
+                    className="w-full py-2.5 rounded-xl bg-red-50 text-red-700 font-bold text-xs flex items-center justify-center space-x-1.5"
+                  >
+                    <LogOut className="w-3.5 h-3.5" />
+                    <span>{isHindi ? "लॉगआउट करें" : "Sign Out"}</span>
+                  </button>
+                </div>
+              )}
 
               <p className="text-center text-[11px] text-slate-400 font-medium">
                 {t.hero.guarantee}
@@ -184,6 +253,13 @@ export const Header = ({ activePage, setActivePage }) => {
           </div>
         </div>
       )}
+
+      {/* Login Modal */}
+      <LoginModal 
+        isOpen={loginModalOpen} 
+        onClose={() => setLoginModalOpen(false)}
+        onLoginSuccess={() => handleNavClick('admin')}
+      />
     </>
   );
 };

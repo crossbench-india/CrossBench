@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { useContent } from '../context/ContentContext';
 import { 
   ShieldCheck, 
   Lock, 
@@ -15,6 +16,7 @@ import {
 
 export const ContactPage = () => {
   const { lang, t } = useLanguage();
+  const { addInquiry } = useContent();
   const isHindi = lang === 'hi';
 
   const [formData, setFormData] = useState({
@@ -45,19 +47,38 @@ export const ContactPage = () => {
       return;
     }
     setError('');
+    // Store in live Master Admin CRM
+    addInquiry({
+      fullName: formData.fullName,
+      designation: formData.designation,
+      organization: formData.organization,
+      vertical: formData.vertical,
+      contactMethod: formData.contactMethod,
+      scope: formData.scope
+    });
     setSubmitted(true);
   };
 
   return (
     <div className="pt-28 sm:pt-36 pb-24 space-y-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      {/* Header */}
+      {/* Header with Balanced Words */}
       <div className="text-center max-w-3xl mx-auto space-y-4">
         <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-bold uppercase tracking-wider">
           <Lock className="w-3.5 h-3.5 text-brand-pink" />
           <span>{isHindi ? "गोपनीय इनटेक प्रोटोकॉल" : "CONFIDENTIAL INTAKE PROTOCOL"}</span>
         </div>
-        <h1 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight`}>
-          {t.contact.title}
+        <h1 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.2]`}>
+          {isHindi ? (
+            <>
+              <span className="block">वरिष्ठ नेतृत्व हेतु</span>
+              <span className="text-brand-green block mt-1">पूर्णतः गोपनीय परामर्श इनटेक</span>
+            </>
+          ) : (
+            <>
+              <span className="block">Confidential Strategic Consultation for</span>
+              <span className="text-brand-green block mt-1">Leadership & Institutions</span>
+            </>
+          )}
         </h1>
         <p className={`${isHindi ? 'font-hi-body' : ''} text-base sm:text-lg text-slate-600 leading-relaxed`}>
           {t.contact.subtitle}

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { useContent } from '../context/ContentContext';
 import { 
   Vote, 
   FileText, 
@@ -26,8 +27,14 @@ import {
 
 export const HomePage = ({ setActivePage }) => {
   const { lang, t } = useLanguage();
+  const { contentOverrides } = useContent();
   const [selectedCaseModal, setSelectedCaseModal] = useState(null);
   const isHindi = lang === 'hi';
+
+  const heroTitle1 = (isHindi ? contentOverrides['hero.title1.hi'] : contentOverrides['hero.title1.en']) || t.hero.titleLine1;
+  const heroTitle2 = (isHindi ? contentOverrides['hero.title2.hi'] : contentOverrides['hero.title2.en']) || t.hero.titleLine2;
+  const heroSubtitle = (isHindi ? contentOverrides['hero.sub.hi'] : contentOverrides['hero.sub.en']) || t.hero.subtitle;
+  const initiatives = contentOverrides['trackRecord.initiatives'] || t.impactSection.initiatives;
 
   const handleNavigate = (pageId) => {
     setActivePage(pageId);
@@ -51,13 +58,13 @@ export const HomePage = ({ setActivePage }) => {
 
               {/* Main Headline with Brand Colors & Devanagari Title Font */}
               <h1 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-4xl sm:text-6xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.15]`}>
-                <span className="text-brand-green block">{t.hero.titleLine1}</span>
-                <span className="text-brand-pink block mt-1">{t.hero.titleLine2}</span>
+                <span className="text-brand-green block">{heroTitle1}</span>
+                <span className="text-brand-pink block mt-1">{heroTitle2}</span>
               </h1>
 
               {/* Subtitle */}
               <p className={`${isHindi ? 'font-hi-body' : ''} text-base sm:text-lg text-slate-600 leading-relaxed font-normal max-w-2xl`}>
-                {t.hero.subtitle}
+                {heroSubtitle}
               </p>
 
               {/* Action Buttons - 3 Core Engines */}
@@ -189,8 +196,18 @@ export const HomePage = ({ setActivePage }) => {
             <span className="px-3.5 py-1 rounded-md bg-brand-pink-soft text-brand-pink border border-brand-pink/30 text-xs font-bold uppercase tracking-wider">
               {t.impactSection.badge}
             </span>
-            <h2 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-2xl sm:text-4xl font-extrabold text-slate-900`}>
-              {t.impactSection.title}
+            <h2 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-2xl sm:text-4xl font-extrabold text-slate-900 leading-[1.2]`}>
+              {isHindi ? (
+                <>
+                  <span className="block">प्रूवन ट्रैक रिकॉर्ड एवं</span>
+                  <span className="text-brand-pink block mt-0.5">मापने योग्य प्रभाव</span>
+                </>
+              ) : (
+                <>
+                  <span className="block">Proven Track Record &</span>
+                  <span className="text-brand-pink block mt-0.5">Measurable Impact</span>
+                </>
+              )}
             </h2>
             <p className={`${isHindi ? 'font-hi-body' : ''} text-xs sm:text-sm text-slate-600`}>
               {t.impactSection.subtitle}
@@ -199,7 +216,7 @@ export const HomePage = ({ setActivePage }) => {
 
           {/* ALL 4 INITIATIVES DISPLAYED SIMULTANEOUSLY (No hidden tabs, zero scroll on web!) */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {t.impactSection.initiatives.map((item, idx) => (
+            {initiatives.map((item, idx) => (
               <div 
                 key={item.id}
                 className="bg-surface-50 hover:bg-white rounded-2xl border border-slate-200 hover:border-brand-pink/60 p-5 flex flex-col justify-between transition-all duration-300 group shadow-sm hover:shadow-md"

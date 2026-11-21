@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { LanguageProvider, useLanguage } from './context/LanguageContext';
+import { AuthProvider, useAuth } from './context/AuthContext';
+import { ContentProvider } from './context/ContentContext';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { HomePage } from './pages/HomePage';
@@ -10,11 +12,13 @@ import { SolutionsPage } from './pages/SolutionsPage';
 import { AboutPage } from './pages/AboutPage';
 import { InsightsPage } from './pages/InsightsPage';
 import { ContactPage } from './pages/ContactPage';
-import { Lock } from 'lucide-react';
+import { AdminDashboardPage } from './pages/AdminDashboardPage';
+import { Lock, ShieldCheck, Edit3 } from 'lucide-react';
 
 export function AppContent() {
   const [activePage, setActivePage] = useState('home');
   const { lang, t } = useLanguage();
+  const { isAuthenticated, user, logout } = useAuth();
   const isHindi = lang === 'hi';
 
   const renderPage = () => {
@@ -35,6 +39,8 @@ export function AppContent() {
         return <InsightsPage setActivePage={setActivePage} />;
       case 'contact':
         return <ContactPage />;
+      case 'admin':
+        return <AdminDashboardPage setActivePage={setActivePage} />;
       default:
         return <HomePage setActivePage={setActivePage} />;
     }
@@ -43,6 +49,35 @@ export function AppContent() {
   return (
     <div className={`min-h-screen bg-surface-50 text-slate-800 flex flex-col justify-between selection:bg-brand-pink selection:text-white ${isHindi ? 'font-hi-body' : 'font-sans'} relative`}>
       <Header activePage={activePage} setActivePage={setActivePage} />
+      
+      {/* Master Admin Live Session Bar if logged in & browsing public pages */}
+      {isAuthenticated && activePage !== 'admin' && (
+        <div className="fixed top-16 left-0 right-0 z-40 bg-gradient-to-r from-brand-pink to-brand-green text-white px-4 py-1.5 shadow-md flex items-center justify-between text-xs font-bold">
+          <div className="flex items-center space-x-2 max-w-7xl mx-auto w-full justify-between">
+            <span className="flex items-center space-x-1.5">
+              <ShieldCheck className="w-3.5 h-3.5" />
+              <span>{isHindi ? "मास्टर एडमिन मोड सक्रिय:" : "Master Admin Mode:"}</span>
+              <span className="font-mono bg-white/20 px-2 py-0.5 rounded text-[11px]">{user?.email}</span>
+            </span>
+            <div className="flex items-center space-x-2">
+              <button
+                onClick={() => { setActivePage('admin'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                className="px-2.5 py-0.5 rounded-md bg-white text-slate-900 hover:bg-slate-100 font-bold text-[11px] flex items-center space-x-1 shadow-2xs"
+              >
+                <Edit3 className="w-3 h-3 text-brand-pink" />
+                <span>{isHindi ? "डैशबोर्ड खोलें" : "Open Dashboard"}</span>
+              </button>
+              <button
+                onClick={logout}
+                className="px-2 py-0.5 rounded-md bg-black/30 hover:bg-black/50 text-white text-[11px]"
+              >
+                {isHindi ? "लॉगआउट" : "Logout"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <main className="flex-grow">
         {renderPage()}
       </main>
@@ -67,7 +102,11 @@ export function AppContent() {
 export default function App() {
   return (
     <LanguageProvider>
-      <AppContent />
+      <AuthProvider>
+        <ContentProvider>
+          <AppContent />
+        </ContentProvider>
+      </AuthProvider>
     </LanguageProvider>
   );
 }

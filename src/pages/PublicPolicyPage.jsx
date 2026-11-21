@@ -106,10 +106,18 @@ export const PublicPolicyPage = ({ setActivePage }) => {
           <FileText className="w-3.5 h-3.5" />
           <span>{isHindi ? "इंजन 02 : लोक नीति एवं सुशासन" : "ENGINE 02 : PUBLIC POLICY ADVISORY"}</span>
         </div>
-        <h1 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight`}>
-          {isHindi 
-            ? "प्रशासनिक प्रभावशीलता एवं नीतिगत सुशासन परामर्श" 
-            : "Transforming Governance with Empirical Policy Advisory"}
+        <h1 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.2]`}>
+          {isHindi ? (
+            <>
+              <span className="block">प्रशासनिक प्रभावशीलता एवं</span>
+              <span className="text-brand-pink block mt-1">नीतिगत सुशासन परामर्श</span>
+            </>
+          ) : (
+            <>
+              <span className="block">Transforming Governance with</span>
+              <span className="text-brand-pink block mt-1">Empirical Policy Advisory</span>
+            </>
+          )}
         </h1>
         <p className={`${isHindi ? 'font-hi-body' : ''} text-base sm:text-lg text-slate-600 leading-relaxed max-w-3xl mx-auto`}>
           {isHindi
