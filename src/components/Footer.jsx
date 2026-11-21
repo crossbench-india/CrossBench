@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useContent } from '../context/ContentContext';
-import { Scale, ArrowRight, Mail, Facebook, Instagram, Youtube, Linkedin } from 'lucide-react';
+import { Scale, ArrowRight, Mail, Facebook, Instagram, Youtube, Linkedin, ShieldCheck } from 'lucide-react';
+import { PolicyModal } from './PolicyModal';
 
 export const Footer = ({ setActivePage }) => {
   const { lang, t } = useLanguage();
   const { socialLinks } = useContent();
+  const [activePolicyModal, setActivePolicyModal] = useState(null);
   const isHindi = lang === 'hi';
 
   const handleLinkClick = (pageId) => {
     setActivePage(pageId);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const openPolicy = (type) => {
+    setActivePolicyModal(type);
   };
 
   return (
@@ -168,18 +174,42 @@ export const Footer = ({ setActivePage }) => {
 
         </div>
 
-        {/* Bottom Bar: Clean copyright & Single Webmail contact@crossbench.in */}
+        {/* Bottom Bar: Clean copyright on Left & Basic Policies on Right (Single Webmail removed as requested) */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-3">
           <p>{t.footer.copyright}</p>
-          <a 
-            href="mailto:contact@crossbench.in" 
-            className="flex items-center space-x-1.5 font-mono text-[11px] text-slate-600 hover:text-brand-pink transition-colors"
-          >
-            <Mail className="w-3.5 h-3.5 text-brand-pink" />
-            <span>contact@crossbench.in</span>
-          </a>
+          
+          {/* Institutional Policies Link Bar */}
+          <div className="flex flex-wrap items-center gap-x-3.5 gap-y-1 text-slate-500 font-medium text-[11px] sm:text-xs">
+            <button
+              onClick={() => openPolicy('privacy')}
+              className="hover:text-brand-pink transition-colors hover:underline"
+            >
+              {isHindi ? "गोपनीयता नीति" : "Privacy Policy"}
+            </button>
+            <span className="text-slate-300">•</span>
+            <button
+              onClick={() => openPolicy('terms')}
+              className="hover:text-brand-pink transition-colors hover:underline"
+            >
+              {isHindi ? "अनुबंध शर्तें" : "Terms of Engagement"}
+            </button>
+            <span className="text-slate-300">•</span>
+            <button
+              onClick={() => openPolicy('integrity')}
+              className="hover:text-brand-pink transition-colors hover:underline"
+            >
+              {isHindi ? "अखंडता कोड" : "Integrity Code"}
+            </button>
+          </div>
         </div>
       </div>
+
+      {/* Policy Details Modal */}
+      <PolicyModal 
+        isOpen={Boolean(activePolicyModal)} 
+        onClose={() => setActivePolicyModal(null)} 
+        policyType={activePolicyModal || 'privacy'} 
+      />
     </footer>
   );
 };

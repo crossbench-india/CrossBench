@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useContent } from '../context/ContentContext';
+import { AnimatedCounter } from '../components/AnimatedCounter';
 import { 
   Vote, 
   FileText, 
@@ -22,7 +23,8 @@ import {
   Sparkles,
   ChevronRight,
   X,
-  Download
+  Download,
+  Trophy
 } from 'lucide-react';
 
 export const HomePage = ({ setActivePage }) => {
@@ -49,6 +51,26 @@ export const HomePage = ({ setActivePage }) => {
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-brand-green/10 rounded-full blur-3xl pointer-events-none animate-float-slow" />
         <div className="absolute top-1/2 -left-28 w-80 h-80 bg-brand-pink/10 rounded-full blur-3xl pointer-events-none animate-float-reverse" />
         <div className="absolute bottom-10 right-1/4 w-64 h-64 bg-brand-lime/15 rounded-full blur-2xl pointer-events-none animate-pulse-subtle" />
+
+        {/* Subtle Indian Parliamentary / Governance Geometric Arc Motif */}
+        <div className="absolute right-0 top-1/4 w-[480px] h-[480px] pointer-events-none opacity-[0.045] select-none hidden lg:block">
+          <svg viewBox="0 0 200 200" className="w-full h-full stroke-current text-brand-green fill-none">
+            <circle cx="100" cy="100" r="92" strokeWidth="1" strokeDasharray="3 3" />
+            <circle cx="100" cy="100" r="74" strokeWidth="1.5" />
+            <circle cx="100" cy="100" r="54" strokeWidth="1" strokeDasharray="2 2" />
+            <circle cx="100" cy="100" r="32" strokeWidth="2" />
+            {Array.from({ length: 24 }).map((_, i) => (
+              <line 
+                key={i} 
+                x1="100" 
+                y1="100" 
+                x2={100 + 92 * Math.cos((i * 15 * Math.PI) / 180)} 
+                y2={100 + 92 * Math.sin((i * 15 * Math.PI) / 180)} 
+                strokeWidth="0.75" 
+              />
+            ))}
+          </svg>
+        </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
@@ -117,6 +139,24 @@ export const HomePage = ({ setActivePage }) => {
                   <span>Air-Gapped Client Security</span>
                 </span>
               </div>
+
+              {/* Live Pan-India Electoral Telemetry & Growth Indicators */}
+              <div className="pt-2 flex flex-wrap items-center gap-2.5">
+                <div className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-white/90 border border-slate-200 text-xs text-slate-700 shadow-2xs">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-green opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-green"></span>
+                  </span>
+                  <span className="font-bold text-slate-900">{isHindi ? "पैन-इंडिया ग्रिड:" : "Pan-India Grid:"}</span>
+                  <span className="font-mono text-brand-green font-semibold">28 States & 8 UTs Active</span>
+                </div>
+
+                <div className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-white/90 border border-slate-200 text-xs text-slate-700 shadow-2xs">
+                  <TrendingUp className="w-3.5 h-3.5 text-brand-pink" />
+                  <span className="font-bold text-slate-900">{isHindi ? "वोटर टर्नआउट मॉडल:" : "Turnout Lift:"}</span>
+                  <span className="font-mono text-brand-pink font-semibold">+14.8% Mandate Index</span>
+                </div>
+              </div>
             </div>
 
             {/* Right Hero Visual Cards (5 cols) */}
@@ -141,14 +181,18 @@ export const HomePage = ({ setActivePage }) => {
                     </div>
                   </div>
 
-                  {/* Micro Metric Banner */}
+                  {/* Micro Metric Banner with Animated Counter */}
                   <div className="p-3 grid grid-cols-2 gap-2 text-center pt-3">
                     <div className="p-2.5 rounded-xl bg-brand-green-soft border border-brand-green/20">
-                      <span className="block font-bold text-lg text-brand-green">160B+</span>
+                      <span className="block font-bold text-lg text-brand-green">
+                        <AnimatedCounter value="160B+" />
+                      </span>
                       <span className="text-[11px] text-slate-600 font-semibold">Data Attributes Modeled</span>
                     </div>
                     <div className="p-2.5 rounded-xl bg-brand-pink-soft border border-brand-pink/20">
-                      <span className="block font-bold text-lg text-brand-pink">100%</span>
+                      <span className="block font-bold text-lg text-brand-pink">
+                        <AnimatedCounter value="100%" />
+                      </span>
                       <span className="text-[11px] text-slate-600 font-semibold">Non-Partisan Accuracy</span>
                     </div>
                   </div>
@@ -171,9 +215,32 @@ export const HomePage = ({ setActivePage }) => {
         </div>
       </section>
 
-      {/* 2. STATS & METRICS COUNTER (Jarvis Inspired) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {/* 2. STATS & METRICS COUNTER (Jarvis Inspired with Live Count-Up) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        {/* Subtle Background Growth Chart Wave Graphic */}
+        <div className="absolute inset-x-8 -top-8 bottom-0 pointer-events-none opacity-[0.035] overflow-hidden hidden sm:block">
+          <svg viewBox="0 0 1200 240" className="w-full h-full preserve-3d" preserveAspectRatio="none">
+            <path 
+              d="M0,200 Q300,160 600,100 T1200,30 L1200,240 L0,240 Z" 
+              fill="url(#greenGradient)" 
+            />
+            <path 
+              d="M0,200 Q300,160 600,100 T1200,30" 
+              fill="none" 
+              stroke="#084D16" 
+              strokeWidth="3" 
+              strokeDasharray="6 6"
+            />
+            <defs>
+              <linearGradient id="greenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#084D16" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="#EA005C" stopOpacity="0.2" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
           {t.metrics.map((item, idx) => (
             <div 
               key={idx}
@@ -184,7 +251,7 @@ export const HomePage = ({ setActivePage }) => {
               <div className={`text-4xl font-extrabold font-display mb-2 ${
                 item.badgeColor === 'green' ? 'text-brand-green' : 'text-brand-pink'
               }`}>
-                {item.value}
+                <AnimatedCounter value={item.value} />
               </div>
               <h3 className={`${isHindi ? 'font-hi-heading' : 'font-display'} text-base font-bold text-slate-900 mb-1.5`}>
                 {item.label}
@@ -200,25 +267,15 @@ export const HomePage = ({ setActivePage }) => {
       {/* 3. PROVEN TRACK RECORD - 4 ALL-AT-ONCE INITIATIVES (Light Theme & Simultaneous 4-Column Grid) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white rounded-3xl p-6 sm:p-10 lg:p-12 shadow-sm border border-slate-200">
-          {/* Header */}
-          <div className="max-w-3xl space-y-3 mb-10">
-            <span className="px-3.5 py-1 rounded-md bg-brand-pink-soft text-brand-pink border border-brand-pink/30 text-xs font-bold uppercase tracking-wider">
+          {/* Header - Centered & Single Line as Requested */}
+          <div className="text-center max-w-4xl mx-auto space-y-3 mb-12">
+            <span className="px-3.5 py-1 rounded-md bg-brand-pink-soft text-brand-pink border border-brand-pink/30 text-xs font-bold uppercase tracking-wider inline-block shadow-2xs">
               {t.impactSection.badge}
             </span>
-            <h2 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-2xl sm:text-4xl font-extrabold text-slate-900 leading-[1.2]`}>
-              {isHindi ? (
-                <>
-                  <span className="block">प्रूवन ट्रैक रिकॉर्ड एवं</span>
-                  <span className="text-brand-pink block mt-0.5">मापने योग्य प्रभाव</span>
-                </>
-              ) : (
-                <>
-                  <span className="block">Proven Track Record &</span>
-                  <span className="text-brand-pink block mt-0.5">Measurable Impact</span>
-                </>
-              )}
+            <h2 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight sm:whitespace-nowrap`}>
+              {isHindi ? "प्रूवन ट्रैक रिकॉर्ड एवं मापने योग्य प्रभाव" : "Proven Track Record & Measurable Impact"}
             </h2>
-            <p className={`${isHindi ? 'font-hi-body' : ''} text-xs sm:text-sm text-slate-600`}>
+            <p className={`${isHindi ? 'font-hi-body' : ''} text-xs sm:text-sm text-slate-600 max-w-2xl mx-auto leading-relaxed`}>
               {t.impactSection.subtitle}
             </p>
           </div>
