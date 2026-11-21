@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAuth, MASTER_ADMIN_EMAIL, MASTER_ADMIN_PASSWORD } from '../context/AuthContext';
+import { useAuth } from '../context/AuthContext';
 import { useLanguage } from '../context/LanguageContext';
 import { 
   Lock, 
@@ -9,9 +9,7 @@ import {
   EyeOff, 
   X, 
   ShieldCheck, 
-  CheckCircle2, 
-  AlertCircle,
-  Copy
+  AlertCircle
 } from 'lucide-react';
 
 export const LoginModal = ({ isOpen, onClose, onLoginSuccess }) => {
@@ -19,11 +17,10 @@ export const LoginModal = ({ isOpen, onClose, onLoginSuccess }) => {
   const { lang } = useLanguage();
   const isHindi = lang === 'hi';
 
-  const [email, setEmail] = useState(MASTER_ADMIN_EMAIL);
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
-  const [copied, setCopied] = useState(false);
 
   if (!isOpen) return null;
 
@@ -38,18 +35,6 @@ export const LoginModal = ({ isOpen, onClose, onLoginSuccess }) => {
     } else {
       setError(res.error);
     }
-  };
-
-  const handleAutoFill = () => {
-    setEmail(MASTER_ADMIN_EMAIL);
-    setPassword(MASTER_ADMIN_PASSWORD);
-    setError('');
-  };
-
-  const copyCredentials = () => {
-    navigator.clipboard.writeText(`Email: ${MASTER_ADMIN_EMAIL}\nPassword: ${MASTER_ADMIN_PASSWORD}`);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
@@ -100,7 +85,7 @@ export const LoginModal = ({ isOpen, onClose, onLoginSuccess }) => {
           {/* Email */}
           <div className="space-y-1.5">
             <label className="block text-xs font-bold uppercase tracking-wider text-slate-700">
-              {isHindi ? "मास्टर एडमिन ईमेल" : "Master Admin Email"}
+              {isHindi ? "ईमेल एड्रेस" : "Email Address"}
             </label>
             <div className="relative">
               <Mail className="absolute left-3.5 top-3.5 w-4 h-4 text-slate-400" />
@@ -146,43 +131,9 @@ export const LoginModal = ({ isOpen, onClose, onLoginSuccess }) => {
             className="w-full py-3 rounded-xl bg-brand-green hover:bg-brand-green-light text-white font-bold text-xs sm:text-sm tracking-wide transition-all shadow-md active:scale-95 flex items-center justify-center space-x-2"
           >
             <Lock className="w-4 h-4" />
-            <span>{isHindi ? "मास्टर एडमिन के रूप में लॉगिन करें" : "Sign In as Master Admin"}</span>
+            <span>{isHindi ? "लॉगिन करें" : "Sign In"}</span>
           </button>
         </form>
-
-        {/* Master Admin Credentials Card (Helper for testing and owner convenience) */}
-        <div className="p-4 rounded-2xl bg-surface-50 border border-slate-200 space-y-2.5">
-          <div className="flex items-center justify-between text-[11px] font-bold text-slate-700">
-            <span className="flex items-center space-x-1.5 text-brand-green">
-              <ShieldCheck className="w-3.5 h-3.5" />
-              <span>{isHindi ? "मास्टर एडमिन क्रेडेंशियल्स (सत्यापित)" : "Authorized Admin Credentials"}</span>
-            </span>
-            <button
-              onClick={handleAutoFill}
-              className="text-brand-pink hover:underline font-bold text-[11px]"
-            >
-              {isHindi ? "ऑटो-फिल करें" : "Auto Fill"}
-            </button>
-          </div>
-
-          <div className="text-[11px] font-mono text-slate-700 space-y-1 bg-white p-2.5 rounded-lg border border-slate-200">
-            <div><span className="text-slate-400 font-sans">Email:</span> {MASTER_ADMIN_EMAIL}</div>
-            <div><span className="text-slate-400 font-sans">Password:</span> {MASTER_ADMIN_PASSWORD}</div>
-          </div>
-
-          <div className="flex items-center justify-between pt-1">
-            <button
-              onClick={copyCredentials}
-              className="text-[11px] text-slate-500 hover:text-slate-800 flex items-center space-x-1 font-medium"
-            >
-              <Copy className="w-3 h-3" />
-              <span>{copied ? (isHindi ? "कॉपी हो गया!" : "Copied!") : (isHindi ? "विवरण कॉपी करें" : "Copy details")}</span>
-            </button>
-            <span className="text-[10px] text-slate-400">
-              {isHindi ? "256-बिट एन्क्रिप्टेड" : "256-bit Encrypted"}
-            </span>
-          </div>
-        </div>
       </div>
     </div>
   );

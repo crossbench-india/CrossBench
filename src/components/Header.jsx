@@ -7,11 +7,9 @@ import {
   X, 
   Globe, 
   ChevronRight, 
-  Lock,
   LogIn,
   LogOut,
-  ShieldCheck,
-  UserCheck
+  ShieldCheck
 } from 'lucide-react';
 
 export const Header = ({ activePage, setActivePage }) => {
@@ -45,7 +43,7 @@ export const Header = ({ activePage, setActivePage }) => {
   if (isAuthenticated) {
     navItems.push({
       id: 'admin',
-      label: isHindi ? 'एडमिन डैशबोर्ड' : 'Admin Dashboard',
+      label: isHindi ? 'एडमिन' : 'Admin',
       isAdmin: true
     });
   }
@@ -79,7 +77,7 @@ export const Header = ({ activePage, setActivePage }) => {
               />
             </div>
 
-            {/* Desktop Navigation */}
+            {/* Desktop Navigation with Integrated Language Toggle & Simple Login Icon */}
             <nav className="hidden xl:flex items-center space-x-1">
               {navItems.map((item) => (
                 <button
@@ -99,61 +97,55 @@ export const Header = ({ activePage, setActivePage }) => {
                   <span>{item.label}</span>
                 </button>
               ))}
+
+              {/* Language Toggle right beside the menu bar items */}
+              <div className="pl-2 border-l border-slate-200 ml-1 flex items-center space-x-2">
+                <button
+                  onClick={toggleLanguage}
+                  className="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200 text-xs font-bold text-slate-700 transition-all shadow-xs"
+                  title="Switch Language / भाषा बदलें"
+                >
+                  <Globe className="w-3.5 h-3.5 text-brand-green" />
+                  <span className={lang === 'en' ? 'text-brand-green font-extrabold' : 'text-slate-400'}>EN</span>
+                  <span className="text-slate-300">|</span>
+                  <span className={lang === 'hi' ? 'text-brand-pink font-extrabold' : 'text-slate-400'}>हिंदी</span>
+                </button>
+
+                {/* Simple Login Icon Button (without bulky text) */}
+                {!isAuthenticated ? (
+                  <button
+                    onClick={() => setLoginModalOpen(true)}
+                    className="p-1.5 rounded-lg text-slate-500 hover:text-brand-green hover:bg-slate-100 transition-colors"
+                    title={isHindi ? "लॉगिन करें" : "Sign In"}
+                    aria-label="Sign In"
+                  >
+                    <LogIn className="w-4 h-4" />
+                  </button>
+                ) : (
+                  <div className="flex items-center space-x-1">
+                    <button
+                      onClick={() => handleNavClick('admin')}
+                      className="p-1.5 rounded-lg text-brand-pink hover:bg-brand-pink-soft transition-colors"
+                      title={isHindi ? "एडमिन डैशबोर्ड" : "Admin Dashboard"}
+                      aria-label="Admin Dashboard"
+                    >
+                      <ShieldCheck className="w-4 h-4" />
+                    </button>
+                    <button
+                      onClick={logout}
+                      className="p-1.5 rounded-lg text-slate-400 hover:text-red-600 hover:bg-red-50 transition-colors"
+                      title={isHindi ? "लॉगआउट करें" : "Sign Out"}
+                      aria-label="Sign Out"
+                    >
+                      <LogOut className="w-4 h-4" />
+                    </button>
+                  </div>
+                )}
+              </div>
             </nav>
 
-            {/* Right Controls: Exactly ONE Language Switcher & Master Admin Login */}
-            <div className="hidden sm:flex items-center space-x-3">
-              {/* Single Clean Language Switcher */}
-              <button
-                onClick={toggleLanguage}
-                className="flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200 hover:border-brand-green/50 text-xs font-bold text-slate-700 transition-all shadow-sm"
-                title="Switch Language / भाषा बदलें"
-              >
-                <Globe className="w-3.5 h-3.5 text-brand-green" />
-                <span className={lang === 'en' ? 'text-brand-green font-extrabold' : 'text-slate-400'}>EN</span>
-                <span className="text-slate-300">|</span>
-                <span className={lang === 'hi' ? 'text-brand-pink font-extrabold' : 'text-slate-400'}>हिंदी</span>
-              </button>
-
-              {/* Master Admin Login / Session Control (Replaces Schedule Consultation) */}
-              {!isAuthenticated ? (
-                <button
-                  onClick={() => setLoginModalOpen(true)}
-                  className="px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 font-bold text-xs tracking-wide transition-all border border-slate-200 flex items-center space-x-1.5 active:scale-95 shadow-2xs"
-                  title="Master Admin Login / एडमिन लॉगिन"
-                >
-                  <LogIn className="w-3.5 h-3.5 text-brand-green" />
-                  <span>{isHindi ? "लॉगिन" : "Login"}</span>
-                </button>
-              ) : (
-                <div className="flex items-center space-x-1.5">
-                  <button
-                    onClick={() => handleNavClick('admin')}
-                    className="px-3 py-1.5 rounded-xl bg-brand-pink text-white font-bold text-xs flex items-center space-x-1 shadow-sm hover:bg-brand-pink-hover transition-all"
-                  >
-                    <ShieldCheck className="w-3.5 h-3.5" />
-                    <span>{isHindi ? "डैशबोर्ड" : "Admin"}</span>
-                  </button>
-                  <button
-                    onClick={logout}
-                    className="p-1.5 rounded-lg text-slate-400 hover:text-red-600 hover:bg-red-50 transition-colors"
-                    title={isHindi ? "लॉगआउट करें" : "Sign Out"}
-                  >
-                    <LogOut className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              )}
-            </div>
-
-            {/* Mobile Controls */}
+            {/* Mobile Header: ONLY Hamburger Menu (No language switch on mobile header bar) */}
             <div className="flex items-center space-x-2 xl:hidden">
-              <button
-                onClick={toggleLanguage}
-                className="px-2.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-xs font-bold text-brand-green"
-              >
-                {lang === 'en' ? 'हिंदी' : 'EN'}
-              </button>
-
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="p-2 rounded-lg text-slate-700 hover:text-brand-green bg-slate-100 border border-slate-200"
@@ -217,34 +209,49 @@ export const Header = ({ activePage, setActivePage }) => {
               </div>
             </div>
 
-            {/* Bottom Actions: Admin Login / Dashboard */}
+            {/* Drawer Bottom: Language switch at the VERY BOTTOM & Simple Login Icon */}
             <div className="pt-6 border-t border-slate-100 space-y-3">
-              {!isAuthenticated ? (
+              <div className="flex items-center justify-between">
+                {/* Language Switcher at the bottom of menu */}
                 <button
-                  onClick={() => { setMobileMenuOpen(false); setLoginModalOpen(true); }}
-                  className="w-full py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-sm"
+                  onClick={toggleLanguage}
+                  className="flex items-center space-x-2 px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs font-bold text-slate-700 hover:border-brand-green/50 transition-colors shadow-2xs"
                 >
-                  <LogIn className="w-4 h-4 text-brand-green" />
-                  <span>{isHindi ? "मास्टर एडमिन लॉगिन" : "Master Admin Sign In"}</span>
+                  <Globe className="w-4 h-4 text-brand-green" />
+                  <span className={lang === 'en' ? 'text-brand-green font-extrabold' : 'text-slate-400'}>English</span>
+                  <span className="text-slate-300">|</span>
+                  <span className={lang === 'hi' ? 'text-brand-pink font-extrabold' : 'text-slate-400'}>हिंदी</span>
                 </button>
-              ) : (
-                <div className="space-y-2">
-                  <div className="p-3 rounded-xl bg-brand-pink-soft text-xs text-brand-pink font-bold flex items-center justify-between">
-                    <span className="flex items-center space-x-1.5">
-                      <ShieldCheck className="w-4 h-4" />
-                      <span>{user?.email}</span>
-                    </span>
-                    <span className="text-[10px] uppercase tracking-wider bg-brand-pink text-white px-2 py-0.5 rounded">Admin</span>
-                  </div>
+
+                {/* Simple Login Icon on Mobile */}
+                {!isAuthenticated ? (
                   <button
-                    onClick={() => { logout(); setMobileMenuOpen(false); }}
-                    className="w-full py-2.5 rounded-xl bg-red-50 text-red-700 font-bold text-xs flex items-center justify-center space-x-1.5"
+                    onClick={() => { setMobileMenuOpen(false); setLoginModalOpen(true); }}
+                    className="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors"
+                    title={isHindi ? "लॉगिन करें" : "Sign In"}
+                    aria-label="Sign In"
                   >
-                    <LogOut className="w-3.5 h-3.5" />
-                    <span>{isHindi ? "लॉगआउट करें" : "Sign Out"}</span>
+                    <LogIn className="w-4 h-4 text-brand-green" />
                   </button>
-                </div>
-              )}
+                ) : (
+                  <div className="flex items-center space-x-1.5">
+                    <button
+                      onClick={() => handleNavClick('admin')}
+                      className="p-2 rounded-xl bg-brand-pink-soft text-brand-pink font-bold text-xs flex items-center space-x-1"
+                    >
+                      <ShieldCheck className="w-3.5 h-3.5" />
+                      <span>Admin</span>
+                    </button>
+                    <button
+                      onClick={() => { logout(); setMobileMenuOpen(false); }}
+                      className="p-2 rounded-xl text-slate-400 hover:text-red-600 hover:bg-red-50"
+                      title="Sign Out"
+                    >
+                      <LogOut className="w-4 h-4" />
+                    </button>
+                  </div>
+                )}
+              </div>
 
               <p className="text-center text-[11px] text-slate-400 font-medium">
                 {t.hero.guarantee}
