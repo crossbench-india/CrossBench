@@ -14,7 +14,8 @@ import { Lock } from 'lucide-react';
 
 export function AppContent() {
   const [activePage, setActivePage] = useState('home');
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
+  const isHindi = lang === 'hi';
 
   const renderPage = () => {
     switch (activePage) {
@@ -40,7 +41,7 @@ export function AppContent() {
   };
 
   return (
-    <div className="min-h-screen bg-surface-50 text-slate-800 flex flex-col justify-between selection:bg-brand-pink selection:text-white font-sans relative">
+    <div className={`min-h-screen bg-surface-50 text-slate-800 flex flex-col justify-between selection:bg-brand-pink selection:text-white ${isHindi ? 'font-hi-body' : 'font-sans'} relative`}>
       <Header activePage={activePage} setActivePage={setActivePage} />
       <main className="flex-grow">
         {renderPage()}

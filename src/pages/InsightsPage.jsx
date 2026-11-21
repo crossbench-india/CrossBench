@@ -130,10 +130,10 @@ export const InsightsPage = ({ setActivePage }) => {
           <BookOpen className="w-3.5 h-3.5 text-brand-green" />
           <span>{isHindi ? "संस्थागत शोध एवं विश्लेषण" : "RESEARCH & THOUGHT LEADERSHIP"}</span>
         </div>
-        <h1 className="font-display text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
+        <h1 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight`}>
           {isHindi ? "दृष्टिकोण, श्वेतपत्र एवं चुनावी विश्लेषण" : "Perspectives, Whitepapers & Policy Briefs"}
         </h1>
-        <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-3xl mx-auto">
+        <p className={`${isHindi ? 'font-hi-body' : ''} text-base sm:text-lg text-slate-600 leading-relaxed max-w-3xl mx-auto`}>
           {isHindi 
             ? "हमारे वरिष्ठ शोधकर्ताओं और रणनीतिकारों द्वारा तैयार किए गए प्रामाणिक श्वेतपत्र, जो भारतीय राजनीति और लोक नीति के सबसे जटिल सवालों के वैज्ञानिक उत्तर प्रस्तुत करते हैं।"
             : "Rigorous, non-partisan empirical whitepapers authored by our senior practice faculty, addressing the most pressing strategic dilemmas in modern Indian elections and public administration."}
@@ -157,7 +157,7 @@ export const InsightsPage = ({ setActivePage }) => {
                 : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200'
             }`}
           >
-            {tab.label}
+            <span className={isHindi ? 'font-hi-heading' : ''}>{tab.label}</span>
           </button>
         ))}
       </div>
@@ -180,7 +180,7 @@ export const InsightsPage = ({ setActivePage }) => {
                 </span>
               </div>
 
-              <h2 className="font-display font-bold text-xl text-slate-900 group-hover:text-brand-pink transition-colors leading-snug">
+              <h2 className={`${isHindi ? 'font-hi-heading' : 'font-display'} font-bold text-xl text-slate-900 group-hover:text-brand-pink transition-colors leading-snug`}>
                 {pub.title}
               </h2>
 
@@ -188,7 +188,7 @@ export const InsightsPage = ({ setActivePage }) => {
                 {pub.author} • {pub.date}
               </p>
 
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              <p className={`${isHindi ? 'font-hi-body' : ''} text-xs sm:text-sm text-slate-600 leading-relaxed`}>
                 {pub.abstract}
               </p>
             </div>
@@ -229,7 +229,7 @@ export const InsightsPage = ({ setActivePage }) => {
               <span className="text-xs font-bold text-brand-pink tracking-widest uppercase">
                 {activeModal.tag} • {activeModal.date}
               </span>
-              <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">
+              <h2 className={`${isHindi ? 'font-hi-heading' : 'font-display'} text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1`}>
                 {activeModal.title}
               </h2>
               <p className="text-xs text-brand-green mt-1 font-bold">
@@ -241,7 +241,7 @@ export const InsightsPage = ({ setActivePage }) => {
               <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800 mb-1.5">
                 {isHindi ? "संक्षिप्त सारांश (Executive Abstract)" : "Executive Abstract"}
               </h4>
-              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+              <p className={`${isHindi ? 'font-hi-body' : ''} text-xs sm:text-sm text-slate-700 leading-relaxed`}>
                 {activeModal.abstract}
               </p>
             </div>
@@ -254,7 +254,7 @@ export const InsightsPage = ({ setActivePage }) => {
                 {activeModal.keyFindings.map((finding, idx) => (
                   <div key={idx} className="flex items-start space-x-2.5 text-xs sm:text-sm text-slate-700 p-3 rounded-lg bg-surface-50 border border-slate-200">
                     <CheckCircle2 className="w-4 h-4 text-brand-green flex-shrink-0 mt-0.5" />
-                    <span>{finding}</span>
+                    <span className={isHindi ? 'font-hi-body' : ''}>{finding}</span>
                   </div>
                 ))}
               </div>

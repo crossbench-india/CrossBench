@@ -61,12 +61,12 @@ export const AboutPage = ({ setActivePage }) => {
           <Scale className="w-3.5 h-3.5" />
           <span>{isHindi ? "संस्थागत दर्शन" : "INSTITUTIONAL PHILOSOPHY"}</span>
         </div>
-        <h1 className="font-display text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
+        <h1 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight`}>
           {isHindi 
             ? "संसदीय गरिमा और निष्पक्षता का प्रतीक — 'क्रॉस बेंच'" 
             : "The Crossbench Doctrine: Independence as Strategic Capital"}
         </h1>
-        <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-3xl mx-auto">
+        <p className={`${isHindi ? 'font-hi-body' : ''} text-base sm:text-lg text-slate-600 leading-relaxed max-w-3xl mx-auto`}>
           {isHindi
             ? "संसदीय लोकतंत्र में सत्ता और विपक्ष की कतारों के बीच एक विशेष स्थान होता है—'क्रॉस-बेंच'। यहाँ वे सदस्य बैठते हैं जो किसी भी दल के घोषणापत्र से नहीं, बल्कि केवल देशहित और निष्पक्ष विवेक से निर्णय लेते हैं।"
             : "In parliamentary democracy, the crossbenches represent the vanguard of non-aligned independence. Lawmakers sitting across the aisle evaluate legislation on sheer merit, unaffected by party whips. This is the cornerstone of CROSS BENCH."}
@@ -79,17 +79,17 @@ export const AboutPage = ({ setActivePage }) => {
           <span className="text-xs font-bold text-brand-green tracking-widest uppercase">
             {isHindi ? "हमारी उत्पत्ति एवं उद्देश्य" : "OUR GENESIS & RAISON D'ÊTRE"}
           </span>
-          <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-slate-900">
+          <h2 className={`${isHindi ? 'font-hi-heading' : 'font-display'} text-2xl sm:text-3xl font-extrabold text-slate-900`}>
             {isHindi 
               ? "चुनाव जीतने की कुशलता और सुशासन चलाने की समझ का सेतु" 
               : "Bridging the Chasm Between Winning Elections and Governing Effectively"}
           </h2>
-          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+          <p className={`${isHindi ? 'font-hi-body' : ''} text-xs sm:text-sm text-slate-600 leading-relaxed`}>
             {isHindi
               ? "भारतीय राजनीति में अधिकांश संस्थाएं या तो केवल पीआर और चुनाव प्रचार का काम करती हैं, या फिर केवल अकादमिक रिसर्च का। परंतु वास्तविक लोकतंत्र में इन दोनों का अलग रहना विफलता का कारण बनता है। बिना सुशासन के चुनाव नहीं जीते जा सकते, और बिना चुनावी जीत के सुशासन लागू नहीं किया जा सकता।"
               : "Most consulting outfits in India operate either purely as transactional election PR agencies or as detached academic think tanks. In modern governance, this separation is fatal. A government cannot endure without political dexterity, and a political mandate quickly evaporates without governance competence."}
           </p>
-          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+          <p className={`${isHindi ? 'font-hi-body' : ''} text-xs sm:text-sm text-slate-600 leading-relaxed`}>
             {isHindi
               ? "CROSS BENCH की स्थापना इसी खाई को पाटने के लिए की गई है। हम दलों को जनादेश दिलाते हैं और सरकारों को उस जनादेश को मापने योग्य जनकल्याण में बदलने में सहयोग करते हैं।"
               : "CROSS BENCH was founded to integrate both disciplines under a single, non-partisan institutional umbrella: rigorous political science to win power, and empirical policy engineering to exercise power responsibly."}
@@ -131,7 +131,7 @@ export const AboutPage = ({ setActivePage }) => {
           <span className="text-xs font-bold text-brand-pink tracking-widest uppercase">
             {isHindi ? "सत्यनिष्ठा के 5 नियम" : "THE 5 CORE COMMITMENTS"}
           </span>
-          <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-slate-900">
+          <h2 className={`${isHindi ? 'font-hi-heading' : 'font-display'} text-2xl sm:text-3xl font-extrabold text-slate-900`}>
             {isHindi ? "हमारे नैतिक सिद्धांत एवं नियम" : "Our Ethical Operating Principles"}
           </h2>
         </div>
@@ -145,10 +145,10 @@ export const AboutPage = ({ setActivePage }) => {
               <span className="font-display font-extrabold text-3xl text-brand-green/20 block">
                 {code.num}
               </span>
-              <h3 className="font-display font-bold text-lg text-slate-900">
+              <h3 className={`${isHindi ? 'font-hi-heading' : 'font-display'} font-bold text-lg text-slate-900`}>
                 {code.title}
               </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              <p className={`${isHindi ? 'font-hi-body' : ''} text-xs sm:text-sm text-slate-600 leading-relaxed`}>
                 {code.desc}
               </p>
             </div>
@@ -158,10 +158,10 @@ export const AboutPage = ({ setActivePage }) => {
           <div className="p-7 rounded-2xl bg-gradient-to-br from-brand-pink-soft to-white border border-brand-pink/30 shadow-sm flex flex-col justify-between">
             <div className="space-y-3">
               <Lock className="w-6 h-6 text-brand-pink" />
-              <h3 className="font-display font-bold text-lg text-slate-900">
+              <h3 className={`${isHindi ? 'font-hi-heading' : 'font-display'} font-bold text-lg text-slate-900`}>
                 {isHindi ? "गोपनीयता गारंटी" : "Confidentiality Covenant"}
               </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              <p className={`${isHindi ? 'font-hi-body' : ''} text-xs sm:text-sm text-slate-600 leading-relaxed`}>
                 {isHindi
                   ? "हमारे सभी अनुबंध कानूनी रूप से बाध्यकारी गैर-प्रकटीकरण समझौतों (NDAs) से सुरक्षित होते हैं।"
                   : "Every client relationship is legally shielded behind ironclad non-disclosure covenants."}
@@ -183,10 +183,10 @@ export const AboutPage = ({ setActivePage }) => {
       {/* Hubs / Coordinating Presence */}
       <div className="bg-white p-8 sm:p-10 rounded-3xl border border-slate-200 text-center space-y-3 max-w-4xl mx-auto shadow-sm">
         <MapPin className="w-8 h-8 text-brand-green mx-auto" />
-        <h3 className="font-display text-xl sm:text-2xl font-bold text-slate-900">
+        <h3 className={`${isHindi ? 'font-hi-heading' : 'font-display'} text-xl sm:text-2xl font-bold text-slate-900`}>
           {isHindi ? "नई दिल्ली समन्वय केंद्र एवं अखिल भारतीय फील्ड उपस्थिति" : "New Delhi Coordinating Hub & Pan-India Field Desks"}
         </h3>
-        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-2xl mx-auto">
+        <p className={`${isHindi ? 'font-hi-body' : ''} text-xs sm:text-sm text-slate-600 leading-relaxed max-w-2xl mx-auto`}>
           {isHindi 
             ? "हमारा मुख्य रणनीतिक समन्वय कार्यालय राष्ट्रीय राजधानी क्षेत्र (नई दिल्ली) में स्थित है, जहाँ से देश भर के विभिन्न राज्यों में चुनाव और नीतिगत प्रोजेक्ट्स का संचालन किया जाता है।"
             : "Headquartered in the administrative and diplomatic enclave of New Delhi, coordinating state election desks, polling field teams, and policy research faculties across the nation."}

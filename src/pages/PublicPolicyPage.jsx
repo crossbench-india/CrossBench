@@ -106,12 +106,12 @@ export const PublicPolicyPage = ({ setActivePage }) => {
           <FileText className="w-3.5 h-3.5" />
           <span>{isHindi ? "इंजन 02 : लोक नीति एवं सुशासन" : "ENGINE 02 : PUBLIC POLICY ADVISORY"}</span>
         </div>
-        <h1 className="font-display text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
+        <h1 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight`}>
           {isHindi 
             ? "प्रशासनिक प्रभावशीलता एवं नीतिगत सुशासन परामर्श" 
             : "Transforming Governance with Empirical Policy Advisory"}
         </h1>
-        <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-3xl mx-auto">
+        <p className={`${isHindi ? 'font-hi-body' : ''} text-base sm:text-lg text-slate-600 leading-relaxed max-w-3xl mx-auto`}>
           {isHindi
             ? "CROSS BENCH सरकारी मंत्रालयों, जन-प्रतिनिधियों और नागरिक संस्थाओं को निष्पक्ष थर्ड-पार्टी योजना ऑडिट, विधायी अनुसंधान और सिटिजन फीडबैक लूप्स प्रदान करता है।"
             : "Bridging the critical divide between policy intent and ground execution. We assist administrative leadership with independent scheme evaluations, legislative analysis, and citizen-centric governance metrics."}
@@ -147,7 +147,7 @@ export const PublicPolicyPage = ({ setActivePage }) => {
                       <span className="text-[11px] font-bold text-brand-pink tracking-widest uppercase">
                         {isHindi ? `पॉलिसी मॉड्यूल 0${idx + 1}` : `POLICY PILLAR 0${idx + 1}`}
                       </span>
-                      <h2 className="font-display text-xl sm:text-2xl font-bold text-slate-900">
+                      <h2 className={`${isHindi ? 'font-hi-heading' : 'font-display'} text-xl sm:text-2xl font-bold text-slate-900`}>
                         {mod.title}
                       </h2>
                     </div>
@@ -157,7 +157,7 @@ export const PublicPolicyPage = ({ setActivePage }) => {
                     {mod.tagline}
                   </p>
 
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  <p className={`${isHindi ? 'font-hi-body' : ''} text-xs sm:text-sm text-slate-600 leading-relaxed`}>
                     {mod.desc}
                   </p>
 
@@ -185,10 +185,10 @@ export const PublicPolicyPage = ({ setActivePage }) => {
       {/* Bottom CTA */}
       <div className="bg-gradient-to-r from-slate-900 to-brand-green text-white p-8 sm:p-10 rounded-3xl shadow-lg flex flex-col sm:flex-row items-center justify-between gap-6">
         <div>
-          <h3 className="font-display text-xl sm:text-2xl font-bold text-white mb-1">
+          <h3 className={`${isHindi ? 'font-hi-heading' : 'font-display'} text-xl sm:text-2xl font-bold text-white mb-1`}>
             {isHindi ? "मंत्रालय अथवा नीतिगत परामर्श हेतु संपर्क करें" : "Request a Policy Advisory & Impact Briefing"}
           </h3>
-          <p className="text-xs sm:text-sm text-slate-200">
+          <p className={`${isHindi ? 'font-hi-body' : ''} text-xs sm:text-sm text-slate-200`}>
             {isHindi 
               ? "सरकारी निकायों, नीति समन्वयकों और संस्थागत प्रमुखों के लिए सीधी गोपनीय बैठक।"
               : "Discreet consultations arranged for administrative leadership and foundation heads."}

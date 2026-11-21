@@ -56,10 +56,10 @@ export const ContactPage = () => {
           <Lock className="w-3.5 h-3.5 text-brand-pink" />
           <span>{isHindi ? "गोपनीय इनटेक प्रोटोकॉल" : "CONFIDENTIAL INTAKE PROTOCOL"}</span>
         </div>
-        <h1 className="font-display text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
+        <h1 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight`}>
           {t.contact.title}
         </h1>
-        <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+        <p className={`${isHindi ? 'font-hi-body' : ''} text-base sm:text-lg text-slate-600 leading-relaxed`}>
           {t.contact.subtitle}
         </p>
       </div>
@@ -71,12 +71,12 @@ export const ContactPage = () => {
           <div className="bg-brand-green-soft p-8 rounded-3xl border border-brand-green/20 space-y-5">
             <div className="flex items-center space-x-3 text-brand-green">
               <ShieldCheck className="w-7 h-7" />
-              <h3 className="font-display font-bold text-lg text-brand-green">
+              <h3 className={`${isHindi ? 'font-hi-heading' : 'font-display'} font-bold text-lg text-brand-green`}>
                 {isHindi ? "संस्थागत गोपनीयता की गारंटी" : "Confidentiality Covenant"}
               </h3>
             </div>
 
-            <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+            <p className={`${isHindi ? 'font-hi-body' : ''} text-xs sm:text-sm text-slate-700 leading-relaxed`}>
               {t.contact.intakeNote}
             </p>
 

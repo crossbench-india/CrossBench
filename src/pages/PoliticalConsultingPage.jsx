@@ -108,12 +108,12 @@ export const PoliticalConsultingPage = ({ setActivePage }) => {
           <Vote className="w-3.5 h-3.5" />
           <span>{isHindi ? "इंजन 01 : राजनीतिक रणनीति" : "ENGINE 01 : POLITICAL STRATEGY"}</span>
         </div>
-        <h1 className="font-display text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
+        <h1 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight`}>
           {isHindi 
             ? "डेटा-आधारित चुनावी रणनीति एवं वॉर रूम प्रबंधन" 
             : "Data-Driven Electoral Strategy & Campaign Machinery"}
         </h1>
-        <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-3xl mx-auto">
+        <p className={`${isHindi ? 'font-hi-body' : ''} text-base sm:text-lg text-slate-600 leading-relaxed max-w-3xl mx-auto`}>
           {isHindi
             ? "CROSS BENCH किसी भी दल या जन-प्रतिनिधि के अभियान को पारंपरिक अनुमानों के बजाय सटीक सांख्यिकी, जमीनी इंटेलिजेंस और 24x7 वॉर रूम नियंत्रण से सशक्त बनाता है।"
             : "Replacing guesswork with statistical precision. We engineer end-to-end election campaigns that align voter sentiment with strategic narrative, grassroots machinery, and decisive booth-level turnout."}
@@ -149,7 +149,7 @@ export const PoliticalConsultingPage = ({ setActivePage }) => {
                       <span className="text-[11px] font-bold text-brand-green tracking-widest uppercase">
                         {isHindi ? `मॉड्यूल 0${idx + 1}` : `MODULE 0${idx + 1}`}
                       </span>
-                      <h2 className="font-display text-xl sm:text-2xl font-bold text-slate-900">
+                      <h2 className={`${isHindi ? 'font-hi-heading' : 'font-display'} text-xl sm:text-2xl font-bold text-slate-900`}>
                         {mod.title}
                       </h2>
                     </div>
@@ -159,7 +159,7 @@ export const PoliticalConsultingPage = ({ setActivePage }) => {
                     {mod.tagline}
                   </p>
 
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  <p className={`${isHindi ? 'font-hi-body' : ''} text-xs sm:text-sm text-slate-600 leading-relaxed`}>
                     {mod.desc}
                   </p>
 
@@ -187,10 +187,10 @@ export const PoliticalConsultingPage = ({ setActivePage }) => {
       {/* Bottom CTA */}
       <div className="bg-gradient-to-r from-brand-green to-slate-900 text-white p-8 sm:p-10 rounded-3xl shadow-lg flex flex-col sm:flex-row items-center justify-between gap-6">
         <div>
-          <h3 className="font-display text-xl sm:text-2xl font-bold text-white mb-1">
+          <h3 className={`${isHindi ? 'font-hi-heading' : 'font-display'} text-xl sm:text-2xl font-bold text-white mb-1`}>
             {isHindi ? "आगामी चुनाव के लिए गोपनीय रणनीति सत्र बुक करें" : "Initiate a Confidential Campaign Consultation"}
           </h3>
-          <p className="text-xs sm:text-sm text-slate-200">
+          <p className={`${isHindi ? 'font-hi-body' : ''} text-xs sm:text-sm text-slate-200`}>
             {isHindi 
               ? "सभी चर्चाएं सख्त गैर-प्रकटीकरण (NDA) के तहत केवल वरिष्ठ राजनीतिक रणनीतिकारों द्वारा संचालित की जाती हैं।"
               : "All inquiries are strictly confidential under bilateral non-disclosure covenants."}

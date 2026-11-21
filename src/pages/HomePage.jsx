@@ -181,18 +181,18 @@ export const HomePage = ({ setActivePage }) => {
         </div>
       </section>
 
-      {/* 3. PROVEN TRACK RECORD - 4 ALL-AT-ONCE INITIATIVES (User requested: no scrolling, all 4 visible at once!) */}
+      {/* 3. PROVEN TRACK RECORD - 4 ALL-AT-ONCE INITIATIVES (Light Theme & Simultaneous 4-Column Grid) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-xl border border-slate-800">
+        <div className="bg-white rounded-3xl p-6 sm:p-10 lg:p-12 shadow-sm border border-slate-200">
           {/* Header */}
           <div className="max-w-3xl space-y-3 mb-10">
-            <span className="px-3.5 py-1 rounded-md bg-brand-pink text-white text-xs font-bold uppercase tracking-wider">
+            <span className="px-3.5 py-1 rounded-md bg-brand-pink-soft text-brand-pink border border-brand-pink/30 text-xs font-bold uppercase tracking-wider">
               {t.impactSection.badge}
             </span>
-            <h2 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-2xl sm:text-4xl font-extrabold text-white`}>
+            <h2 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-2xl sm:text-4xl font-extrabold text-slate-900`}>
               {t.impactSection.title}
             </h2>
-            <p className={`${isHindi ? 'font-hi-body' : ''} text-xs sm:text-sm text-slate-300`}>
+            <p className={`${isHindi ? 'font-hi-body' : ''} text-xs sm:text-sm text-slate-600`}>
               {t.impactSection.subtitle}
             </p>
           </div>
@@ -202,57 +202,57 @@ export const HomePage = ({ setActivePage }) => {
             {t.impactSection.initiatives.map((item, idx) => (
               <div 
                 key={item.id}
-                className="bg-slate-800/90 rounded-2xl border border-slate-700/80 p-5 flex flex-col justify-between hover:border-brand-pink/60 transition-all duration-300 group shadow-md"
+                className="bg-surface-50 hover:bg-white rounded-2xl border border-slate-200 hover:border-brand-pink/60 p-5 flex flex-col justify-between transition-all duration-300 group shadow-sm hover:shadow-md"
               >
                 <div className="space-y-4">
                   {/* Photo Thumbnail */}
-                  <div className="h-36 rounded-xl overflow-hidden relative">
+                  <div className="h-36 rounded-xl overflow-hidden relative border border-slate-200/80">
                     <img 
                       src={item.img} 
                       alt={item.title} 
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                     <div className="absolute top-2.5 left-2.5">
-                      <span className="px-2.5 py-0.5 rounded-md bg-brand-pink text-white text-[10px] font-bold uppercase tracking-wider">
+                      <span className="px-2.5 py-0.5 rounded-md bg-brand-pink text-white text-[10px] font-bold uppercase tracking-wider shadow-sm">
                         {item.categoryTag}
                       </span>
                     </div>
-                    <div className="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/70 text-[10px] text-slate-300 font-bold">
+                    <div className="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/60 text-[10px] text-white font-bold">
                       {item.year}
                     </div>
                   </div>
 
                   {/* Title & Headline */}
                   <div>
-                    <h3 className={`${isHindi ? 'font-hi-heading' : 'font-display'} text-base font-bold text-white group-hover:text-brand-pink transition-colors`}>
+                    <h3 className={`${isHindi ? 'font-hi-heading' : 'font-display'} text-base font-bold text-slate-900 group-hover:text-brand-pink transition-colors`}>
                       {item.title}
                     </h3>
-                    <p className="text-xs text-gold-400 font-semibold mt-0.5">
+                    <p className="text-xs text-brand-green font-semibold mt-0.5">
                       {item.headline}
                     </p>
                   </div>
 
                   {/* Summary Description */}
-                  <p className={`${isHindi ? 'font-hi-body' : ''} text-xs text-slate-300 leading-relaxed line-clamp-3`}>
+                  <p className={`${isHindi ? 'font-hi-body' : ''} text-xs text-slate-600 leading-relaxed line-clamp-3`}>
                     {item.desc}
                   </p>
 
                   {/* 2 Key Metric Chips */}
                   <div className="grid grid-cols-2 gap-2 pt-1">
                     {item.stats.map((st, i) => (
-                      <div key={i} className="p-2 rounded-lg bg-slate-900/80 border border-slate-700/60 text-center">
+                      <div key={i} className="p-2 rounded-lg bg-white border border-slate-200 text-center shadow-xs">
                         <span className="block font-bold text-sm text-brand-pink">{st.val}</span>
-                        <span className="text-[10px] text-slate-400 font-medium block truncate">{st.label}</span>
+                        <span className="text-[10px] text-slate-500 font-medium block truncate">{st.label}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
                 {/* Case Study Modal Trigger */}
-                <div className="pt-4 mt-4 border-t border-slate-700/70">
+                <div className="pt-4 mt-4 border-t border-slate-200">
                   <button
                     onClick={() => setSelectedCaseModal(item)}
-                    className="w-full py-2.5 rounded-lg bg-slate-700/70 hover:bg-brand-green text-slate-200 hover:text-white text-xs font-bold transition-all flex items-center justify-center space-x-1.5"
+                    className="w-full py-2.5 rounded-lg bg-brand-green hover:bg-brand-green-light text-white text-xs font-bold transition-all flex items-center justify-center space-x-1.5 shadow-sm"
                   >
                     <span>{isHindi ? "विस्तृत रिपोर्ट देखें" : "View Full Case Report"}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -560,9 +560,9 @@ export const HomePage = ({ setActivePage }) => {
             <div className="pt-3">
               <button
                 onClick={() => handleNavigate('about')}
-                className="px-6 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold tracking-wider transition-colors shadow-sm"
+                className="px-6 py-2.5 rounded-xl bg-brand-green hover:bg-brand-green-light text-white text-xs font-bold tracking-wider transition-colors shadow-sm"
               >
-                Read Full Institutional Charter & Framework
+                {isHindi ? "संस्थागत चार्टर एवं रूपरेखा पढ़ें" : "Read Full Institutional Charter & Framework"}
               </button>
             </div>
           </div>
@@ -588,7 +588,7 @@ export const HomePage = ({ setActivePage }) => {
             onClick={() => handleNavigate('insights')}
             className="text-xs sm:text-sm text-brand-pink hover:text-brand-pink-hover font-bold flex items-center space-x-1.5 self-start sm:self-auto"
           >
-            <span>Browse All Publications</span>
+            <span>{isHindi ? "सभी शोध पत्र देखें" : "Browse All Publications"}</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
@@ -619,7 +619,7 @@ export const HomePage = ({ setActivePage }) => {
                   <span>{art.readTime}</span>
                 </span>
                 <span className="text-brand-pink font-bold group-hover:translate-x-1 transition-transform inline-flex items-center space-x-1">
-                  <span>Read Brief</span>
+                  <span>{isHindi ? "ब्रीफ पढ़ें" : "Read Brief"}</span>
                   <ArrowRight className="w-3 h-3" />
                 </span>
               </div>
@@ -636,10 +636,12 @@ export const HomePage = ({ setActivePage }) => {
               {t.contact.badge}
             </span>
             <h2 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-2xl sm:text-4xl font-extrabold text-white leading-tight`}>
-              Initiate a Strictly Confidential Strategic Consultation
+              {isHindi ? "पूर्णतः गोपनीय रणनीतिक परामर्श प्रारंभ करें" : "Initiate a Strictly Confidential Strategic Consultation"}
             </h2>
             <p className={`${isHindi ? 'font-hi-body' : ''} text-xs sm:text-sm text-slate-200 leading-relaxed`}>
-              Whether you are preparing for an impending legislative election cycle, orchestrating a high-stakes media campaign, or requiring an independent third-party audit of state welfare schemes—our senior practice directors are accessible under non-disclosure confidentiality.
+              {isHindi 
+                ? "चाहे आप आगामी विधानसभा चुनाव की तैयारी कर रहे हों, उच्च-स्तरीय मीडिया व पीआर कैंपेन का संचालन करना चाहते हों, या कल्याणकारी योजनाओं के स्वतंत्र थर्ड-पार्टी मूल्यांकन की आवश्यकता हो—हमारे वरिष्ठ प्रैक्टिस डायरेक्टर्स गैर-प्रकटीकरण अनुबंध (NDA) के तहत उपलब्ध हैं।"
+                : "Whether you are preparing for an impending legislative election cycle, orchestrating a high-stakes media campaign, or requiring an independent third-party audit of state welfare schemes—our senior practice directors are accessible under non-disclosure confidentiality."}
             </p>
             <div className="pt-2">
               <button

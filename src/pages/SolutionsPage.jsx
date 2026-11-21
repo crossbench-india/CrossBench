@@ -170,10 +170,10 @@ export const SolutionsPage = ({ setActivePage }) => {
           <Sparkles className="w-3.5 h-3.5 text-brand-pink" />
           <span>{isHindi ? "अनुकूलित समाधान" : "TAILORED SOLUTIONS"}</span>
         </div>
-        <h1 className="font-display text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
+        <h1 className={`${isHindi ? 'font-hi-title' : 'font-display'} text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight`}>
           {isHindi ? "हितधारक अनुसार विशेषज्ञ परामर्श समाधान" : "Bespoke Solutions by Stakeholder"}
         </h1>
-        <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
+        <p className={`${isHindi ? 'font-hi-body' : ''} text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto`}>
           {isHindi 
             ? "राजनीतिक दल, जन-प्रतिनिधि, सरकारी मंत्रालय या गैर-सरकारी संस्था—CROSS BENCH प्रत्येक वर्ग की विशिष्ट प्राथमिकताओं के अनुकूल रणनीति तैयार करता है।"
             : "Whether governing, contesting, or advocating—we engineer specialized advisory frameworks aligned with each stakeholder's operational reality."}
@@ -196,7 +196,7 @@ export const SolutionsPage = ({ setActivePage }) => {
               }`}
             >
               <Icon className="w-4 h-4" />
-              <span>{tab.label}</span>
+              <span className={isHindi ? 'font-hi-heading' : ''}>{tab.label}</span>
             </button>
           );
         })}
@@ -208,7 +208,7 @@ export const SolutionsPage = ({ setActivePage }) => {
           <span className="text-xs font-bold text-brand-green tracking-widest uppercase">
             {isHindi ? "विशिष्ट रणनीतिक रूपरेखा" : "SPECIALIZED ENGAGEMENT BLUEPRINT"}
           </span>
-          <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">
+          <h2 className={`${isHindi ? 'font-hi-heading' : 'font-display'} text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1`}>
             {current.title}
           </h2>
           <p className="text-xs sm:text-sm text-brand-pink font-semibold mt-1">
@@ -228,7 +228,7 @@ export const SolutionsPage = ({ setActivePage }) => {
               {current.challenges.map((ch, i) => (
                 <div key={i} className="flex items-start space-x-2.5 text-xs sm:text-sm text-slate-700">
                   <div className="w-1.5 h-1.5 rounded-full bg-brand-pink mt-2 flex-shrink-0" />
-                  <span>{ch}</span>
+                  <span className={isHindi ? 'font-hi-body' : ''}>{ch}</span>
                 </div>
               ))}
             </div>
@@ -240,7 +240,7 @@ export const SolutionsPage = ({ setActivePage }) => {
               <ShieldCheck className="w-4 h-4 text-brand-green" />
               <span>{isHindi ? "क्रॉस बेंच का समाधान" : "The CROSS BENCH Methodology"}</span>
             </h3>
-            <p className="text-xs sm:text-sm text-slate-800 leading-relaxed pt-1">
+            <p className={`${isHindi ? 'font-hi-body' : ''} text-xs sm:text-sm text-slate-800 leading-relaxed pt-1`}>
               {current.solution}
             </p>
             <div className="pt-2">
@@ -261,7 +261,7 @@ export const SolutionsPage = ({ setActivePage }) => {
             {current.keyDeliverables.map((item, i) => (
               <div key={i} className="flex items-start space-x-2.5 text-xs sm:text-sm text-slate-700 p-3 rounded-xl bg-white border border-slate-200 shadow-sm">
                 <CheckCircle2 className="w-4 h-4 text-brand-green flex-shrink-0 mt-0.5" />
-                <span>{item}</span>
+                <span className={isHindi ? 'font-hi-body' : ''}>{item}</span>
               </div>
             ))}
           </div>
