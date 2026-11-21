@@ -3,7 +3,8 @@ import { useLanguage } from '../context/LanguageContext';
 import { ShieldCheck, Lock, Building, Scale, ArrowUpRight } from 'lucide-react';
 
 export const Footer = ({ setActivePage }) => {
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
+  const isHindi = lang === 'hi';
 
   const handleLinkClick = (pageId) => {
     setActivePage(pageId);
@@ -24,13 +25,13 @@ export const Footer = ({ setActivePage }) => {
               onClick={() => handleLinkClick('home')}
             />
 
-            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-sm">
+            <p className={`${isHindi ? 'font-hi-body' : ''} text-xs sm:text-sm text-slate-600 leading-relaxed max-w-sm`}>
               {t.footer.desc}
             </p>
 
             <div className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-lg bg-brand-green-soft border border-brand-green/20 text-xs font-semibold text-brand-green">
               <Scale className="w-3.5 h-3.5" />
-              <span>100% Non-Partisan & Confidential Advisory</span>
+              <span>100% Non-Partisan, PR & Advisory</span>
             </div>
           </div>
 
@@ -50,10 +51,26 @@ export const Footer = ({ setActivePage }) => {
               </li>
               <li>
                 <button 
-                  onClick={() => handleLinkClick('about')} 
+                  onClick={() => handleLinkClick('political')} 
                   className="hover:text-brand-pink transition-colors"
                 >
-                  {t.nav.about}
+                  {t.nav.political}
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => handleLinkClick('pr')} 
+                  className="hover:text-brand-pink transition-colors text-brand-pink font-semibold"
+                >
+                  {t.nav.pr}
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => handleLinkClick('policy')} 
+                  className="hover:text-brand-pink transition-colors"
+                >
+                  {t.nav.policy}
                 </button>
               </li>
               <li>
@@ -62,6 +79,14 @@ export const Footer = ({ setActivePage }) => {
                   className="hover:text-brand-pink transition-colors"
                 >
                   {t.nav.solutions}
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => handleLinkClick('about')} 
+                  className="hover:text-brand-pink transition-colors"
+                >
+                  {t.nav.about}
                 </button>
               </li>
               <li>
@@ -99,14 +124,22 @@ export const Footer = ({ setActivePage }) => {
               </li>
               <li>
                 <button 
-                  onClick={() => handleLinkClick('policy')} 
+                  onClick={() => handleLinkClick('pr')} 
                   className="hover:text-brand-pink transition-colors text-left font-semibold text-brand-pink"
+                >
+                  • {t.nav.pr}
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => handleLinkClick('policy')} 
+                  className="hover:text-slate-900 transition-colors text-left font-semibold text-slate-800"
                 >
                   • {t.nav.policy}
                 </button>
               </li>
               <li className="text-xs text-slate-500 pt-1">
-                24x7 Digital & Field War Rooms
+                24x7 War Room & PR Management
               </li>
               <li className="text-xs text-slate-500">
                 Welfare Scheme DBT Audits

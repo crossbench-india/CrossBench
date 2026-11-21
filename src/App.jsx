@@ -4,12 +4,13 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { HomePage } from './pages/HomePage';
 import { PoliticalConsultingPage } from './pages/PoliticalConsultingPage';
+import { StrategicPRPage } from './pages/StrategicPRPage';
 import { PublicPolicyPage } from './pages/PublicPolicyPage';
 import { SolutionsPage } from './pages/SolutionsPage';
 import { AboutPage } from './pages/AboutPage';
 import { InsightsPage } from './pages/InsightsPage';
 import { ContactPage } from './pages/ContactPage';
-import { Lock, ArrowUp } from 'lucide-react';
+import { Lock } from 'lucide-react';
 
 export function AppContent() {
   const [activePage, setActivePage] = useState('home');
@@ -21,6 +22,8 @@ export function AppContent() {
         return <HomePage setActivePage={setActivePage} />;
       case 'political':
         return <PoliticalConsultingPage setActivePage={setActivePage} />;
+      case 'pr':
+        return <StrategicPRPage setActivePage={setActivePage} />;
       case 'policy':
         return <PublicPolicyPage setActivePage={setActivePage} />;
       case 'solutions':
@@ -43,7 +46,7 @@ export function AppContent() {
         {renderPage()}
       </main>
 
-      {/* Floating Quick Action Pill (I-PAC inspired) */}
+      {/* Floating Quick Action Pill */}
       <div className="fixed bottom-6 right-6 z-40 flex items-center space-x-2">
         <button
           onClick={() => { setActivePage('contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}

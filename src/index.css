@@ -46,9 +46,38 @@
   -webkit-text-fill-color: transparent;
 }
 
-.glass-card-light {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(226, 232, 240, 0.9);
+/* Hindi Typography Classes */
+.font-hi-title {
+  font-family: 'Rozha One', 'Noto Sans Devanagari', serif;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.font-hi-heading {
+  font-family: 'Mukta', 'Noto Sans Devanagari', sans-serif;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.font-hi-quote {
+  font-family: 'Martel', 'Noto Sans Devanagari', serif;
+  line-height: 1.6;
+}
+
+.font-hi-body {
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  line-height: 1.7;
+}
+
+/* Mobile Content Card Spacing - Zero Collision Guarantee */
+.mobile-safe-card {
+  margin-bottom: 1.25rem;
+  padding: 1.5rem;
+  border-radius: 1rem;
+}
+@media (min-width: 640px) {
+  .mobile-safe-card {
+    margin-bottom: 0;
+    padding: 2rem;
+  }
 }

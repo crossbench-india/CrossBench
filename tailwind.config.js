@@ -26,6 +26,9 @@ export default {
         sans: ['"Plus Jakarta Sans"', '"Noto Sans Devanagari"', 'sans-serif'],
         display: ['"Outfit"', '"Plus Jakarta Sans"', 'sans-serif'],
         hindi: ['"Noto Sans Devanagari"', 'sans-serif'],
+        'hindi-display': ['"Rozha One"', '"Noto Sans Devanagari"', 'serif'],
+        'hindi-heading': ['"Mukta"', '"Noto Sans Devanagari"', 'sans-serif'],
+        'hindi-serif': ['"Martel"', '"Noto Sans Devanagari"', 'serif'],
       },
       boxShadow: {
         'card': '0 2px 12px -2px rgba(0, 0, 0, 0.06), 0 4px 8px -2px rgba(0, 0, 0, 0.04)',

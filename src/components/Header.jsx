@@ -1,19 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { 
-  Building2, 
   Menu, 
   X, 
   Globe, 
   ChevronRight, 
-  Vote, 
-  FileText, 
-  Users, 
-  Info, 
-  BookOpen, 
-  Lock,
-  Layers,
-  ArrowRight
+  Lock
 } from 'lucide-react';
 
 export const Header = ({ activePage, setActivePage }) => {
@@ -32,6 +24,7 @@ export const Header = ({ activePage, setActivePage }) => {
   const navItems = [
     { id: 'home', label: t.nav.home },
     { id: 'political', label: t.nav.political },
+    { id: 'pr', label: t.nav.pr },
     { id: 'policy', label: t.nav.policy },
     { id: 'solutions', label: t.nav.solutions },
     { id: 'about', label: t.nav.about },
@@ -50,8 +43,8 @@ export const Header = ({ activePage, setActivePage }) => {
       <header 
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
           scrolled 
-            ? 'bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-sm py-2.5' 
-            : 'bg-white border-b border-slate-100 py-3.5'
+            ? 'bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-sm py-2' 
+            : 'bg-white border-b border-slate-100 py-3'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -64,17 +57,17 @@ export const Header = ({ activePage, setActivePage }) => {
               <img 
                 src="./logo.jpg" 
                 alt="CROSS BENCH" 
-                className="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-[1.02]"
+                className="h-9 sm:h-11 w-auto object-contain transition-transform group-hover:scale-[1.02]"
               />
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-1">
+            <nav className="hidden xl:flex items-center space-x-0.5">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className={`px-3.5 py-2 rounded-lg text-[13px] font-semibold transition-all duration-150 ${
+                  className={`px-3 py-1.5 rounded-lg text-[13px] font-semibold transition-all duration-150 ${
                     activePage === item.id
                       ? 'text-brand-green bg-brand-green-soft font-bold'
                       : 'text-slate-700 hover:text-brand-pink hover:bg-slate-50'
@@ -86,7 +79,7 @@ export const Header = ({ activePage, setActivePage }) => {
             </nav>
 
             {/* Right Controls: Language Switcher & Consultation CTA */}
-            <div className="hidden sm:flex items-center space-x-3.5">
+            <div className="hidden sm:flex items-center space-x-3">
               {/* Language Switcher */}
               <button
                 onClick={toggleLanguage}
@@ -102,7 +95,7 @@ export const Header = ({ activePage, setActivePage }) => {
               {/* Consultation Button */}
               <button
                 onClick={() => handleNavClick('contact')}
-                className="px-4 py-2.5 rounded-lg bg-brand-pink hover:bg-brand-pink-hover text-white font-bold text-xs sm:text-sm tracking-wide transition-all shadow-sm hover:shadow-md flex items-center space-x-2 active:scale-95"
+                className="px-4 py-2 rounded-lg bg-brand-pink hover:bg-brand-pink-hover text-white font-bold text-xs sm:text-sm tracking-wide transition-all shadow-sm hover:shadow-md flex items-center space-x-1.5 active:scale-95"
               >
                 <Lock className="w-3.5 h-3.5" />
                 <span>{t.nav.schedule}</span>
@@ -110,7 +103,7 @@ export const Header = ({ activePage, setActivePage }) => {
             </div>
 
             {/* Mobile Controls */}
-            <div className="flex items-center space-x-2 lg:hidden">
+            <div className="flex items-center space-x-2 xl:hidden">
               <button
                 onClick={toggleLanguage}
                 className="px-2.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-xs font-bold text-brand-green"
@@ -130,9 +123,9 @@ export const Header = ({ activePage, setActivePage }) => {
         </div>
       </header>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer with ample spacing so nothing collides */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden">
+        <div className="fixed inset-0 z-50 xl:hidden">
           <div 
             className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm"
             onClick={() => setMobileMenuOpen(false)}
@@ -145,7 +138,7 @@ export const Header = ({ activePage, setActivePage }) => {
                 <img 
                   src="./logo.jpg" 
                   alt="CROSS BENCH" 
-                  className="h-9 w-auto object-contain"
+                  className="h-8 w-auto object-contain"
                 />
                 <button 
                   onClick={() => setMobileMenuOpen(false)}
@@ -156,7 +149,7 @@ export const Header = ({ activePage, setActivePage }) => {
               </div>
 
               {/* Drawer Navigation Links */}
-              <div className="py-6 space-y-1.5">
+              <div className="py-6 space-y-2">
                 {navItems.map((item) => (
                   <button
                     key={item.id}
